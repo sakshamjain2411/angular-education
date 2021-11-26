@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-about-page',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent implements OnInit {
-
-  constructor() { }
+  pageTitle:String = "About";
+  constructor(private activeRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
   }
 
 }

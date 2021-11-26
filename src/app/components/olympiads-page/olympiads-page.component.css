@@ -1,0 +1,91 @@
+#hero .hero-icons {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#hero .hero-icons .item{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+#hero .hero-icons i {
+    background: #106eea;
+    box-shadow: 0px 6px 15px rgba(16, 110, 234, 0.12);
+    font-size: 20px;
+    padding: 15px;
+    margin-right: 15px;
+    color: #fff;
+    border-radius: 50px;
+}
+
+.olympiad-details-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.olympiad-details-list li:first-child {
+    margin-top: 0px;
+}
+
+.olympiad-details-list li:last-child {
+    margin-bottom: 30px;
+}
+
+.olympiad-details-list li i {
+    background: #fff;
+    box-shadow: 0px 6px 15px rgb(16 110 234 / 12%);
+    font-size: 24px;
+    padding: 6px;
+    margin-right: 15px;
+    color: #106eea;
+    border-radius: 50px;
+}
+
+.rewards-heading {
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.rewards-heading i {
+    background: #fff;
+    padding: 20px;
+    color: #106eea;
+    border-radius: 50%;
+    box-shadow: 0px 6px 15px rgb(16 110 234 / 12%);
+    margin-right: 15px;
+    margin-bottom: 10px;
+    font-size: 35px;
+}
+
+.rewards-table {
+    background-color: rgba(255, 255, 255, 0);
+    color: #106eea;
+    margin-bottom: 50px;
+    box-shadow: 0px 6px 15px rgb(16 110 234 / 12%);
+}
+
+.rewards-table th {
+    text-align: center;
+    background: #106eea;
+    color: #fff;
+}
+
+.rewards-table tr {
+    border: 1px solid #106eea;
+}
+
+.rewards-table td {
+    background: #4696ff;
+    color: #fff;
+}
+
+.rewards-table th, .rewards-table td{
+    padding: 10px;
+}
+
+.pl-50 {
+    padding-left: 50px;
+}

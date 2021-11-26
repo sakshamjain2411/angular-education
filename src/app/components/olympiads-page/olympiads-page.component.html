@@ -1,1 +1,85 @@
-<p>olympiads-page works!</p>
+<app-header></app-header>
+<app-breadcrumbs pageTitle={{olympiadShortName}}></app-breadcrumbs>
+<section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <h1>{{olympiadName}} <span>({{olympiadShortName}})</span></h1>
+    </div>
+</section>
+
+<section id="about" class="about section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>{{olympiadShortName}}</h2>
+            <h3>About <span>Springfield Olympiads</span></h3>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
+                <!-- <img src="assets/img/about.jpg" class="img-fluid" alt=""> -->
+                <h3 class="rewards-heading"><i class='bx bx-gift'></i>Rewards/Prizes</h3>
+                <table class="table rewards-table">
+                    <tr>
+                        <th colspan="2">Rewards For All India Rankers</th>
+                    </tr>
+                    <tr>
+                        <td>Rank 1</td>
+                        <td>Rs. 20000/- Each + Gold Medal+ Certificate of Excellence</td>
+                    </tr>
+                    <tr>
+                        <td>Rank 2</td>
+                        <td>Rs. 15000/- Each + Silver Medal*+ Certificate of Excellence</td>
+                    </tr>
+                    <tr>
+                        <td>Rank 3</td>
+                        <td>Rs. 10000/- Each + Bronze Medal*+ Certificate of Excellence</td>
+                    </tr>
+                </table>
+
+                <table class="table rewards-table">
+                    <tr>
+                        <th colspan="2">Rewards For State Rankers</th>
+                    </tr>
+                    <tr>
+                        <td>Rank 1 - 3</td>
+                        <td>Gifts Worth Rs.1000/- Each + Medal of Distinction + Certificate of Distinction</td>
+                    </tr>
+                    <tr>
+                        <td>Ranks 4 - 10</td>
+                        <td>Gifts Worth Rs.500/- Each + Medal of Distinction + Certificate of Distinction</td>
+                    </tr>
+                    <tr>
+                        <td>Ranks 11 - 25</td>
+                        <td>Certificate of Distinction</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-5 pt-4 pt-lg-0 content d-flex flex-column justify-content-center pl-50" data-aos="fade-up"
+                data-aos-delay="100">
+                <ul class="olympiad-details-list">
+                    <li><i class='bx bx-rupee' ></i>Price: Rs. 99/-</li>
+                    <li><i class='bx bx-badge-check' ></i>Eligibility: Classes 3 - 12</li>
+                    <li><i class='bx bx-calendar-check' ></i>September 5, 2021</li>
+                </ul>
+                <div>
+                    <h3>Details</h3>
+                    <ul class="olympiad-details-list">
+                        <li><i class='bx bx-right-arrow-alt' ></i>The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science.</li>
+                        <li><i class='bx bx-right-arrow-alt' ></i>Syllabus: Covers content prescribed by CBSE/ ICSE and the State Boards.</li>
+                        <li><i class='bx bx-right-arrow-alt' ></i>Mode of Exam: Online</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Benefits</h3>
+                    <ul class="olympiad-details-list">
+                        <li><i class='bx bx-right-arrow-alt' ></i>Certificate of Participation to all students.</li>
+                        <li><i class='bx bx-right-arrow-alt' ></i>A Detailed Report analysing the performance will also be provided to each participant.</li>
+                        <li><i class='bx bx-right-arrow-alt' ></i>Awards, Scholarships, Gifts, felicitations and much more!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<app-footer></app-footer>

@@ -24,20 +24,20 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li class="dropdown"><a href="#"><span>Olympiads</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+          <li><a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a></li>
+          <li class="dropdown"><a><span>Olympiads</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">SISO</a></li>
-              <li><a href="#">SOMI</a></li>
-              <li><a href="#">SIEO</a></li>
-              <li><a href="#">SICO</a></li>
-              <li><a href="#">Grads Olympiad</a></li>
-              <li><a href="#">Finance Olympiad</a></li>
+              <li><a [routerLink]="['/olympiad/siso']">SISO</a></li>
+              <li><a [routerLink]="['/olympiad/simo']">SIMO</a></li>
+              <li><a routerLink="/olympiad/sieo">SIEO</a></li>
+              <li><a routerLink="/olympiad/sico">SICO</a></li>
+              <li><a routerLink="/olympiad/grads-olympiad">Grads Olympiad</a></li>
+              <li><a [routerLink]="['/olympiad/finance-olympiad']">Finance Olympiad</a></li>
             </ul>
           </li>
           <li><a [routerLink]="['/faqs']" routerLinkActive="active" >FAQ's</a></li>
-          <li><a class="nav-link scrollto" href="#team">Register</a></li>
+          <li><a class="nav-link" [routerLink]="['/student-registration']">Register</a></li>
           <li><a [routerLink]="['/contact']" routerLinkActive="active" >Contact Us</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Institue Login</a></li>
         </ul>
