@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "studentData": {},
+  "instituteData": [
+    {
+      "id": 1,
+      "instituteName": "string",
+      "address": "string",
+      "city": "string",
+      "coordinatorName": "string",
+      "email": "string",
+      "password": "password",
+      "phone": "number",
+      "pincode": "number",
+      "state": "string"
+    },
+    {
+      "id": 2,
+      "instituteName": "Manipal University Jaipur",
+      "address": "Jaipur-Ajmer Express Highway, Dehmi Kalan, Near GVK Toll Plaza",
+      "city": "Jaipur",
+      "coordinatorName": "Saksham Jain",
+      "email": "office.academics@jaipur.manipal.edu",
+      "password": "An102021@#",
+      "phone": "0141 - 3999100",
+      "pincode": "303007",
+      "state": "Rajasthan"
+    },
+    {
+      "id": 3,
+      "instituteName": "Jaipur National University",
+      "address": "Jaipur-Agra Bypass, Near New RTO office, Jagatpura",
+      "city": "Jaipur",
+      "coordinatorName": "Sarthak Jain",
+      "email": "info@jnujaipur.ac.in",
+      "password": "qwerty",
+      "phone": "9166017690",
+      "pincode": "302017",
+      "state": "Rajasthan"
+    }
+  ]
+}

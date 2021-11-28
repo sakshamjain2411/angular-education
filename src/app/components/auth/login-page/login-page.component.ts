@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +12,7 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
   siteKey: any;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private _http:HttpClient, private route: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,7 +33,24 @@ export class LoginPageComponent implements OnInit {
 
   onLoginFormSubmit() {
     if(this.loginForm.status == "VALID") {
-      console.log(this.loginForm.value);
+      this._http.get<any>("http://localhost:3000/instituteData")
+        .subscribe(response=> {
+          const user = response.find((userData:any)=> {
+            return userData.email === this.loginForm.value.username && userData.password === this.loginForm.value.password
+          })
+          if(user) {
+            console.log(user);
+            localStorage.setItem("auth","true")
+            localStorage.setItem("instituteID",user.id)
+            localStorage.setItem("instituteEmail",user.email)
+            localStorage.setItem("authToken", Date.now().toString())
+            this.route.navigate(['institute-dashboard'])
+          }else console.log("User Not Found");
+          
+        },error=> {
+          alert("Something Went Wrong");
+          console.log(error);
+        })
     }
   }
 

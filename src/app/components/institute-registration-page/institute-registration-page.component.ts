@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/service/api.service';
+import { InstituteRegistrationModel } from './institute-registration.model';
 
 @Component({
   selector: 'app-institute-registration-page',
@@ -9,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InstituteRegistrationPageComponent implements OnInit {
 
   instituteFrom!: FormGroup
-  constructor(private formBuilder: FormBuilder) { }
+  instituteDataObject: InstituteRegistrationModel = new InstituteRegistrationModel()
+  constructor(private formBuilder: FormBuilder, private api:ApiService) { }
 
   ngOnInit(): void {
     this.instituteFrom = this.formBuilder.group({
@@ -59,7 +62,25 @@ export class InstituteRegistrationPageComponent implements OnInit {
   onInstituteFormSubmit() {
     if(this.instituteFrom.status == "VALID") {
       console.log(this.instituteFrom.value);
+      this.postInstitueData()
     }
+  }
+
+  postInstitueData() {
+    this.instituteDataObject.instituteName = this.instituteFrom.value.instituteName
+    this.instituteDataObject.address = this.instituteFrom.value.address
+    this.instituteDataObject.city = this.instituteFrom.value.city
+    this.instituteDataObject.coordinatorName = this.instituteFrom.value.coordinatorName
+    this.instituteDataObject.email = this.instituteFrom.value.email
+    this.instituteDataObject.password = this.instituteFrom.value.password
+    this.instituteDataObject.phone = this.instituteFrom.value.phone
+    this.instituteDataObject.pincode = this.instituteFrom.value.pincode
+    this.instituteDataObject.state = this.instituteFrom.value.state
+
+    this.api.postInstituteData(this.instituteDataObject)
+      .subscribe(res => {
+        console.log(res);
+      })
   }
 
   siteKey: any;

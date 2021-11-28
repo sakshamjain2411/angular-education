@@ -1,0 +1,30 @@
+.dashboard-action {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+}
+
+.dashboard-action .btn {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #fff;
+    
+}
+
+.dashboard-action .btn-primary {
+    background: #106eea;
+    border: 2px solid #247cf0;
+}
+
+.dashboard-action .btn-danger {
+    background: #ff5c5c;
+    border: 2px solid #ff5c5c;
+    margin-left: 10px;
+}

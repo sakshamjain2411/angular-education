@@ -1,0 +1,59 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Dashboard"></app-breadcrumbs>
+<section class="dashboard">
+    <div class="container">
+        <div class="dashboard-action">
+            <button class="btn btn-primary" [routerLink]="['/register-for-exam']">Register For Exam </button>
+            <button class="btn btn-danger" (click)="onLogoutButtonClick()">Logout</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">View Details</th>
+                    <th scope="col">Registration Date</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Payment Mode</th>
+                    <th scope="col">Payment Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><a href="">View Details</a></td>
+                    <td>29th Nov 2021</td>
+                    <td>10043</td>
+                    <td>149₹</td>
+                    <td>Paid</td>
+                    <td>Online</td>
+                    <td>Done</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td><a href="">View Details</a></td>
+                    <td>29th Nov 2021</td>
+                    <td>10044</td>
+                    <td>299₹</td>
+                    <td>Paid</td>
+                    <td>Online</td>
+                    <td>Done</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td><a href="">View Details</a></td>
+                    <td>29th Nov 2021</td>
+                    <td>10045</td>
+                    <td>349₹</td>
+                    <td>Paid</td>
+                    <td>Online</td>
+                    <td>Done</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<app-footer></app-footer>

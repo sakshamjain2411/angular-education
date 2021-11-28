@@ -1,0 +1,59 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Register For Exam"></app-breadcrumbs>
+<section id="register-for-exam-form" class="student-form">
+    <div class="container">
+        <div class="section-title">
+            <h2>Form</h2>
+            <h3>Register For Exam <span>Form</span></h3>
+        </div>
+        <form class="row g-3" [formGroup]="registerForExamForm" (ngSubmit)="onRegisterForExamFormSubmit()">
+            <div class="col-12">
+                <label for="">Type Of Student</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType1" value="School Student" formControlName="studentType">
+                    <label class="form-check-label" for="studentType1">
+                        School Student
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType2" value="Graduate / Undergraduate / Working Professional" formControlName="studentType">
+                    <label class="form-check-label" for="studentType2">
+                        Graduate / Undergraduate / Working Professional
+                    </label>
+                  </div>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
+            </div>
+            <div class="col-12">
+                <label for="">Mode Of Payment</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMode" id="paymentMode" value="Online Payment" formControlName="paymentMode">
+                    <label class="form-check-label" for="paymentMode">
+                        Online Payment ( Pay using Credit Card / Debit Card / Net Banking )
+                    </label>
+                  </div>
+            </div>
+            <div class="col-12">
+                <label for="file" class="form-label">Upload Excel / PDF File With Students Details</label>
+                <input type="file" class="form-control" id="file">
+                <small>*Download Sample File For Reference  <a href="">DOWNLOAD!</a><br>
+                    The file should contain only the following columns:<br>
+                    1. Name: Full name of the student<br>
+                    2. Email: Email ID of the student<br>
+                    3. Phone: 10 digit phone no of the student<br>
+                    4. Class / Year: A single or double digit number indicating class / Year of student<br>
+                    5. Exam: Exams to register for seperated by commas<br>
+                    6. Delete sample data from the excel, otherwise its amount will also be calculated<br>
+                    7. 20% discount will directly be applied as remuneration<br>
+                    8. Roll number and other details will be mailed to students directly</small>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="!registerForExamForm.valid">Sign in</button>
+            </div>
+        </form>
+    </div>
+</section>
+<app-footer></app-footer>
