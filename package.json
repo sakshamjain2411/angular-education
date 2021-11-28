@@ -26,6 +26,8 @@
     "glightbox": "^3.1.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.6.0",
+    "json-server": "^0.17.0",
+    "ngx-captcha": "^10.0.0",
     "ngx-owl-carousel-o": "^7.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.4.0",

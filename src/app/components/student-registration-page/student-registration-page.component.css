@@ -1,3 +1,17 @@
 .striked-text {
     text-decoration: line-through;
 }
+
+input.form-control.ng-touched.ng-invalid,
+input.form-control.ng-touched.ng-pending {
+    border: 2px solid #ff00002e;
+}
+
+input.form-control.ng-touched.ng-invalid:focus,
+input.form-control.ng-touched.ng-pending:focus {
+    box-shadow: 0 0 0 0.25rem #ff00005e;
+}
+
+small {
+    font-size: 12px;
+}

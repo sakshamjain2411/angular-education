@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { FaqPageComponent } from './components/faq-page/faq-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { InstituteRegistrationPageComponent } from './components/institute-registration-page/institute-registration-page.component';
 import { InvalidPageComponent } from './components/invalid-page/invalid-page.component';
 import { OlympiadsPageComponent } from './components/olympiads-page/olympiads-page.component';
 import { ReviewsPageComponent } from './components/reviews-page/reviews-page.component';
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'contact', component: ContactPageComponent},
   {path: 'reviews', component: ReviewsPageComponent},
   {path: 'student-registration', component: StudentRegistrationPageComponent},
+  {path: 'institute-registration', component: InstituteRegistrationPageComponent},
   {path: 'olympiad/:name', component: OlympiadsPageComponent},
+  {path: 'institute-login', component: LoginPageComponent},
   {path: '404', component: InvalidPageComponent},
   {path: '**', redirectTo: "404"}
 ];

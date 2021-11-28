@@ -37,9 +37,14 @@
             </ul>
           </li>
           <li><a [routerLink]="['/faqs']" routerLinkActive="active" >FAQ's</a></li>
-          <li><a class="nav-link" [routerLink]="['/student-registration']">Register</a></li>
+          <li class="dropdown"><a><span>Register</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a [routerLink]="['/student-registration']">Student Registration</a></li>
+              <li><a [routerLink]="['/institute-registration']">Institute Registration</a></li>
+            </ul>
+          </li>
           <li><a [routerLink]="['/contact']" routerLinkActive="active" >Contact Us</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Institue Login</a></li>
+          <li><a class="nav-link scrollto " [routerLink]="['/institute-login']" routerLinkActive="active">Institue Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

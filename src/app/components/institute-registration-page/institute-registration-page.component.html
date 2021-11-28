@@ -1,0 +1,65 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Institue Registration"></app-breadcrumbs>
+<section id="student-form" class="student-form">
+    <div class="container">
+        <div class="section-title">
+            <h2>Form</h2>
+            <h3>Institute Registration <span>Form</span></h3>
+        </div>
+        <form class="row g-3" [formGroup]="instituteFrom" (ngSubmit)="onInstituteFormSubmit()">
+            <div class="col-12">
+                <label for="name" class="form-label">Institute Name</label>
+                <input type="text" class="form-control" id="name" formControlName="instituteName">
+                <small class="text-danger" *ngIf="!instituteName?.valid && instituteName?.touched">Please Enter Institute's Name</small>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
+            </div>
+            <div class="col-12">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" formControlName="phone">
+                <small class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
+            </div>
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <textarea name="address" id="address" cols="30" rows="5" class="form-control" formControlName="address"></textarea>
+                <small class="text-danger" *ngIf="!address?.valid && address?.touched">Please Enter Institute Address</small>
+            </div>
+            <div class="col-md-4">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" formControlName="city">
+                <small class="text-danger" *ngIf="!city?.valid && city?.touched">Please Enter City</small>
+            </div>
+            <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" formControlName="state">
+                <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
+            </div>
+            <div class="col-md-4">
+                <label for="pincode" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
+            </div>
+            <div class="col-12">
+                <label for="coordinatorName" class="form-label">Co-ordinator Name</label>
+                <input type="text" class="form-control" id="coordinatorName" formControlName="coordinatorName">
+                <small class="text-danger" *ngIf="!coordinatorName?.valid && coordinatorName?.touched">Please Enter Co-ordinator's Name</small>
+            </div>
+            <div class="col-12">
+                <label for="referralCode" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+                <small class="text-danger" *ngIf="!password?.valid && password?.touched">Please Enter Valid Password</small>
+            </div>
+            <ngx-recaptcha2 #captchaElem
+              [siteKey]="siteKey"
+              formControlName="recaptcha">
+            </ngx-recaptcha2>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="!instituteFrom.valid">Sign in</button>
+            </div>
+        </form>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -268,6 +268,9 @@ body {
   .navbar .dropdown ul a i {
     font-size: 12px;
   }
+  .navbar .dropdown span {
+    color: #222222;
+  }
   .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
     color: #106eea;
   }
@@ -559,7 +562,8 @@ body {
   }
   @media (min-width: 1024px) {
     .section-title p {
-      width: 50%;
+      width: 85%;
+      font-size: 14px;
     }
   }
   
@@ -653,15 +657,16 @@ body {
     margin-bottom: 15px;
     font-size: 18px;
   }
-  .featured-services .title a {
-    color: #111;
+  .featured-services .title {
+    color: #106eea;
   }
   .featured-services .description {
     font-size: 15px;
     line-height: 28px;
     margin-bottom: 0;
+    color: #444444;
   }
-  .featured-services .icon-box:hover .title a, .featured-services .icon-box:hover .description {
+  .featured-services .icon-box:hover .title, .featured-services .icon-box:hover .description {
     color: #fff;
   }
   .featured-services .icon-box:hover .icon i {
@@ -705,6 +710,20 @@ body {
   }
   .about .content p:last-child {
     margin-bottom: 0;
+  }
+  .about .content ul.about-list li{
+    display: flex;
+  }
+  .about .content ul.about-list li i{
+    border-radius: 25%;
+    margin-bottom: 10px;
+  }
+  .about .content ul.about-list li div i{
+    padding: 12px;
+    font-size: 18px;
+  }
+  .about .content ul.about-list li:first-child{
+    margin-top: 0px;
   }
   
   /*--------------------------------------------------------------
@@ -1579,3 +1598,17 @@ body {
       padding: 2px 0;
     }
   }
+
+  /*--------------------------------------------------------------
+  # Footer
+  --------------------------------------------------------------*/
+  .student-form .container {
+    max-width: 700px;
+  }
+  .student-form form {
+    padding: 20px;
+    margin: 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 12%);
+  }
+
