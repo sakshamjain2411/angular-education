@@ -16,16 +16,20 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ["", Validators.required],
-      password: ["", Validators.required],
-      recaptcha: ['', Validators.required]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required]
     })
-
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
   }
 
-  get username() {
-    return this.loginForm.get('username');
+  ngAfterViewInit() {
+    if(localStorage.getItem("auth") === "true") {
+      this.route.navigate(['/institute-dashboard'])
+    }
+  }
+
+  get email() {
+    return this.loginForm.get('email');
   }
   get password() {
     return this.loginForm.get('password');
@@ -36,7 +40,7 @@ export class LoginPageComponent implements OnInit {
       this._http.get<any>("http://localhost:3000/instituteData")
         .subscribe(response=> {
           const user = response.find((userData:any)=> {
-            return userData.email === this.loginForm.value.username && userData.password === this.loginForm.value.password
+            return userData.email === this.loginForm.value.email && userData.password === this.loginForm.value.password
           })
           if(user) {
             console.log(user);

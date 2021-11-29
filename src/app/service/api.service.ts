@@ -22,4 +22,18 @@ export class ApiService {
         return res
       }))
   }
+
+  getInstituteDataById(id:any) {
+    return this._http.get<any>("http://localhost:3000/instituteData/"+id)
+      .pipe(map((response:any) => {
+        return response
+      }))
+  }
+
+  getExamDataByInstituteID(id:any) {
+    return this._http.get<any>("http://localhost:3000/institueExamsData?instituteId="+id)
+      .pipe(map((response:any) => {
+        return response
+      }))
+  }
 }

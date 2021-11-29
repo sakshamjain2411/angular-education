@@ -24,7 +24,7 @@
       "address": "string",
       "city": "string",
       "coordinatorName": "string",
-      "email": "string",
+      "email": "s@s.com",
       "password": "password",
       "phone": "number",
       "pincode": "number",
@@ -53,6 +53,80 @@
       "phone": "9166017690",
       "pincode": "302017",
       "state": "Rajasthan"
+    },
+    {
+      "id": 4,
+      "instituteName": "Test",
+      "address": "asd",
+      "city": "Jasd",
+      "coordinatorName": "Saksah",
+      "email": "t@g.com",
+      "password": "password",
+      "phone": "8112273369",
+      "pincode": "302020",
+      "state": "asd"
+    },
+    {
+      "id": 5,
+      "instituteName": "MUJ",
+      "address": "Plot 01",
+      "city": "Jaipur",
+      "coordinatorName": "Saksham Jain",
+      "email": "edu@muj.in",
+      "password": "Password",
+      "phone": "8112273369",
+      "pincode": "302020",
+      "state": "Rajasthan"
+    },
+    {
+      "id": 6,
+      "instituteName": "asd",
+      "address": "asdas",
+      "city": "asd",
+      "coordinatorName": "Saksham",
+      "email": "sa@g.com",
+      "password": "qwerrty",
+      "phone": "8112273369",
+      "pincode": "302020",
+      "state": "sad"
+    }
+  ],
+  "institueExamsData": [
+    {
+      "id": 1,
+      "instituteId": 1,
+      "orderId": "10043",
+      "paymentMode": "Online",
+      "paymentStatus": "Paid",
+      "registrationDate": "Nov 28, 2021",
+      "amount": "149"
+    },
+    {
+      "id": 2,
+      "instituteId": 1,
+      "orderId": "10043",
+      "paymentMode": "Online",
+      "paymentStatus": "Paid",
+      "registrationDate": "Nov 29, 2021",
+      "amount": "149"
+    },
+    {
+      "id": 3,
+      "instituteId": 2,
+      "orderId": "10043",
+      "paymentMode": "Online",
+      "paymentStatus": "Paid",
+      "registrationDate": "Nov 29, 2021",
+      "amount": "149"
+    },
+    {
+      "id": 4,
+      "instituteId": 1,
+      "orderId": "10047",
+      "paymentMode": "Online",
+      "paymentStatus": "Paid",
+      "registrationDate": "Nov 30, 2021",
+      "amount": "349"
     }
   ]
 }

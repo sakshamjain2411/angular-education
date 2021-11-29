@@ -20,37 +20,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
+                <tr *ngFor="let item of instituteExamDatatObject">
+                    <th scope="row">{{item.id}}</th>
                     <td><a href="">View Details</a></td>
-                    <td>29th Nov 2021</td>
-                    <td>10043</td>
-                    <td>149₹</td>
-                    <td>Paid</td>
-                    <td>Online</td>
-                    <td>Done</td>
+                    <td>{{item.registrationDate}}</td>
+                    <td>{{item.orderId}}</td>
+                    <td>{{item.amount}}₹</td>
+                    <td>{{item.paymentStatus}}</td>
+                    <td>{{item.paymentMode}}</td>
+                    <td>{{item.id}}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td><a href="">View Details</a></td>
-                    <td>29th Nov 2021</td>
-                    <td>10044</td>
-                    <td>299₹</td>
-                    <td>Paid</td>
-                    <td>Online</td>
-                    <td>Done</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td><a href="">View Details</a></td>
-                    <td>29th Nov 2021</td>
-                    <td>10045</td>
-                    <td>349₹</td>
-                    <td>Paid</td>
-                    <td>Online</td>
-                    <td>Done</td>
-                </tr>
-                
             </tbody>
         </table>
     </div>

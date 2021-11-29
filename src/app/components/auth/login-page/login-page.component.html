@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-breadcrumbs pageTitle="Institue Login"></app-breadcrumbs>
-<section id="student-form" class="student-form">
+<section id="login-form" class="form">
     <div class="container">
         <div class="section-title">
             <h2>Login</h2>
@@ -8,19 +8,15 @@
         </div>
         <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
             <div class="col-12">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" formControlName="username">
-                <small class="text-danger" *ngIf="!username?.valid && username?.touched">Please Enter Username</small>
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" formControlName="email">
+                <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
             </div>
             <div class="col-12">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" formControlName="password">
                 <small class="text-danger" *ngIf="!password?.valid && password?.touched">Please Enter Password</small>
             </div>
-            <ngx-recaptcha2 #captchaElem
-              [siteKey]="siteKey"
-              formControlName="recaptcha">
-            </ngx-recaptcha2>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
             </div>

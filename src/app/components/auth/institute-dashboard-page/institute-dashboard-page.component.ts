@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/service/api.service';
+import { InstituteExamRegistrationModel } from '../../institute-registration-page/institute-exam-registration.model';
+import { InstituteRegistrationModel } from '../../institute-registration-page/institute-registration.model';
 
 @Component({
   selector: 'app-institute-dashboard-page',
@@ -12,18 +16,30 @@ export class InstituteDashboardPageComponent implements OnInit {
   instituteID:any
   instituteEmail:any
   authToken:any
-  constructor(private route:Router) { }
+  instituteDataObject!: InstituteRegistrationModel
+  instituteExamDatatObject: any
+  constructor(private route:Router, private _http:HttpClient, private api: ApiService) { }
 
   ngOnInit(): void {
+    //LocalStorage
     this.authStatus = localStorage.getItem("auth")
     this.instituteID = localStorage.getItem("instituteID")
-    this.instituteID = localStorage.getItem("instituteEmail")
+    this.instituteEmail = localStorage.getItem("instituteEmail")
     this.authToken = localStorage.getItem("authToken")
-    console.log(this.authStatus)
+    
     if(this.authStatus === "true" && this.instituteID) {
-      console.log(localStorage.getItem("instituteID"))
       this.checkTokenValidity(this.authToken)
       this.tokenTimeout()
+
+      //API Call
+      this.api.getInstituteDataById(this.instituteID)
+        .subscribe(respose => {
+          this.instituteDataObject = respose
+        })
+      this.api.getExamDataByInstituteID(this.instituteID)
+        .subscribe(response => {
+          this.instituteExamDatatObject = response
+        })
     }
     else {
       this.route.navigate(['institute-login'])
