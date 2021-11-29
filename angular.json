@@ -28,8 +28,6 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/glightbox/dist/css/glightbox.min.css",
-              "node_modules/swiper/swiper-bundle.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/boxicons/css/boxicons.css",
               "node_modules/aos/dist/aos.css",
@@ -38,13 +36,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/@srexi/purecounterjs/dist/purecounter.js",
               "node_modules/aos/dist/aos.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/glightbox/dist/js/glightbox.min.js",
-              "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
-              "node_modules/swiper/swiper-bundle.min.js",
-              "node_modules/waypoints/lib/noframework.waypoints.js",
               "src/assets/js/main.js"
             ]
           },
