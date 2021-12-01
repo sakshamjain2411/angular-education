@@ -4,8 +4,8 @@
         <h1>Welcome to <span>Springfield Olympiads</span></h1>
         <h2>Feeling Prepared? Register For Science Olympiad</h2>
         <div class="d-flex">
-            <a href="#about" class="btn-get-started">Register</a>
-            <a href="" class="btn-schedule">Schedule</a>
+            <a href="#about" class="btn-get-started" *ngIf="registerButtonStatus">Register</a>
+            <a href="" class="btn-schedule" *ngIf="scheduleButtonStatus">Schedule</a>
         </div>
     </div>
 </section><!-- End Hero -->

@@ -499,7 +499,7 @@ body {
   }
   @media (max-width: 768px) {
     #hero {
-      height: 100vh;
+      height: 45vh;
     }
     #hero h1 {
       font-size: 28px;

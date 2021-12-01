@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { InstituteRegistrationModel } from './institute-registration.model';
 
@@ -11,8 +12,9 @@ import { InstituteRegistrationModel } from './institute-registration.model';
 export class InstituteRegistrationPageComponent implements OnInit {
 
   instituteFrom!: FormGroup
+  routeParam:any
   instituteDataObject: InstituteRegistrationModel = new InstituteRegistrationModel()
-  constructor(private formBuilder: FormBuilder, private api:ApiService) { }
+  constructor(private formBuilder: FormBuilder, private api:ApiService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.instituteFrom = this.formBuilder.group({

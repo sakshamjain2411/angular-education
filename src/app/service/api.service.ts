@@ -36,4 +36,18 @@ export class ApiService {
         return response
       }))
   }
+
+  getWebsiteCoreData() {
+    return this._http.get<any>("http://localhost:3000/websiteCoreData")
+      .pipe(map((response) => {
+        return response
+      }))
+  }
+
+  getOlympiadData() {
+    return this._http.get<any>("http://localhost:3000/olympiadData")
+      .pipe(map(response => {
+        return response
+      }))
+  }
 }

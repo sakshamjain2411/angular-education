@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroSectionComponent implements OnInit {
 
-  constructor() { }
+  registerButtonStatus: any
+  scheduleButtonStatus: any
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    this.api.getWebsiteCoreData()
+      .subscribe(response => {
+        this.registerButtonStatus = response.registerButtonStatus
+        this.scheduleButtonStatus = response.scheduleButtonStatus
+      })
   }
 
 }

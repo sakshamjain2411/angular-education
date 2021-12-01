@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,10 +9,21 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() {
+  websiteCoreData: any;
+  registeredInstitutes!: string;
+  registeredIndividuals!: string;
+  registeredCoordinators!: string;
+  constructor(private api:ApiService) {
   }
 
   ngOnInit(): void {
+    this.api.getWebsiteCoreData()
+      .subscribe(response => {
+        this.websiteCoreData = response
+        this.registeredInstitutes = response.registeredInstitutes
+        this.registeredIndividuals = response.registeredIndividuals
+        this.registeredCoordinators = response.registeredCoordinators
+      })
   }
 
   customOptions: OwlOptions = {

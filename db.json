@@ -16,7 +16,58 @@
   "profile": {
     "name": "typicode"
   },
+  "olympiadData" : [
+    {
+      "id": 0,
+      "name": "typicode",
+      "price" : "typicode",
+      "date"  : "typicode"
+    },
+    {
+      "id": 1,
+      "name": "SISO",
+      "price" : "99",
+      "date"  : "September 5, 2021"
+    },
+    {
+      "id": 2,
+      "name": "SIMO",
+      "price" : "99",
+      "date"  : "01 Dec 2021"
+    },
+    {
+      "id": 3,
+      "name": "SIEO",
+      "price" : "99",
+      "date"  : "01 Dec 2021"
+    },
+    {
+      "id": 4,
+      "name": "SICO",
+      "price" : "99",
+      "date"  : "01 Dec 2021"
+    },
+    {
+      "id": 5,
+      "name": "GRADS-OLYMPIAD",
+      "price" : "99",
+      "date"  : "01 Dec 2021"
+    },
+    {
+      "id": 6,
+      "name": "FINANCE-OLYMPIAD",
+      "price" : "99",
+      "date"  : "01 Dec 2021"
+    }
+  ],
   "studentData": {},
+  "websiteCoreData": {
+    "registerButtonStatus" : false,
+    "scheduleButtonStatus" : false,
+    "registeredInstitutes": "2000",
+    "registeredIndividuals": "50000",
+    "registeredCoordinators": "150"
+  },
   "instituteData": [
     {
       "id": 1,

@@ -107,19 +107,19 @@
             <div class="col-12">
                 <label for="">You're a:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="studentType" id="studentType1" value="School Student" formControlName="studentType">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType1" value="School Student" formControlName="studentType" (change)="addSchoolField()">
                     <label class="form-check-label" for="studentType1">
                         School Student
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="studentType" id="studentType2" value="Graduate / Undergraduate / Working Professional" formControlName="studentType">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType2" value="Graduate / Undergraduate / Working Professional" formControlName="studentType" (change)="addCollegeField()">
                     <label class="form-check-label" for="studentType2">
                         Graduate / Undergraduate / Working Professional
                     </label>
                   </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" *ngIf="routeParam">
                 <label for="referralCode" class="form-label">Referral Code</label>
                 <input type="text" class="form-control" id="referralCode" formControlName="referralCode">
                 <small class="text-danger" *ngIf="!referralCode?.valid && referralCode?.touched">Please Enter Valid Referral Code</small>

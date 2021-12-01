@@ -57,10 +57,8 @@ export class InstituteDashboardPageComponent implements OnInit {
   checkTokenValidity(authToken:String) {
     let now = Date.now();
     if(now - Number(authToken) > 7200000) {
-      alert("Token Expired");
       this.onLogoutButtonClick()
     }
-
   }
 
   tokenTimeout() {

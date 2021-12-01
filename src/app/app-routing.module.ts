@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactPageComponent},
   {path: 'reviews', component: ReviewsPageComponent},
   {path: 'student-registration', component: StudentRegistrationPageComponent},
+  {path: 'student-registration/:referral', component: StudentRegistrationPageComponent},
   {path: 'institute-registration', component: InstituteRegistrationPageComponent},
   {path: 'olympiad/:name', component: OlympiadsPageComponent},
   {path: 'institute-login', component: LoginPageComponent},
