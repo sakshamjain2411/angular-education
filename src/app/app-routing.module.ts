@@ -14,7 +14,7 @@ import { ReviewsPageComponent } from './components/reviews-page/reviews-page.com
 import { StudentRegistrationPageComponent } from './components/student-registration-page/student-registration-page.component';
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomePageComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'faqs', component: FaqPageComponent},

@@ -43,50 +43,27 @@
       easing: 'ease-in-out',
       once: true,
       mirror: false
-    });
+    });    
 
-    /** Fix Header On Top */
-    let selectHeader = document.querySelector("#header")
-    window.addEventListener('scroll', () => {
-      let scrollPosition = window.scrollY
-      if (scrollPosition > 40) {
-        selectHeader.classList.add('fixed-top');
-      }
-      else {
-        if (selectHeader.classList.contains('fixed-top')) {
-          selectHeader.classList.remove('fixed-top');
-        }
-      }
-    });
-
-    /** Back to top button */
-    let backtotop = select('.back-to-top')
-    if (backtotop) {
-      const toggleBacktotop = () => {
-        if (window.scrollY > 100) {
+    window.addEventListener("scroll", ()=> {
+      let header = document.querySelector("#header")
+      let backtotop = select('.back-to-top')
+      if(window.scrollY > 20) {
+        header.classList.add('fixed-top')
+        if(window.scrollY > 100) {
           backtotop.classList.add('active')
-        } else {
+          backtotop.addEventListener('onclick', () => {
+            window.scrollY = 0;
+          })
+        }else {
           backtotop.classList.remove('active')
         }
+      }else {
+        if (header.classList.contains('fixed-top')) {
+          header.classList.remove('fixed-top');
+        }
       }
-      window.addEventListener('load', toggleBacktotop)
-      onscroll(document, toggleBacktotop)
-    }
-
-    /** Mobile nav toggle */
-    on('click', '.mobile-nav-toggle', function (e) {
-      select('#navbar').classList.toggle('navbar-mobile')
-      this.classList.toggle('bi-list')
-      this.classList.toggle('bi-x')
     })
-
-    /** Mobile nav dropdowns activate */
-    on('click', '.navbar .dropdown > a', function (e) {
-      if (select('#navbar').classList.contains('navbar-mobile')) {
-        e.preventDefault()
-        this.nextElementSibling.classList.toggle('dropdown-active')
-      }
-    }, true)
   });
 
 })()

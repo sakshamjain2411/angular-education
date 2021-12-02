@@ -22,11 +22,11 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" [ngClass]="{'navbar-mobile' : navBarToggle}">
         <ul>
           <li><a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
           <li><a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a></li>
-          <li class="dropdown"><a><span>Olympiads</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown" (click)="drownDownToggleOnClick($event)"><a><span>Olympiads</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a [routerLink]="['/olympiad/siso']">SISO</a></li>
               <li><a [routerLink]="['/olympiad/simo']">SIMO</a></li>
@@ -37,7 +37,7 @@
             </ul>
           </li>
           <li><a [routerLink]="['/faqs']" routerLinkActive="active" >FAQ's</a></li>
-          <li class="dropdown"><a><span>Register</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a (click)="drownDownToggleOnClick($event)"><span>Register</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a [routerLink]="['/student-registration']">Student Registration</a></li>
               <li><a [routerLink]="['/institute-registration']">Institute Registration</a></li>
@@ -46,7 +46,7 @@
           <li><a [routerLink]="['/contact']" routerLinkActive="active" >Contact Us</a></li>
           <li><a class="nav-link scrollto " [routerLink]="['/institute-login']" routerLinkActive="active">Institue Login</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle" (click)="navToggleOnClick()" [ngClass]="{'bi-x' : navBarToggle}"></i>
       </nav><!-- .navbar -->
     </div>
   </header><!-- End Header -->

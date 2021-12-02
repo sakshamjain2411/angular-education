@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
   registeredInstitutes!: string;
   registeredIndividuals!: string;
   registeredCoordinators!: string;
+  pageTitle: String = "Home"
   constructor(private api:ApiService) {
   }
 

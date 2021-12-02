@@ -12,5 +12,5 @@ export class FaqPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  pageTitle:string = "FAQ's";
+  pageTitle:string = "FAQs";
 }
