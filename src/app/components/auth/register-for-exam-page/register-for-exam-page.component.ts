@@ -10,6 +10,7 @@ import { InstituteExamRegistrationModel } from './register-for-exam.model';
 })
 export class RegisterForExamPageComponent implements OnInit {
 
+  successAlert: boolean = false
   instituteExamDataObject:InstituteExamRegistrationModel = new InstituteExamRegistrationModel
   registerForExamForm!: FormGroup;
   date = new Date()
@@ -25,7 +26,6 @@ export class RegisterForExamPageComponent implements OnInit {
       studentType: ["School Student", Validators.required],
       paymentMode: ["Online Payment", Validators.required]
     })
-    console.log(typeof(localStorage.getItem("instituteID")));
 
     this.today =  months[this.date.getMonth()]+" "+this.date.getDate()+", "+this.date.getFullYear()
   }
@@ -55,8 +55,13 @@ export class RegisterForExamPageComponent implements OnInit {
 
     this.api.postInstituteExamData(this.instituteExamDataObject)
       .subscribe(res => {
-        console.log(res)
+        this.successAlert = true
+        setTimeout(() => {
+          this.successAlert = false
+        }, 5000);
       })
+    this.registerForExamForm.reset()
+    
   }
 
 

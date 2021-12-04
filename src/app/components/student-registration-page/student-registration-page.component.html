@@ -66,7 +66,7 @@
             <h2>Form</h2>
             <h3>Student Registration <span>Form</span></h3>
         </div>
-        <div class="alert alert-success" role="alert">
+        <div *ngIf="successAlert" class="alert alert-success" role="alert">
             The Form Has Been Submitted Successfully
         </div>
         <form class="row g-3" [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">

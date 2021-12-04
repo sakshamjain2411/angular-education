@@ -12,6 +12,7 @@ import { StudentRegistrationModel } from './student-registration.model';
 })
 export class StudentRegistrationPageComponent implements OnInit {
 
+  successAlert:boolean = false
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
@@ -156,7 +157,13 @@ export class StudentRegistrationPageComponent implements OnInit {
     }
     
     this.api.postStudentData(this.schoolDataObject)
-    this.studentForm.reset();
+      .subscribe(res => {
+        this.successAlert = true
+        this.studentForm.reset();
+        setTimeout(() => {
+          this.successAlert = false
+        }, 5000);
+      })
   }
 
   siteKey: any = "";

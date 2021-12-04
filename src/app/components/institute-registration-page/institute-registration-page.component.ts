@@ -11,6 +11,7 @@ import { InstituteRegistrationModel } from './institute-registration.model';
 })
 export class InstituteRegistrationPageComponent implements OnInit {
 
+  successAlert:boolean = false
   instituteFrom!: FormGroup
   routeParam:any
   instituteDataObject: InstituteRegistrationModel = new InstituteRegistrationModel()
@@ -81,7 +82,12 @@ export class InstituteRegistrationPageComponent implements OnInit {
 
     this.api.postInstituteData(this.instituteDataObject)
       .subscribe(res => {
-        console.log(res);
+        console.log(res)
+        this.successAlert = true
+        this.instituteFrom.reset()
+        setTimeout(() => {
+          this.successAlert = false
+        }, 5000);
       })
   }
 
