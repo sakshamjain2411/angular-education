@@ -64,4 +64,11 @@ export class ApiService {
         return response
       }))
   }
+
+  getOlympiadScheduleData() {
+    return this._http.get<any>("http://localhost:3000/olympiadSchedule")
+      .pipe(map(response => {
+        return response
+      }))
+  }
 }

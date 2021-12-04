@@ -87,10 +87,6 @@ export class StudentRegistrationPageComponent implements OnInit {
     })
 
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
-    // this.studentForm.valueChanges.subscribe(response => {
-    //   console.log(response)
-    // })
-
     this.calculateTotalAmount()
   }
 

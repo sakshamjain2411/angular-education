@@ -1,0 +1,27 @@
+.schedule-table {
+    background-color: rgba(255, 255, 255, 0);
+    color: #106eea;
+    margin-bottom: 50px;
+    box-shadow: 0px 6px 15px rgb(16 110 234 / 12%);
+}
+
+.schedule-table th {
+    text-align: center;
+    background: #106eea;
+    color: #fff;
+    text-align: left;
+}
+
+.schedule-table tr {
+    border: 1px solid #106eea;
+}
+
+.schedule-table td {
+    background: #4696ff;
+    color: #fff;
+    text-align: left;
+}
+
+.schedule-table th, .schedule-table td{
+    padding: 10px;
+}

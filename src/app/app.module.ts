@@ -25,6 +25,7 @@ import { InstituteRegistrationPageComponent } from './components/institute-regis
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { InstituteDashboardPageComponent } from './components/auth/institute-dashboard-page/institute-dashboard-page.component';
 import { RegisterForExamPageComponent } from './components/auth/register-for-exam-page/register-for-exam-page.component';
+import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegisterForExamPageComponent } from './components/auth/register-for-exa
     LoginPageComponent,
     InstituteDashboardPageComponent,
     RegisterForExamPageComponent,
+    SchedulePageComponent,
   ],
   imports: [
     BrowserModule,

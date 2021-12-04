@@ -11,6 +11,7 @@ import { InstituteRegistrationPageComponent } from './components/institute-regis
 import { InvalidPageComponent } from './components/invalid-page/invalid-page.component';
 import { OlympiadsPageComponent } from './components/olympiads-page/olympiads-page.component';
 import { ReviewsPageComponent } from './components/reviews-page/reviews-page.component';
+import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { StudentRegistrationPageComponent } from './components/student-registration-page/student-registration-page.component';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'faqs', component: FaqPageComponent},
   {path: 'contact', component: ContactPageComponent},
   {path: 'reviews', component: ReviewsPageComponent},
+  {path: 'schedule', component: SchedulePageComponent},
   {path: 'student-registration', component: StudentRegistrationPageComponent},
   {path: 'student-registration/:referral', component: StudentRegistrationPageComponent},
   {path: 'institute-registration', component: InstituteRegistrationPageComponent},
@@ -32,7 +34,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

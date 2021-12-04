@@ -1,21 +1,43 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
+  "websiteCoreData": {
+    "registerButtonStatus": true,
+    "scheduleButtonStatus": true,
+    "registeredInstitutes": "2000",
+    "registeredIndividuals": "50000",
+    "registeredCoordinators": "150"
   },
+  "olympiadSchedule": [
+    {
+      "id": 0,
+      "olympiad": "Springfield International Science Olympiad",
+      "date": "September 5, 2021"
+    },
+    {
+      "id": 1,
+      "olympiad": "Springfield International Mathematics Olympiad",
+      "date": "November 21, 2021"
+    },
+    {
+      "id": 2,
+      "olympiad": "Springfield International English Olympiad",
+      "date": "October 3, 2021"
+    },
+    {
+      "id": 3,
+      "olympiad": "Springfield International Cyber Olympiad",
+      "date": "September 5, 2021"
+    },
+    {
+      "id": 4,
+      "olympiad": "Grads Olympiad",
+      "date": "December 19, 2021"
+    },
+    {
+      "id": 5,
+      "olympiad": "Finance Olympiad",
+      "date": "November 28, 2021"
+    }
+  ],
   "olympiadData": [
     {
       "id": 0,
@@ -195,23 +217,8 @@
         "grad": true,
         "finance": true
       }
-    },
-    {
-      "id": 7,
-      "instituteId": 1,
-      "orderId": "",
-      "paymentMode": "Online Payment",
-      "studentType": "School Student",
-      "instituteEmail": "s@s.com"
     }
   ],
-  "websiteCoreData": {
-    "registerButtonStatus": false,
-    "scheduleButtonStatus": false,
-    "registeredInstitutes": "2000",
-    "registeredIndividuals": "50000",
-    "registeredCoordinators": "150"
-  },
   "instituteData": [
     {
       "id": 1,
