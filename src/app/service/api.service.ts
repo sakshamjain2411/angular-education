@@ -23,6 +23,13 @@ export class ApiService {
       }))
   }
 
+  postInstituteExamData(instituteExamData:any) {
+    return this._http.post<any>("http://localhost:3000/institueExamsData", instituteExamData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   getInstituteData() {
     return this._http.get<any>("http://localhost:3000/instituteData")
       .pipe(map((res:any)=>{

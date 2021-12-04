@@ -1,10 +1,11 @@
 <app-header></app-header>
 <app-breadcrumbs pageTitle="Register For Exam"></app-breadcrumbs>
-<section id="register-for-exam-form" class="student-form">
+<section id="register-for-exam-form" class="form">
     <div class="container">
         <div class="section-title">
             <h2>Form</h2>
             <h3>Register For Exam <span>Form</span></h3>
+            {{registerForExamForm.value | json}}
         </div>
         <form class="row g-3" [formGroup]="registerForExamForm" (ngSubmit)="onRegisterForExamFormSubmit()">
             <div class="col-12">
@@ -38,7 +39,7 @@
             </div>
             <div class="col-12">
                 <label for="file" class="form-label">Upload Excel / PDF File With Students Details</label>
-                <input type="file" class="form-control" id="file">
+                <input type="file" class="form-control" id="file" (change)="onFileChange($event)">
                 <small>*Download Sample File For Reference  <a href="">DOWNLOAD!</a><br>
                     The file should contain only the following columns:<br>
                     1. Name: Full name of the student<br>
