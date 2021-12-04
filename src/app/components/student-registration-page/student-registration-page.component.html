@@ -66,6 +66,9 @@
             <h2>Form</h2>
             <h3>Student Registration <span>Form</span></h3>
         </div>
+        <div class="alert alert-success" role="alert">
+            The Form Has Been Submitted Successfully
+        </div>
         <form class="row g-3" [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">
             <div class="col-12">
                 <label for="name" class="form-label">Name</label>
@@ -118,6 +121,83 @@
                         Graduate / Undergraduate / Working Professional
                     </label>
                   </div>
+            </div>
+            <div formGroupName="schoolStudent" *ngIf="schoolStudentToggle" class="form-inner-group">
+                <div class="col-12">
+                    <label for="referralCode" class="form-label">School Name</label>
+                    <input type="text" class="form-control" id="referralCode" formControlName="name">
+                </div>
+                <div class="col-12">
+                    <label for="referralCode" class="form-label">School Address</label>
+                    <input type="text" class="form-control" id="referralCode" formControlName="address">
+                </div>
+                <div class="col-12">
+                    <label for="referralCode" class="form-label">School Pincode</label>
+                    <input type="text" class="form-control" id="referralCode" formControlName="pincode">
+                </div>
+                <div class="col-12">
+                    <label for="referralCode" class="form-label">School Phone No.</label>
+                    <input type="text" class="form-control" id="referralCode" formControlName="phone">
+                </div>
+                <div class="col-12">
+                    <label for="">Current Class</label>
+                    <select id="state" class="form-select" formControlName="currentClass">
+                        <option>3rd</option>
+                        <option>4th</option>
+                        <option>5th</option>
+                        <option>6th</option>
+                        <option>7th</option>
+                        <option>8th</option>
+                        <option>9th</option>
+                        <option>10th</option>
+                        <option>11th</option>
+                        <option>12th</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="">Exam Options</label>
+                    <div class="form-check col-6">
+                        <input class="form-check-input" type="checkbox" value="SIMO" name="SIMO" formControlName="simo">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          SIMO
+                        </label>
+                      </div>
+                      <div class="form-check col-6">
+                        <input class="form-check-input" type="checkbox" value="SICO" name="SICO" formControlName="sico">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          SICO
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <div formGroupName="collegeStudent" *ngIf="collegeStudentToggle" class="form-inner-group">
+                <div class="col-12">
+                    <label for="studentType" class="form-label">You're a:</label>
+                    <select id="state" class="form-select" formControlName="type">
+                        <option>Student</option>
+                        <option>Working Professional</option>
+                        <option>Aspirant</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="">Exam Options</label>
+                    <div class="form-check col-6">
+                        <input class="form-check-input" type="checkbox" value="GRAD" name="GRAD" formControlName="grad">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          GRAD
+                        </label>
+                      </div>
+                      <div class="form-check col-6">
+                        <input class="form-check-input" type="checkbox" value="FINANCE" name="FINANCE" formControlName="finance">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          FINANCE
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="schoolStudentToggle||collegeStudentToggle">
+                <label for="referralCode" class="form-label">Total</label>
+                <input type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
             </div>
             <div class="col-12" *ngIf="routeParam">
                 <label for="referralCode" class="form-label">Referral Code</label>

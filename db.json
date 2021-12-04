@@ -16,54 +16,190 @@
   "profile": {
     "name": "typicode"
   },
-  "olympiadData" : [
+  "olympiadData": [
     {
       "id": 0,
       "name": "typicode",
-      "price" : "typicode",
-      "date"  : "typicode"
+      "price": "typicode",
+      "date": "typicode"
     },
     {
       "id": 1,
       "name": "SISO",
-      "price" : "99",
-      "date"  : "September 5, 2021"
+      "price": "99",
+      "date": "September 5, 2021"
     },
     {
       "id": 2,
       "name": "SIMO",
-      "price" : "99",
-      "date"  : "01 Dec 2021"
+      "price": "99",
+      "date": "01 Dec 2021"
     },
     {
       "id": 3,
       "name": "SIEO",
-      "price" : "99",
-      "date"  : "01 Dec 2021"
+      "price": "99",
+      "date": "01 Dec 2021"
     },
     {
       "id": 4,
       "name": "SICO",
-      "price" : "99",
-      "date"  : "01 Dec 2021"
+      "price": "99",
+      "date": "01 Dec 2021"
     },
     {
       "id": 5,
       "name": "GRADS-OLYMPIAD",
-      "price" : "99",
-      "date"  : "01 Dec 2021"
+      "price": "99",
+      "date": "01 Dec 2021"
     },
     {
       "id": 6,
       "name": "FINANCE-OLYMPIAD",
-      "price" : "99",
-      "date"  : "01 Dec 2021"
+      "price": "99",
+      "date": "01 Dec 2021"
     }
   ],
-  "studentData": {},
+  "studentData": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "r",
+      "city": "j",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "schoolStudent": {
+        "name": "",
+        "address": "",
+        "pincode": "",
+        "phone": "",
+        "currentClass": "",
+        "sico": "",
+        "simo": ""
+      },
+      "collegeStudent": {
+        "type": "Working Professional",
+        "examOptions": "",
+        "grad": true,
+        "finance": true
+      }
+    },
+    {
+      "id": 2,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "R",
+      "city": "R",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "collegeStudent": {
+        "type": "Working Professional",
+        "examOptions": "",
+        "grad": true,
+        "finance": true
+      }
+    },
+    {
+      "id": 3,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "R",
+      "city": "J",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "collegeStudent": {
+        "type": "Aspirant",
+        "grad": true,
+        "finance": true
+      }
+    },
+    {
+      "id": 4,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "R",
+      "city": "J",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "collegeStudent": {
+        "type": "Student",
+        "grad": true,
+        "finance": true
+      }
+    },
+    {
+      "id": 5,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "R",
+      "city": "J",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "collegeStudent": {
+        "type": "Student",
+        "grad": true,
+        "finance": true
+      }
+    },
+    {
+      "id": 6,
+      "studentName": "a",
+      "email": "a@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "3020",
+      "state": "R",
+      "city": "J",
+      "studentType": "Graduate / Undergraduate / Working Professional",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "collegeStudent": {
+        "type": "Student",
+        "grad": true,
+        "finance": true
+      }
+    }
+  ],
   "websiteCoreData": {
-    "registerButtonStatus" : false,
-    "scheduleButtonStatus" : false,
+    "registerButtonStatus": false,
+    "scheduleButtonStatus": false,
     "registeredInstitutes": "2000",
     "registeredIndividuals": "50000",
     "registeredCoordinators": "150"
