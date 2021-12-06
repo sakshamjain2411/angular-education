@@ -54,11 +54,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
+
+<div *ngIf="typeSchoolStudent">
+    <p>School Student Form</p>
+</div>
 
 <section id="student-form" class="form">
     <div class="container">
@@ -110,34 +112,34 @@
             <div class="col-12">
                 <label for="">You're a:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="studentType" id="studentType1" value="School Student" formControlName="studentType" (change)="addSchoolField()">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType1" value="School Student" formControlName="studentType" (change)="addTypeSchoolStudentField()">
                     <label class="form-check-label" for="studentType1">
                         School Student
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="studentType" id="studentType2" value="Graduate / Undergraduate / Working Professional" formControlName="studentType" (change)="addCollegeField()">
+                    <input class="form-check-input" type="radio" name="studentType" id="studentType2" value="Other" formControlName="studentType" (change)="addTypeOtherField()">
                     <label class="form-check-label" for="studentType2">
                         Graduate / Undergraduate / Working Professional
                     </label>
                   </div>
             </div>
-            <div formGroupName="schoolStudent" *ngIf="schoolStudentToggle" class="form-inner-group">
+            <div [formGroup]="schoolStudentForm" *ngIf="typeSchoolStudent" class="form-inner-group">
                 <div class="col-12">
                     <label for="referralCode" class="form-label">School Name</label>
-                    <input type="text" class="form-control" id="referralCode" formControlName="name">
+                    <input type="text" class="form-control" id="referralCode" formControlName="schoolName">
                 </div>
                 <div class="col-12">
                     <label for="referralCode" class="form-label">School Address</label>
-                    <input type="text" class="form-control" id="referralCode" formControlName="address">
+                    <input type="text" class="form-control" id="referralCode" formControlName="schoolAddress">
                 </div>
                 <div class="col-12">
                     <label for="referralCode" class="form-label">School Pincode</label>
-                    <input type="text" class="form-control" id="referralCode" formControlName="pincode">
+                    <input type="text" class="form-control" id="referralCode" formControlName="schoolPincode">
                 </div>
                 <div class="col-12">
                     <label for="referralCode" class="form-label">School Phone No.</label>
-                    <input type="text" class="form-control" id="referralCode" formControlName="phone">
+                    <input type="text" class="form-control" id="referralCode" formControlName="schoolPhone">
                 </div>
                 <div class="col-12">
                     <label for="">Current Class</label>
@@ -154,48 +156,74 @@
                         <option>12th</option>
                     </select>
                 </div>
-                <div class="col-12">
-                    <label for="">Exam Options</label>
-                    <div class="form-check col-6">
-                        <input class="form-check-input" type="checkbox" value="SIMO" name="SIMO" formControlName="simo">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          SIMO
-                        </label>
-                      </div>
-                      <div class="form-check col-6">
-                        <input class="form-check-input" type="checkbox" value="SICO" name="SICO" formControlName="sico">
-                        <label class="form-check-label" for="flexCheckChecked">
-                          SICO
-                        </label>
-                      </div>
-                </div>
             </div>
-            <div formGroupName="collegeStudent" *ngIf="collegeStudentToggle" class="form-inner-group">
+            <div [formGroup]="otherTypeForm" *ngIf="typeOther" class="form-inner-group">
                 <div class="col-12">
                     <label for="studentType" class="form-label">You're a:</label>
-                    <select id="state" class="form-select" formControlName="type">
-                        <option>Student</option>
+                    <select id="state" class="form-select" formControlName="otherType">
+                        <option value="Student">Student</option>
                         <option>Working Professional</option>
                         <option>Aspirant</option>
                     </select>
-                </div>
-                <div class="col-12">
-                    <label for="">Exam Options</label>
-                    <div class="form-check col-6">
-                        <input class="form-check-input" type="checkbox" value="GRAD" name="GRAD" formControlName="grad">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          GRAD
-                        </label>
-                      </div>
-                      <div class="form-check col-6">
-                        <input class="form-check-input" type="checkbox" value="FINANCE" name="FINANCE" formControlName="finance">
-                        <label class="form-check-label" for="flexCheckChecked">
-                          FINANCE
-                        </label>
-                      </div>
+                    <div [formGroup]="collegeStudentForm" *ngIf="typeCollegeStudent" class="form-inner-group">
+                        <div class="col-12">
+                            <label for="referralCode" class="form-label">College Name</label>
+                            <input type="text" class="form-control" id="referralCode" formControlName="collegeName">
+                        </div>
+                        <div class="col-12">
+                            <label for="referralCode" class="form-label">College Address</label>
+                            <input type="text" class="form-control" id="referralCode" formControlName="collegeAddress">
+                        </div>
+                        <div class="col-12">
+                            <label for="referralCode" class="form-label">College Pincode</label>
+                            <input type="text" class="form-control" id="referralCode" formControlName="collegePincode">
+                        </div>
+                        <div class="col-12">
+                            <label for="referralCode" class="form-label">College Phone No.</label>
+                            <input type="text" class="form-control" id="referralCode" formControlName="collegePhone">
+                        </div>
+                        <div class="col-12">
+                            <label for="">Current Year</label>
+                            <select id="state" class="form-select" formControlName="currentYear">
+                                <option>1st</option>
+                                <option>2nd</option>
+                                <option>3rd</option>
+                                <option>4th</option>
+                                <option>5th</option>
+                                <option>6th</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div [formGroup]="workingTypeForm" *ngIf="typeWorkingProsessional" class="form-inner-group">
+                        <div class="col-12">
+                            <label for="name" class="form-label">Organisation Name</label>
+                            <input type="text" class="form-control" id="name" formControlName="organisationName">
+                        </div>
+                        <div class="col-12">
+                            <label for="pincode" class="form-label">Organisation Address</label>
+                            <input type="number" class="form-control" id="pincode" formControlName="organisationPincode">
+                        </div>
+                    </div>
+
+                    <div [formGroup]="aspirantTypeForm" *ngIf="typeAspirant" class="form-inner-group">
+                        <div class="col-12">
+                            <label for="preparing" class="form-label">Preparing For</label>
+                            <input type="text" class="form-control" id="preparing" formControlName="perparingFor">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-12" *ngIf="schoolStudentToggle||collegeStudentToggle">
+            <div [formGroup]="activeOlympiadForm" class="col-12" *ngIf="typeSchoolStudent||typeOther">
+                <label for="">Exam Options</label>
+                <div class="form-check col-6" *ngFor="let item of activeOlympiads">
+                    <input class="form-check-input" type="checkbox" value="{{item.toUpperCase()}}" name="{{item.toUpperCase()}}" [formControlName]="item">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{item.toUpperCase()}}
+                    </label>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="typeSchoolStudent||typeOther">
                 <label for="referralCode" class="form-label">Total</label>
                 <input type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
             </div>

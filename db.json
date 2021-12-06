@@ -4,7 +4,17 @@
     "scheduleButtonStatus": true,
     "registeredInstitutes": "2000",
     "registeredIndividuals": "50000",
-    "registeredCoordinators": "150"
+    "registeredCoordinators": "150",
+    "activeOlympiadsForSchoolStudent": {
+      "siso": true,
+      "simo": true,
+      "sico": true,
+      "sieo": true
+    },
+    "activeOlympiadsForOthers": {
+      "finance": true,
+      "grad": true
+    }
   },
   "olympiadSchedule": [
     {
@@ -216,6 +226,48 @@
         "type": "Student",
         "grad": true,
         "finance": true
+      }
+    },
+    {
+      "id": 7,
+      "studentName": "S",
+      "email": "S@g.com",
+      "phone": "9166017690",
+      "country": "India",
+      "pincode": "302020",
+      "state": "R",
+      "city": "J",
+      "studentType": "School Student",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "schoolName": "A",
+        "schoolAddress": "A",
+        "schoolPincode": "A",
+        "schoolPhone": "A",
+        "currentClass": "4th"
+      },
+      "other": {
+        "null": "null"
+      }
+    },
+    {
+      "id": 8,
+      "studentName": "s",
+      "email": "s@g.com",
+      "phone": "9166017690",
+      "country": "India",
+      "pincode": "3020",
+      "state": "J",
+      "city": "R",
+      "studentType": "Other",
+      "referralCode": null,
+      "totalAmount": 99,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "other": {
+        "perparingFor": "JEE"
       }
     }
   ],

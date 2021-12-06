@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, Form, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { StudentRegistrationModel } from './student-registration.model';
@@ -16,11 +16,26 @@ export class StudentRegistrationPageComponent implements OnInit {
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
+  activeOlympiads: Array<any> = []
+
+  //Form Groups
   studentForm!: FormGroup
+  schoolStudentForm!: FormGroup
+  otherTypeForm!: FormGroup
+  collegeStudentForm!: FormGroup
+  workingTypeForm!: FormGroup
+  aspirantTypeForm!: FormGroup
+  activeOlympiadForm!: FormGroup
+
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
-  schoolStudentToggle: boolean = false
-  collegeStudentToggle: boolean = false
   totalAmount: number = 0
+
+  typeSchoolStudent:boolean = false
+  typeOther:boolean = false
+  typeCollegeStudent:boolean = false
+  typeWorkingProsessional:boolean = false
+  typeAspirant:boolean = false
+
   constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api:ApiService) { }
 
   get name() {
@@ -55,22 +70,10 @@ export class StudentRegistrationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const schoolForm = this.formBuilder.group({
-      name: [""],
-      address: "",
-      pincode: "",
-      phone: "",
-      currentClass: "",
-      sico: "",
-      simo: ""
-    })
-    const collegeForm = this.formBuilder.group({
-      type: "",
-      grad: "",
-      finance: ""
-    })
     //URL Parameter
     this.routeParam = this.activeRoute.snapshot.params["referral"];
+
+    //Base Student Form
     this.studentForm = this.formBuilder.group({
       studentName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
@@ -81,51 +84,148 @@ export class StudentRegistrationPageComponent implements OnInit {
       city: ["", Validators.required],
       studentType: ["", Validators.required],
       referralCode: [this.routeParam, Validators.pattern('[a-zA-Z]*')],
-      recaptcha: ['', Validators.required],
-      schoolStudent: schoolForm,
-      collegeStudent: collegeForm
+      recaptcha: ['', Validators.required]
     })
 
+    this.activeOlympiadForm = this.formBuilder.group({
+    })
+
+    this.activeOlympiadForm.valueChanges
+      .subscribe(res => {
+        this.updateTotal(res);
+      })
+
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
-    this.calculateTotalAmount()
+    // this.calculateTotalAmount()
   }
 
-  addSchoolField() {
-    this.schoolStudentToggle = !this.schoolStudentToggle
-    if (this.collegeStudentToggle) {
-      this.collegeStudentToggle = !this.collegeStudentToggle
-    }
-  }
-
-  addCollegeField() {
-    this.collegeStudentToggle = !this.collegeStudentToggle
-    if (this.schoolStudentToggle) {
-      this.schoolStudentToggle = !this.schoolStudentToggle
-    }
-  }
-
-  calculateTotalAmount() {
-    this.studentForm.valueChanges
-      .subscribe(response => {
-        if(response.studentType == "School Student") {
-          if(response.schoolStudent.simo && response.schoolStudent.sico) [
-            this.totalAmount = 179
-          ]
-          else if(response.schoolStudent.simo || response.schoolStudent.sico) {
-            this.totalAmount = 99
-          }
-          else this.totalAmount = 0
-        }
-        else if(response.studentType == "Graduate / Undergraduate / Working Professional") {
-          if(response.collegeStudent.grad && response.collegeStudent.finance) [
-            this.totalAmount = 179
-          ]
-          else if(response.collegeStudent.grad || response.collegeStudent.finance) {
-            this.totalAmount = 99
-          }
-          else this.totalAmount = 0
+  getActiveOlympiad(type:any) {
+    if(type == "School") {
+      this.api.getWebsiteCoreData()
+      .subscribe(res => {
+        for(let key in res.activeOlympiadsForSchoolStudent) {
+          if(res.activeOlympiadsForSchoolStudent[key] == true) {
+            this.activeOlympiads.push(key)
+            this.activeOlympiadForm.addControl(key, new FormControl(''))
+          } 
         }
       })
+    }else if(type == "Others") {
+      this.api.getWebsiteCoreData()
+      .subscribe(res => {
+        for(let key in res.activeOlympiadsForOthers) {
+          if(res.activeOlympiadsForOthers[key] == true) {
+            this.activeOlympiads.push(key)
+            this.activeOlympiadForm.addControl(key, new FormControl(''))
+          } 
+        }
+      })
+    }
+  }
+
+
+  addTypeSchoolStudentField() {
+    this.resetOlympiadFormControlGroup();
+    this.typeSchoolStudent = true
+    this.typeOther = false
+    this.schoolStudentForm = this.formBuilder.group({
+      schoolName: ["", Validators.required],
+      schoolAddress: "",
+      schoolPincode: "",
+      schoolPhone: "",
+      currentClass: ""
+    })
+    this.getActiveOlympiad("School")
+  }
+
+  addTypeOtherField() {
+    this.resetOlympiadFormControlGroup();
+    this.typeSchoolStudent = false
+    this.typeOther = true
+    this.otherTypeForm = this.formBuilder.group({
+      otherType: ["", Validators.required]
+    })
+
+    this.otherTypeForm.valueChanges
+      .subscribe(res => {
+        if(res.otherType == "Student") {
+          this.addTypeCollegeStudentField()
+        }else if(res.otherType == "Working Professional") {
+          this.addTypeWorkingProffessionalField()
+        }else if(res.otherType == "Aspirant") {
+          this.addTypeAspirantField()
+        }
+      })
+
+    this.getActiveOlympiad("Others")
+  }
+
+  resetOlympiadFormControlGroup() {
+    let counter = this.activeOlympiads.length
+    for(let i=0; i<counter; i++) {
+      this.activeOlympiadForm.removeControl(this.activeOlympiads[0])
+      this.activeOlympiads.shift();
+    }
+  }
+
+  addTypeCollegeStudentField() {
+    this.typeCollegeStudent = true
+    this.typeAspirant = false
+    this.typeWorkingProsessional = false
+    this.collegeStudentForm = this.formBuilder.group({
+      collegeName: ["", Validators.required],
+      collegeAddress: "",
+      collegePincode: "",
+      collegePhone: "",
+      currentYear: ""
+    })
+  }
+
+  addTypeWorkingProffessionalField() {
+    this.typeWorkingProsessional= true
+    this.typeAspirant = false
+    this.typeCollegeStudent = false
+    this.workingTypeForm = this.formBuilder.group({
+      organisationName: "",
+      organisationPincode: ""
+    })
+  }
+
+  addTypeAspirantField() {
+    this.typeAspirant = true
+    this.typeWorkingProsessional= false
+    this.typeCollegeStudent = false
+    this.aspirantTypeForm = this.formBuilder.group({
+      perparingFor: ""
+    })
+  }
+
+  updateTotal(res:any) {
+    let counter =0
+    for(let item in res) {
+      if(res[item] == true) {
+        counter++
+      }
+    }
+    switch (counter) {
+      case 0:
+        this.totalAmount = 0
+        break;
+      case 1:
+        this.totalAmount = 99
+        break;
+      case 2:
+        this.totalAmount = 179
+        break;
+      case 3:
+        this.totalAmount = 249
+        break;
+      case 4:
+        this.totalAmount = 329
+        break;
+      default:
+        break;
+    }
   }
 
   onStudentFormSubmit() {
@@ -143,19 +243,31 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.schoolDataObject.studentType = this.studentForm.value.studentType
     this.schoolDataObject.referralCode = this.studentForm.value.referralCode
     this.schoolDataObject.totalAmount = this.totalAmount
-    if(this.studentForm.value.studentType == "School Student") {
-      this.schoolDataObject.schoolStudent = this.studentForm.value.schoolStudent
-      this.schoolDataObject.collegeStudent = {"null":"null"}
+    if(this.typeSchoolStudent) {
+      this.schoolDataObject.schoolStudent = this.schoolStudentForm.value
+      this.schoolDataObject.other = {"null":"null"}
     }
-    else {
+    else if(this.typeOther) {
       this.schoolDataObject.schoolStudent = {"null":"null"}
-      this.schoolDataObject.collegeStudent = this.studentForm.value.collegeStudent
+      if(this.typeCollegeStudent) {
+        this.schoolDataObject.other = this.collegeStudentForm.value
+      } else if(this.typeWorkingProsessional) {
+        this.schoolDataObject.other = this.workingTypeForm.value
+      } else if(this.typeAspirant) {
+        this.schoolDataObject.other = this.aspirantTypeForm.value
+      }
+      
     }
     
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
         this.successAlert = true
-        this.studentForm.reset();
+        this.studentForm.reset()
+        this.schoolStudentForm.reset()
+        this.collegeStudentForm.reset()
+        this.workingTypeForm.reset()
+        this.aspirantTypeForm.reset()
+        this.activeOlympiadForm.reset()
         setTimeout(() => {
           this.successAlert = false
         }, 5000);

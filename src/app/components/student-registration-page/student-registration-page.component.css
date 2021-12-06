@@ -19,3 +19,7 @@ small {
 .form-inner-group .col-12{
     margin: 16px 0px;
 }
+
+.inner-form {
+    padding: 0px;
+}

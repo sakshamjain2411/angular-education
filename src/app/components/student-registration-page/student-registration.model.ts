@@ -10,6 +10,6 @@ export class StudentRegistrationModel {
     studentType!: string;
     referralCode!: string;
     schoolStudent!: object;
-    collegeStudent!: object;
+    other!: object;
     totalAmount!: number;
 }
