@@ -64,7 +64,7 @@
     background-color: rgba(255, 255, 255, 0);
     color: #106eea;
     margin-bottom: 50px;
-    box-shadow: 0px 6px 15px rgb(16 110 234 / 12%);
+    box-shadow: 0 0 29px 0 rgb(0 0 0 / 28%);
 }
 
 .rewards-table th {
@@ -74,7 +74,11 @@
 }
 
 .rewards-table tr {
-    border: 1px solid #106eea;
+    border-bottom: 2px solid #fff;
+}
+
+.rewards-table tr:last-child {
+    border-bottom: 0px solid #fff;
 }
 
 .rewards-table td {

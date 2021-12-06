@@ -5,6 +5,23 @@
     "registeredInstitutes": "2000",
     "registeredIndividuals": "50000",
     "registeredCoordinators": "150",
+    "news": [
+      {
+        "id": 0,
+        "text": "SPRINGFIELD OLYMPIADS WILL BE CONDUCTING OLYMPIADS ONLINE FOR THE YEAR 2021-22.",
+        "link": "register"
+      },
+      {
+        "id": 1,
+        "text": "REGISTRATION FOR 2021-22 IS CLOSING. REGISTER NOW",
+        "link": "student-registration"
+      },
+      {
+        "id": 2,
+        "text": "SCHEDULE OF OLYMPIADS HAS BEEN DECLARED.REGISTRATION FOR 2021-22 IS CLOSING. REGISTER NOW Our Olympiads",
+        "link": "schedule"
+      }
+    ],
     "activeOlympiadsForSchoolStudent": {
       "siso": true,
       "simo": true,

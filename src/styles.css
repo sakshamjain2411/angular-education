@@ -179,11 +179,16 @@ body {
   }
   #header .logo img {
     max-height: 40px;
+    margin-top: -10px;
   }
-  
   .scrolled-offset {
     margin-top: 70px;
   }
+  @media only screen and (max-width: 450px) {
+    #header .logo { 
+      font-size: 20px;
+    }
+  } 
   
   /*--------------------------------------------------------------
   # Navigation Menu
@@ -1442,6 +1447,37 @@ body {
     100% {
       transform: rotate(360deg);
     }
+  }
+  /*--------------------------------------------------------------
+  # News
+  --------------------------------------------------------------*/
+  #news {
+    background: #f6f9fe;
+    height: 40px;
+    font-size: 14px;
+    transition: all 0.5s;
+    color: #106eea;
+    padding: 0;
+  }
+
+  #news marquee {
+    display: flex;
+  }
+
+  #news marquee span {
+    margin-right: 90px;
+  }
+
+  #news .news {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    padding: 0px 10px;
+    font-size: 20px;
+    color: #106eea;
+    background: #f6f9fe;
+    z-index: 1;
   }
   
   /*--------------------------------------------------------------

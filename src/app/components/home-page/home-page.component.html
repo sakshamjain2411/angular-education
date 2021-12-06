@@ -1,5 +1,13 @@
 <app-header></app-header>
 <app-hero-section></app-hero-section>
+<section id="news" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-center justify-content-md-between">
+    <span class="news"><i class='bx bx-news'></i></span>
+    <marquee onmouseover="this.stop();" onmouseout="this.start();">
+      <span *ngFor="let item of websiteNew"><a routerLink="/{{item.link}}">{{item.text}}</a></span>
+    </marquee>
+  </div>
+</section>
 
 <main id="main">
 

@@ -27,6 +27,7 @@ import { InstituteDashboardPageComponent } from './components/auth/institute-das
 import { RegisterForExamPageComponent } from './components/auth/register-for-exam-page/register-for-exam-page.component';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { TypeSchoolStudentComponent } from './components/student-registration-page/internal-forms/type-school-student/type-school-student.component';
+import { ThankYouPageComponent } from './components/thank-you-page/thank-you-page.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TypeSchoolStudentComponent } from './components/student-registration-pa
     RegisterForExamPageComponent,
     SchedulePageComponent,
     TypeSchoolStudentComponent,
+    ThankYouPageComponent,
   ],
   imports: [
     BrowserModule,

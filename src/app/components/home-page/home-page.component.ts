@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/service/api.service';
 export class HomePageComponent implements OnInit {
 
   websiteCoreData: any;
+  websiteNew: any
   registeredInstitutes!: string;
   registeredIndividuals!: string;
   registeredCoordinators!: string;
@@ -24,6 +25,8 @@ export class HomePageComponent implements OnInit {
         this.registeredInstitutes = response.registeredInstitutes
         this.registeredIndividuals = response.registeredIndividuals
         this.registeredCoordinators = response.registeredCoordinators
+        this.websiteNew = response.news
+        console.log(this.websiteNew);
       })
   }
 
