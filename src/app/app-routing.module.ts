@@ -14,6 +14,7 @@ import { ReviewsPageComponent } from './components/reviews-page/reviews-page.com
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { StudentRegistrationDiscountPageComponent } from './components/student-registration-discount-page/student-registration-discount-page.component';
 import { StudentRegistrationPageComponent } from './components/student-registration-page/student-registration-page.component';
+import { ThankYouPageComponent } from './components/thank-you-page/thank-you-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'institute-login', component: LoginPageComponent},
   {path: 'institute-dashboard', component: InstituteDashboardPageComponent},
   {path: 'register-for-exam', component: RegisterForExamPageComponent},
+  {path: 'thank-you', component: ThankYouPageComponent},
   {path: '404', component: InvalidPageComponent},
   {path: '**', redirectTo: "404"}
 ];

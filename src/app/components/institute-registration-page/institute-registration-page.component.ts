@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { InstituteRegistrationModel } from './institute-registration.model';
 
@@ -15,7 +15,7 @@ export class InstituteRegistrationPageComponent implements OnInit {
   instituteFrom!: FormGroup
   routeParam:any
   instituteDataObject: InstituteRegistrationModel = new InstituteRegistrationModel()
-  constructor(private formBuilder: FormBuilder, private api:ApiService, private activeRoute: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private api:ApiService, private activeRoute: ActivatedRoute, private route:Router) { }
 
   ngOnInit(): void {
     this.instituteFrom = this.formBuilder.group({
@@ -82,12 +82,7 @@ export class InstituteRegistrationPageComponent implements OnInit {
 
     this.api.postInstituteData(this.instituteDataObject)
       .subscribe(res => {
-        console.log(res)
-        this.successAlert = true
-        this.instituteFrom.reset()
-        setTimeout(() => {
-          this.successAlert = false
-        }, 5000);
+        this.route.navigate(['/thank-you'])
       })
   }
 

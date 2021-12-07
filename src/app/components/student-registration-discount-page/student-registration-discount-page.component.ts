@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, Form, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { StudentRegistrationModel } from '../student-registration-page/student-registration.model';
 
@@ -37,7 +37,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   typeWorkingProsessional:boolean = false
   typeAspirant:boolean = false
 
-  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api:ApiService) { }
+  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api:ApiService, private route:Router) { }
 
   get name() {
     return this.studentForm.get('studentName');
@@ -275,16 +275,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
-        this.successAlert = true
-        this.studentForm.reset()
-        this.schoolStudentForm.reset()
-        this.collegeStudentForm.reset()
-        this.workingTypeForm.reset()
-        this.aspirantTypeForm.reset()
-        this.activeOlympiadForm.reset()
-        setTimeout(() => {
-          this.successAlert = false
-        }, 5000);
+        this.route.navigate(['/thank-you'])
       })
   }
 

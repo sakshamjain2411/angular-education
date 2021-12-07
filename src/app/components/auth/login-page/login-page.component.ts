@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
+  errorAlert:boolean = false
   siteKey: any;
   constructor(private formBuilder: FormBuilder, private _http:HttpClient, private route: Router) { }
 
@@ -49,7 +50,7 @@ export class LoginPageComponent implements OnInit {
             localStorage.setItem("instituteEmail",user.email)
             localStorage.setItem("authToken", Date.now().toString())
             this.route.navigate(['institute-dashboard'])
-          }else console.log("User Not Found");
+          }else this.errorAlert = true
           
         },error=> {
           alert("Something Went Wrong");
