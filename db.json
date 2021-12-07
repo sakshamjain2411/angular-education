@@ -578,7 +578,7 @@
       "state": "R"
     }
   ],
-  "testimonials" : [
+  "testimonials": [
     {
       "id": 0,
       "clientName": "Yasharth Kumar Srivastava",
@@ -623,6 +623,15 @@
       "reviewerType": "Student",
       "reviewCategory": "Grads",
       "reviewDate": "2020-10-26"
+    },
+    {
+      "id": 9,
+      "clientName": "Saksham Jain",
+      "review": "You're organising such things that's very interesting and the same thing I liked most.",
+      "rating": "5",
+      "reviewerType": "School Student",
+      "reviewCategory": "SISO",
+      "reviewDate": "2021-11-7"
     }
   ]
 }

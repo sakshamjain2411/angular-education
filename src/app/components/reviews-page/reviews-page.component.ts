@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ApiService } from 'src/app/service/api.service';
 
@@ -13,9 +14,9 @@ export class ReviewsPageComponent implements OnInit {
   testimonialsData:any
   filterForm!: FormGroup
   pagination:number = 1
-  limit:number = 3
+  limit:number = 10
   filterFormData:object = []
-  constructor(private api:ApiService, private formBuilder:FormBuilder) { }
+  constructor(private api:ApiService, private formBuilder:FormBuilder, private route:Router) { }
 
   ngOnInit(): void {
     this.api.getTestimonialsData()
@@ -57,6 +58,10 @@ export class ReviewsPageComponent implements OnInit {
     this.pagination--
     this.filterForm.value.page = this.pagination
     this.getTestimonialsData(this.filterForm.value.sortBy, this.filterForm.value.order, this.filterForm.value.category, this.filterForm.value.page, this.filterForm.value.limit)
+  }
+
+  addReview() {
+    this.route.navigate(['/add-testimonial'])
   }
 
   customOptions: OwlOptions = {

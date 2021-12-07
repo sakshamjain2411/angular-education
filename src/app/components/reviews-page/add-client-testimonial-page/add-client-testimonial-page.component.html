@@ -1,0 +1,61 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Add Testimonial"></app-breadcrumbs>
+<section id="institute-form" class="form">
+    <div class="container">
+        <div class="section-title">
+            <h2>Form</h2>
+            <h3>Testimonial <span>Form</span></h3>
+        </div>
+        <div *ngIf="successAlert" class="alert alert-success" role="alert">
+            Your Review Has Been Submitted Successfully
+        </div>
+        <form class="row g-3" [formGroup]="testimonailForm" (ngSubmit)="onTestimonialFormSubmit()">
+            <div class="col-12">
+                <label for="name" class="form-label">Client Name</label>
+                <input type="text" class="form-control" id="name" formControlName="clientName">
+            </div>
+            <div class="col-12">
+                <label for="review" class="form-label">Review</label>
+                <textarea name="review"  class="form-control" id="review" cols="30" rows="5" formControlName="review"></textarea>
+            </div>
+            <div class="col-12">
+                <label for="rating">Rating</label>
+                <select id="rating" class="form-select" formControlName="rating">
+                    <option value="5">5 Star</option>
+                    <option value="4">4 Star</option>
+                    <option value="3">3 Start</option>
+                    <option value="2">2 Star</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="reviewerType">Type</label>
+                <select id="reviewerType" class="form-select" formControlName="reviewerType">
+                    <option>School Student</option>
+                    <option>College Student</option>
+                    <option>Working Professional</option>
+                    <option>Aspirant</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="reviewCategory">Category</label>
+                <select id="reviewCategory" class="form-select" formControlName="reviewCategory">
+                    <option>SISO</option>
+                    <option>SIMO</option>
+                    <option>SIEO</option>
+                    <option>SICO</option>
+                    <option>GRADS</option>
+                    <option>FINANCE</option>
+                </select>
+            </div>
+            <ngx-recaptcha2 #captchaElem
+              [siteKey]="siteKey"
+              formControlName="recaptcha">
+            </ngx-recaptcha2>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="!testimonailForm.valid">Sign in</button>
+            </div>
+        </form>
+    </div>
+</section>
+<app-footer pageTitle="add-testimonial"></app-footer>

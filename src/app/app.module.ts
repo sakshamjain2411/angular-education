@@ -30,6 +30,7 @@ import { TypeSchoolStudentComponent } from './components/student-registration-pa
 import { ThankYouPageComponent } from './components/thank-you-page/thank-you-page.component';
 import { StudentRegistrationDiscountPageComponent } from './components/student-registration-discount-page/student-registration-discount-page.component';
 import { CoordinatorRegistrationPageComponent } from './components/coordinator-registration-page/coordinator-registration-page.component';
+import { AddClientTestimonialPageComponent } from './components/reviews-page/add-client-testimonial-page/add-client-testimonial-page.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CoordinatorRegistrationPageComponent } from './components/coordinator-r
     ThankYouPageComponent,
     StudentRegistrationDiscountPageComponent,
     CoordinatorRegistrationPageComponent,
+    AddClientTestimonialPageComponent,
   ],
   imports: [
     BrowserModule,

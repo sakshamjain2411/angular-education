@@ -5,11 +5,14 @@
         <div class="section-title">
             <h2>Reviews</h2>
             <h3>Client <span>Testimonials</span></h3>
+            <span class="add-testimonial">
+                <button class="btn btn-primary" (click)="addReview()">Add Review</button>
+            </span>
         </div>
         <div>
             <form [formGroup]="filterForm">
-                <div class="row">
-                    <div class="col-2 mb-5">
+                <div class="row filter">
+                    <div class="col col-lg-2 col-md-3">
                         <label for="">Sort By:</label>
                         <select id="state" class="form-select" formControlName="sortBy">
                             <option value="rating">Rating</option>
@@ -17,14 +20,14 @@
                             <option value="clientName">Name</option>
                         </select>
                     </div>
-                    <div class="col-1 mb-5">
+                    <div class="col col-lg-1 ">
                         <label for="">Order:</label>
                         <select id="state" class="form-select" formControlName="order">
-                            <option value="aesc">Ascending</option>
+                            <option value="asc">Ascending</option>
                             <option value="desc">Descending</option>
                         </select>
                     </div>
-                    <div class="col-3 offset-6 mb-5">
+                    <div class="col col-lg-3 offset-lg-6 ">
                         <label for="">Category:</label>
                         <select id="state" class="form-select" formControlName="category">
                             <option>SISO</option>
@@ -60,8 +63,8 @@
         </div>
         <div class="pagination" *ngIf="testimonialsData">
             <form [formGroup]="filterForm">
-                <button (click)="onPrevClick()" [disabled]="pagination<2">Prev</button>
-                <button (click)="onNextClick()" [disabled]="testimonialsData.length<limit">Next</button>
+                <button (click)="onPrevClick()" [disabled]="pagination<2" class="btn btn-primary">Prev</button>
+                <button (click)="onNextClick()" [disabled]="testimonialsData.length<limit" class="btn btn-primary">Next</button>
             </form>
         </div>
     </div>

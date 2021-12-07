@@ -26,6 +26,20 @@
     margin: 10px 0px;
 }
 
+.filter .col {
+    margin-bottom: 3rem;
+}
+
+.add-testimonial {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-testimonial .btn-primary {
+    padding: 10px 40px;
+    margin-top: -50px;
+}
+
 span.date-banner {
     display: flex;
     align-items: center;
@@ -39,4 +53,13 @@ span.date-banner {
     background: #106eea;
     color: #fff;
     font-weight: 600;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.pagination button {
+    align-items: center;
+    margin-right: 10px;
 }

@@ -37,6 +37,13 @@ export class ApiService {
       }))
   }
 
+  postTestimonialData(testimonialData:any) {
+    return this._http.post<any>("http://localhost:3000/testimonials", testimonialData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   getInstituteData() {
     return this._http.get<any>("http://localhost:3000/instituteData")
       .pipe(map((res:any)=>{
@@ -79,9 +86,9 @@ export class ApiService {
       }))
   }
 
-  getTestimonialsData(sort:string = "id", order:string = "", category:string = "", page:number = 1, limit:number = 3) {
+  getTestimonialsData(sort:string = "date", order:string = "desc", category:string = "", page:number = 1, limit:number = 10) {
     if(category != "") {
-      return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&_order"+order+"&reviewCategory="+category+"&_page="+page+"$_limit="+limit)
+      return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&reviewCategory="+category+"&_page="+page+"&_limit="+limit+"&_order="+order)
       .pipe(map(response => {
         return response
       }))
