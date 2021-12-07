@@ -36,32 +36,50 @@
   "olympiadSchedule": [
     {
       "id": 0,
+      "icon": "bx-test-tube",
+      "olympiadShortName": "SISO",
       "olympiad": "Springfield International Science Olympiad",
+      "details": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science.",
       "date": "September 5, 2021"
     },
     {
       "id": 1,
+      "icon": "bx-ruler",
+      "olympiadShortName": "SIMO",
       "olympiad": "Springfield International Mathematics Olympiad",
+      "details": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Mathematics.",
       "date": "November 21, 2021"
     },
     {
       "id": 2,
+      "icon": "bx-message-square-dots",
+      "olympiadShortName": "SIEO",
       "olympiad": "Springfield International English Olympiad",
+      "details": "The Springfield International English Olympiad, a test of competence and knowledge in the subject of English.",
       "date": "October 3, 2021"
     },
     {
       "id": 3,
+      "icon": "bx-code-block",
+      "olympiadShortName": "SICO",
       "olympiad": "Springfield International Cyber Olympiad",
+      "details": "The Springfield International Cyber Olympiad, a test of competence and knowledge in the Cyber Domain.",
       "date": "September 5, 2021"
     },
     {
       "id": 4,
+      "icon": "bxs-graduation",
+      "olympiadShortName": "GRAD",
       "olympiad": "Grads Olympiad",
+      "details": "The Grads Olympiad is one of its kind Olympiad, specially curated for graduates and undergraduates. This is an online multiple-choice question based Olympiad.",
       "date": "December 19, 2021"
     },
     {
       "id": 5,
+      "icon": "bxs-bank",
+      "olympiadShortName": "FINANCE",
       "olympiad": "Finance Olympiad",
+      "details": "The Finance Olympiad is a special curated Olympiad, made with a purpose to inculcate the habit and increase the knowledge of personal finances in a fun way.",
       "date": "November 28, 2021"
     }
   ],

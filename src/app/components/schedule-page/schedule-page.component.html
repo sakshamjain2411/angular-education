@@ -1,28 +1,21 @@
 <app-header></app-header>
 <app-breadcrumbs pageTitle="Schedule"></app-breadcrumbs>
-<section id="about" class="about section-bg">
+<section id="services" class="services">
     <div class="container" data-aos="fade-up">
-
         <div class="section-title">
-            <h2>Schedule</h2>
+            <h2>Olympiad Schedule</h2>
             <h3>Schedule For Session <span>2021-22</span></h3>
         </div>
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 pt-4 pt-lg-0 content d-flex flex-column justify-content-center align-item-center"
-                data-aos="fade-up" data-aos-delay="100">
-                <table class="table schedule-table">
-                    <tr>
-                        <th>#</th>
-                        <th>Olympiad</th>
-                        <th>Date</th>
-                    </tr>
-                    
-                    <tr *ngFor="let item of olympiadSchedule">
-                        <td>{{item.id+1}}</td>
-                        <td>{{item.olympiad}}</td>
-                        <td>{{item.date}}</td>
-                    </tr>
-                </table>
+            <div *ngFor="let item of olympiadSchedule" class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx {{item.icon}}"></i></div>
+                    <h4><a href="">{{item.olympiad}} ({{item.olympiadShortName}})</a></h4>
+                    <p>{{item.details}}</p>
+                    <span class="date-banner">
+                        <p class="date"><i class='bx bx-calendar-event' ></i> {{item.date}}</p>
+                    </span>
+                </div>
             </div>
         </div>
     </div>

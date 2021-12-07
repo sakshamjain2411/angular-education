@@ -25,3 +25,18 @@
 .schedule-table th, .schedule-table td{
     padding: 10px;
 }
+
+span.date-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    transform: translateX(-213px);
+    width: 200px;
+    height: 40px;
+    background: #106eea;
+    color: #fff;
+    font-weight: 600;
+}
