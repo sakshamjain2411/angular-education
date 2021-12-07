@@ -6,56 +6,63 @@
             <h2>Reviews</h2>
             <h3>Client <span>Testimonials</span></h3>
         </div>
+        <div>
+            <form [formGroup]="filterForm">
+                <div class="row">
+                    <div class="col-2 mb-5">
+                        <label for="">Sort By:</label>
+                        <select id="state" class="form-select" formControlName="sortBy">
+                            <option value="rating">Rating</option>
+                            <option value="reviewDate">Date</option>
+                            <option value="clientName">Name</option>
+                        </select>
+                    </div>
+                    <div class="col-1 mb-5">
+                        <label for="">Order:</label>
+                        <select id="state" class="form-select" formControlName="order">
+                            <option value="aesc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <div class="col-3 offset-6 mb-5">
+                        <label for="">Category:</label>
+                        <select id="state" class="form-select" formControlName="category">
+                            <option>SISO</option>
+                            <option>SIMO</option>
+                            <option>SIEO</option>
+                            <option>SICO</option>
+                            <option>GRADS</option>
+                            <option>FINANCE</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div *ngFor="let item of testimonialsData" class="col-lg-4 col-md-6 d-flex align-items-stretch"
+                data-aos="zoom-in" data-aos-delay="100">
                 <div class="icon-box">
-                    <div class="icon"><i class='bx bxs-quote-alt-left' ></i></div>
-                    <h4><a href="">Lorem Ipsum</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                    <div class="icon"><i class='bx bxs-quote-alt-left'></i></div>
+                    <h4>{{item.clientName}}</h4>
+                    <p class="reviewer">
+                        <span><i class='bx bxs-user'></i> {{item.reviewerType}}</span>
+                        <span><i class='bx bx-note'></i> {{item.reviewCategory}}</span>
+                    </p>
+                    <p class="reviewer-type"></p>
+                    <p class="review">{{item.review}}</p>
+                    <span *ngFor="let x of getNumberArray(item.rating)" class="rating"><i
+                            class='bx bxs-star'></i></span>
+                    <span class="date-banner">
+                        <p class="date"><i class='bx bx-calendar-event'></i> {{item.reviewDate}}</p>
+                    </span>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                data-aos-delay="200">
-                <div class="icon-box">
-                    <div class="icon"><i class="bx bx-file"></i></div>
-                    <h4><a href="">Sed ut perspiciatis</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-                data-aos-delay="300">
-                <div class="icon-box">
-                    <div class="icon"><i class="bx bx-tachometer"></i></div>
-                    <h4><a href="">Magni Dolores</a></h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box">
-                    <div class="icon"><i class="bx bx-world"></i></div>
-                    <h4><a href="">Nemo Enim</a></h4>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-                <div class="icon-box">
-                    <div class="icon"><i class="bx bx-slideshow"></i></div>
-                    <h4><a href="">Dele cardo</a></h4>
-                    <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-                <div class="icon-box">
-                    <div class="icon"><i class="bx bx-arch"></i></div>
-                    <h4><a href="">Divera don</a></h4>
-                    <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-                </div>
-            </div>
+        </div>
+        <div class="pagination" *ngIf="testimonialsData">
+            <form [formGroup]="filterForm">
+                <button (click)="onPrevClick()" [disabled]="pagination<2">Prev</button>
+                <button (click)="onNextClick()" [disabled]="testimonialsData.length<limit">Next</button>
+            </form>
         </div>
     </div>
 </section><!-- End Services Section -->

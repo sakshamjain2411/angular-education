@@ -78,4 +78,17 @@ export class ApiService {
         return response
       }))
   }
+
+  getTestimonialsData(sort:string = "id", order:string = "", category:string = "", page:number = 1, limit:number = 3) {
+    if(category != "") {
+      return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&_order"+order+"&reviewCategory="+category+"&_page="+page+"$_limit="+limit)
+      .pipe(map(response => {
+        return response
+      }))
+    }
+    return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&_order="+order+"&_page="+page+"&_limit="+limit)
+      .pipe(map(response => {
+        return response
+      }))
+  }
 }

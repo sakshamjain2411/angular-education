@@ -577,5 +577,52 @@
       "pincode": "302020",
       "state": "R"
     }
+  ],
+  "testimonials" : [
+    {
+      "id": 0,
+      "clientName": "Yasharth Kumar Srivastava",
+      "review": "You're organising such things that's very interesting and the same thing I liked most.",
+      "rating": "4",
+      "reviewerType": "Student",
+      "reviewCategory": "GRADS",
+      "reviewDate": "2020-10-26"
+    },
+    {
+      "id": 1,
+      "clientName": "Rajneesh Choudhary",
+      "review": "Online handeling of the exam without any hinderence, in terms of technical glitch.",
+      "rating": "5",
+      "reviewerType": "Student",
+      "reviewCategory": "GRADS",
+      "reviewDate": "2020-10-26"
+    },
+    {
+      "id": 2,
+      "clientName": "S.Balasubhramaniyam",
+      "review": "Your quick response. When I need the information regarding grads, you have given me a way quick response.",
+      "rating": "3",
+      "reviewerType": "Student",
+      "reviewCategory": "GRADS",
+      "reviewDate": "2020-10-26"
+    },
+    {
+      "id": 7,
+      "clientName": "Nidhi Gupta",
+      "review": "Result generation process was quick.",
+      "rating": "5",
+      "reviewerType": "Student",
+      "reviewCategory": "Grads",
+      "reviewDate": "2020-10-26"
+    },
+    {
+      "id": 8,
+      "clientName": "Priyesh Gandhi",
+      "review": "It was gold place to learn.",
+      "rating": "5",
+      "reviewerType": "Student",
+      "reviewCategory": "Grads",
+      "reviewDate": "2020-10-26"
+    }
   ]
 }

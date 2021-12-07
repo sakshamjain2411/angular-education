@@ -839,6 +839,7 @@ body {
     transition: all ease-in-out 0.3s;
     background: #fff;
     margin-bottom: 25px;
+    min-width: 100%;
   }
   .services .icon-box .icon {
     margin: 0;
