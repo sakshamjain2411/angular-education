@@ -556,5 +556,26 @@
       "registrationDate": "Dec 4, 2021",
       "instituteEmail": "s@s.com"
     }
+  ],
+  "coordinatorData": [
+    {
+      "id": 1,
+      "coordinatorName": "string",
+      "address": "string",
+      "city": "string",
+      "email": "s@s.com",
+      "phone": "number",
+      "pincode": "number",
+      "state": "string"
+    },
+    {
+      "id": 2,
+      "address": "NA",
+      "city": "J",
+      "email": "s@g.com",
+      "phone": "8112273369",
+      "pincode": "302020",
+      "state": "R"
+    }
   ]
 }

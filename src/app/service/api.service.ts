@@ -23,6 +23,13 @@ export class ApiService {
       }))
   }
 
+  postCoordinatorData(coordinatorData:any) {
+    return this._http.post<any>("http://localhost:3000/coordinatorData", coordinatorData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   postInstituteExamData(instituteExamData:any) {
     return this._http.post<any>("http://localhost:3000/institueExamsData", instituteExamData)
       .pipe(map((res:any)=>{

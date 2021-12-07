@@ -1,19 +1,16 @@
 <app-header></app-header>
-<app-breadcrumbs pageTitle="Institue Registration"></app-breadcrumbs>
+<app-breadcrumbs pageTitle="Coordinator Registration"></app-breadcrumbs>
 <section id="institute-form" class="form">
     <div class="container">
         <div class="section-title">
             <h2>Form</h2>
-            <h3>Institute Registration <span>Form</span></h3>
+            <h3>Coordinator Registration <span>Form</span></h3>
         </div>
-        <div *ngIf="successAlert" class="alert alert-success" role="alert">
-            The Form Has Been Submitted Successfully
-        </div>
-        <form class="row g-3" [formGroup]="instituteFrom" (ngSubmit)="onInstituteFormSubmit()">
+        <form class="row g-3" [formGroup]="coordinatorForm" (ngSubmit)="onCoordinatorFormSubmit()">
             <div class="col-12">
-                <label for="name" class="form-label">Institute Name</label>
-                <input type="text" class="form-control" id="name" formControlName="instituteName">
-                <small class="text-danger" *ngIf="!instituteName?.valid && instituteName?.touched">Please Enter Institute's Name</small>
+                <label for="name" class="form-label">Coordinator Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                <small class="text-danger" *ngIf="!name?.valid && name?.touched">Please Enter Institute's Name</small>
             </div>
             <div class="col-12">
                 <label for="email" class="form-label">Email</label>
@@ -31,6 +28,11 @@
                 <small class="text-danger" *ngIf="!address?.valid && address?.touched">Please Enter Institute Address</small>
             </div>
             <div class="col-md-4">
+                <label for="pincode" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
+            </div>
+            <div class="col-md-4">
                 <label for="city" class="form-label">City</label>
                 <input type="text" class="form-control" id="city" formControlName="city">
                 <small class="text-danger" *ngIf="!city?.valid && city?.touched">Please Enter City</small>
@@ -40,29 +42,14 @@
                 <input type="text" class="form-control" id="state" formControlName="state">
                 <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
             </div>
-            <div class="col-md-4">
-                <label for="pincode" class="form-label">Pin Code</label>
-                <input type="text" class="form-control" id="pincode" formControlName="pincode">
-                <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
-            </div>
-            <div class="col-12">
-                <label for="coordinatorName" class="form-label">Co-ordinator Name</label>
-                <input type="text" class="form-control" id="coordinatorName" formControlName="coordinatorName">
-                <small class="text-danger" *ngIf="!coordinatorName?.valid && coordinatorName?.touched">Please Enter Co-ordinator's Name</small>
-            </div>
-            <div class="col-12">
-                <label for="referralCode" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
-                <small class="text-danger" *ngIf="!password?.valid && password?.touched">Please Enter Valid Password</small>
-            </div>
             <ngx-recaptcha2 #captchaElem
               [siteKey]="siteKey"
               formControlName="recaptcha">
             </ngx-recaptcha2>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary" [disabled]="!instituteFrom.valid">Sign in</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!coordinatorForm.valid">Sign in</button>
             </div>
         </form>
     </div>
 </section>
-<app-footer pageTitle="institute-Registration"></app-footer>
+<app-footer pageTitle="coordinator-registration"></app-footer>

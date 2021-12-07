@@ -5,6 +5,7 @@ import { InstituteDashboardPageComponent } from './components/auth/institute-das
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { RegisterForExamPageComponent } from './components/auth/register-for-exam-page/register-for-exam-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { CoordinatorRegistrationPageComponent } from './components/coordinator-registration-page/coordinator-registration-page.component';
 import { FaqPageComponent } from './components/faq-page/faq-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { InstituteRegistrationPageComponent } from './components/institute-registration-page/institute-registration-page.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'student-registration/:referral', component: StudentRegistrationPageComponent},
   {path: 'redeem', component: StudentRegistrationDiscountPageComponent},
   {path: 'institute-registration', component: InstituteRegistrationPageComponent},
+  {path: 'coordinator-registration', component: CoordinatorRegistrationPageComponent},
   {path: 'olympiad/:name', component: OlympiadsPageComponent},
   {path: 'institute-login', component: LoginPageComponent},
   {path: 'institute-dashboard', component: InstituteDashboardPageComponent},
