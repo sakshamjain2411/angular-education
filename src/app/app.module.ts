@@ -28,6 +28,7 @@ import { RegisterForExamPageComponent } from './components/auth/register-for-exa
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { TypeSchoolStudentComponent } from './components/student-registration-page/internal-forms/type-school-student/type-school-student.component';
 import { ThankYouPageComponent } from './components/thank-you-page/thank-you-page.component';
+import { StudentRegistrationDiscountPageComponent } from './components/student-registration-discount-page/student-registration-discount-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ThankYouPageComponent } from './components/thank-you-page/thank-you-pag
     SchedulePageComponent,
     TypeSchoolStudentComponent,
     ThankYouPageComponent,
+    StudentRegistrationDiscountPageComponent,
   ],
   imports: [
     BrowserModule,

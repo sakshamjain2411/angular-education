@@ -12,6 +12,7 @@ import { InvalidPageComponent } from './components/invalid-page/invalid-page.com
 import { OlympiadsPageComponent } from './components/olympiads-page/olympiads-page.component';
 import { ReviewsPageComponent } from './components/reviews-page/reviews-page.component';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
+import { StudentRegistrationDiscountPageComponent } from './components/student-registration-discount-page/student-registration-discount-page.component';
 import { StudentRegistrationPageComponent } from './components/student-registration-page/student-registration-page.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'schedule', component: SchedulePageComponent},
   {path: 'student-registration', component: StudentRegistrationPageComponent},
   {path: 'student-registration/:referral', component: StudentRegistrationPageComponent},
+  {path: 'redeem', component: StudentRegistrationDiscountPageComponent},
   {path: 'institute-registration', component: InstituteRegistrationPageComponent},
   {path: 'olympiad/:name', component: OlympiadsPageComponent},
   {path: 'institute-login', component: LoginPageComponent},

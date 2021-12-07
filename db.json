@@ -286,6 +286,30 @@
       "other": {
         "perparingFor": "JEE"
       }
+    },
+    {
+      "id": 9,
+      "couponCode": "FLAT10OFF",
+      "studentName": "",
+      "email": "",
+      "phone": "",
+      "country": "India",
+      "pincode": "",
+      "state": "",
+      "city": "",
+      "studentType": "School Student",
+      "referralCode": null,
+      "totalAmount": 161.1,
+      "schoolStudent": {
+        "schoolName": "",
+        "schoolAddress": "",
+        "schoolPincode": "",
+        "schoolPhone": "",
+        "currentClass": ""
+      },
+      "other": {
+        "null": "null"
+      }
     }
   ],
   "instituteData": [

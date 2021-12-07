@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, Form, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
-import { StudentRegistrationModel } from './student-registration.model';
+import { StudentRegistrationModel } from '../student-registration-page/student-registration.model';
 
 
 @Component({
-  selector: 'app-student-registration-page',
-  templateUrl: './student-registration-page.component.html',
-  styleUrls: ['./student-registration-page.component.css']
+  selector: 'app-student-registration-discount-page',
+  templateUrl: './student-registration-discount-page.component.html',
+  styleUrls: ['./student-registration-discount-page.component.css']
 })
-export class StudentRegistrationPageComponent implements OnInit {
+export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   successAlert:boolean = false
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
-  isFormValid:boolean = false
+  discountApplied:boolean = false
   activeOlympiads: Array<any> = []
 
   //Form Groups
@@ -85,7 +85,8 @@ export class StudentRegistrationPageComponent implements OnInit {
       city: ["", Validators.required],
       studentType: ["", Validators.required],
       referralCode: [this.routeParam, Validators.pattern('[a-zA-Z]*')],
-      recaptcha: ['', Validators.required]
+      recaptcha: ['', Validators.required],
+      couponCode: ['']
     })
 
     this.activeOlympiadForm = this.formBuilder.group({
@@ -94,8 +95,8 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.activeOlympiadForm.valueChanges
       .subscribe(res => {
         this.updateTotal(res);
+        this.discountApplied = false
       })
-    
 
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
     // this.calculateTotalAmount()
@@ -230,6 +231,16 @@ export class StudentRegistrationPageComponent implements OnInit {
     }
   }
 
+  validateCouponCode(e:any) {
+    e.preventDefault()
+    if(this.totalAmount>0) {
+      if(this.studentForm.value.couponCode == "FLAT10OFF"){
+        this.totalAmount = this.totalAmount - (this.totalAmount/100)*10
+        this.discountApplied = true
+      }
+    }
+  }
+
   onStudentFormSubmit() {
     this.postStudentData()
   }
@@ -245,6 +256,7 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.schoolDataObject.studentType = this.studentForm.value.studentType
     this.schoolDataObject.referralCode = this.studentForm.value.referralCode
     this.schoolDataObject.totalAmount = this.totalAmount
+    this.schoolDataObject.couponCode = this.studentForm.value.couponCode
     if(this.typeSchoolStudent) {
       this.schoolDataObject.schoolStudent = this.schoolStudentForm.value
       this.schoolDataObject.other = {"null":"null"}

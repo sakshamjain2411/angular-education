@@ -223,6 +223,14 @@
                 <label for="referralCode" class="form-label">Total</label>
                 <input type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
             </div>
+            <div class="col-9" *ngIf="totalAmount>0">
+                <label for="couponCode" class="form-label">Coupon Code</label>
+                <input type="text" class="form-control" id="couponCode" formControlName="couponCode">
+                <small class="text-danger" *ngIf="!referralCode?.valid && referralCode?.touched">Invalid Coupon Code</small>
+            </div>
+            <div class="col-3 col-apply-coupon" *ngIf="totalAmount>0" (click)="validateCouponCode($event)">
+                <button class="btn btn-primary" [disabled]="discountApplied">Apply</button>
+            </div>
             <div class="col-12" *ngIf="routeParam">
                 <label for="referralCode" class="form-label">Referral Code</label>
                 <input type="text" class="form-control" id="referralCode" formControlName="referralCode">

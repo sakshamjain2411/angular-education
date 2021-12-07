@@ -12,4 +12,5 @@ export class StudentRegistrationModel {
     schoolStudent!: object;
     other!: object;
     totalAmount!: number;
+    couponCode: string = "";
 }
