@@ -13,6 +13,7 @@ import { StudentRegistrationModel } from './student-registration.model';
 export class StudentRegistrationPageComponent implements OnInit {
 
   successAlert:boolean = false
+  isIndia:boolean = false
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
@@ -48,6 +49,9 @@ export class StudentRegistrationPageComponent implements OnInit {
   get phone() {
     return this.studentForm.get('phone');
   }
+  get phoneIndia() {
+    return this.studentForm.get('phoneIndia');
+  }
   get country() {
     return this.studentForm.get('country');
   }
@@ -78,8 +82,9 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.studentForm = this.formBuilder.group({
       studentName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
-      country: ["India", Validators.required],
+      phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
+      phone: ["", [Validators.required]],
+      country: ["", Validators.required],
       pincode: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
       state: ["", Validators.required],
       city: ["", Validators.required],
@@ -95,6 +100,21 @@ export class StudentRegistrationPageComponent implements OnInit {
       .subscribe(res => {
         this.updateTotal(res);
       })
+
+    this.studentForm.valueChanges
+    .subscribe(res => {
+      if(res.country == "India") {
+        if(this.isIndia == false) {
+          this.isIndia = true
+          console.log(this.isIndia);
+          
+        }
+      }else {
+        if(this.isIndia == true) {
+          this.isIndia = false
+        }
+      }
+    })
     
 
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";

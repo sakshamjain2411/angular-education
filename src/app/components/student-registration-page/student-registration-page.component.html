@@ -86,10 +86,15 @@
                 </select>
                 <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
             </div>
-            <div class="col-12">
+            <div class="col-12" *ngIf="!isIndia">
                 <label for="phone" class="form-label">Phone</label>
                 <input type="tel" class="form-control" id="phone" formControlName="phone">
                 <small class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
+            </div>
+            <div class="col-12" *ngIf="isIndia">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" formControlName="phoneIndia">
+                <small class="text-danger" *ngIf="!phoneIndia?.valid && phoneIndia?.touched">Please Enter Valid Phone Number</small>
             </div>
             <div class="col-md-4">
                 <label for="pincode" class="form-label">Pin Code</label>
