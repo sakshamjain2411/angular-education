@@ -86,7 +86,7 @@ export class ApiService {
       }))
   }
 
-  getTestimonialsData(sort:string = "date", order:string = "desc", category:string = "", page:number = 1, limit:number = 10) {
+  getTestimonialsData(sort:string = "date", order:string = "desc", category:string = "", page:number = 1, limit:number = 3) {
     if(category != "") {
       return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&reviewCategory="+category+"&_page="+page+"&_limit="+limit+"&_order="+order)
       .pipe(map(response => {

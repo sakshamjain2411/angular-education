@@ -14,7 +14,7 @@ export class ReviewsPageComponent implements OnInit {
   testimonialsData:any
   filterForm!: FormGroup
   pagination:number = 1
-  limit:number = 10
+  limit:number = 3
   filterFormData:object = []
   constructor(private api:ApiService, private formBuilder:FormBuilder, private route:Router) { }
 
