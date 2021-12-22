@@ -44,6 +44,13 @@ export class ApiService {
       }))
   }
 
+  postNewsLetterData(newsletterData:any) {
+    return this._http.post<any>("http://localhost:3000/newsletter", newsletterData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   getInstituteData() {
     return this._http.get<any>("http://localhost:3000/instituteData")
       .pipe(map((res:any)=>{
@@ -97,5 +104,12 @@ export class ApiService {
       .pipe(map(response => {
         return response
       }))
+  }
+
+  getTesimonialDataWithAdminApproval() {
+    return this._http.get<any>("http://localhost:3000/testimonials?adminRating=10")
+    .pipe(map(response => {
+      return response
+    }))
   }
 }

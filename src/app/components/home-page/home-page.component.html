@@ -24,7 +24,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a [routerLink]="['/olympiad/siso']">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <div class="icon"><i class="bx bx-test-tube"></i></div>
               <h4 class="title">SISO</h4>
               <p class="description">The Springfield International Science Olympiad (SISO), a test of competence and
                 knowledge in the subject of Science, is held based on syllabus prescribed by CBSE/ ICSE and the State
@@ -36,7 +36,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a [routerLink]="['/olympiad/simo']">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><i class="bx bx-ruler"></i></div>
               <h4 class="title">SIMO</h4>
               <p class="description">The Springfield International Mathematics Olympiad (SIMO), a test of competence and
                 knowledge in the subject of Mathematics, is held based on syllabus prescribed by CBSE/ ICSE and the
@@ -49,7 +49,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a [routerLink]="['/olympiad/sieo']">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <div class="icon"><i class="bx bx-message-square-dots"></i></div>
               <h4 class="title">SIEO</h4>
               <p class="description">The Springfield International English Olympiad (SIEO), a test of competence and
                 knowledge in the subject of English, is held based on syllabus prescribed by CBSE/ICSE and the State
@@ -61,7 +61,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a [routerLink]="['/olympiad/sico']">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="bx bx-world"></i></div>
+              <div class="icon"><i class="bx bx-code-block"></i></div>
               <h4 class="title">SICO</h4>
               <p class="description">The Springfield International Cyber Olympiad (SICO), a test of competence and
                 knowledge in the Cyber Domain, is held based on syllabus prescribed by CBSE/ICSE and the State Boards.
@@ -76,7 +76,7 @@
         <div class="col-md-6 col-lg-3 offset-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a routerLink="/olympiad/grads-olympiad">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <div class="icon"><i class="bx bxs-graduation"></i></div>
               <h4 class="title">Grads Olympiad</h4>
               <p class="description">The Grads Olympiad is one of its kind Olympiad, primarily focusing on MBA
                 aspirants.
@@ -88,7 +88,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <a [routerLink]="['/olympiad/finance-olympiad']">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><i class="bx bxs-bank"></i></div>
               <h4 class="title">Finance Olympiad</h4>
               <p class="description">The Finance Olympiad is a specially curated Olympiad, made with a purpose to
                 inculcate the habit and increase the knowledge of personal finances in a fun way.</p>
@@ -131,7 +131,7 @@
               </div>
             </li>
             <li>
-              <i class='bx bx-support'></i>
+              <i class='bx bxs-id-card'></i>
               <div>
                 <h5>Register as a Coordinator</h5>
                 <p>Grab the opportunity and get a chance to work in the education sector with one of the renowned
@@ -153,34 +153,18 @@
     <div class="container" data-aos="fade-up">
       <div class="testimonials-slider">
         <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide>
+          <ng-template carouselSlide *ngFor="let item of testimonialsData">
             <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
+              <h3>{{item.clientName}}</h3>
+              <span *ngFor="let x of getNumberArray(item.rating)" class="rating"><i class='bx bxs-star'></i></span>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                {{item.review}}
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
           </ng-template>
-          <ng-template carouselSlide>
-            <div class="testimonial-item">
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum
-                eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim
-                culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
+          <!-- <ng-template carouselSlide>
             <div class="testimonial-item">
               <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
               <h3>Jena Karlis</h3>
@@ -192,8 +176,11 @@
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
-          </ng-template>
+          </ng-template> -->
         </owl-carousel-o>
+      </div>
+      <div class="view-all-testimonials">
+        <a [routerLink]="['/reviews']" class="btn-view-all">View All Reviews</a>
       </div>
     </div>
   </section>

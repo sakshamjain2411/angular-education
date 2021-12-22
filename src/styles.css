@@ -178,8 +178,7 @@ body {
     color: #106eea;
   }
   #header .logo img {
-    max-height: 40px;
-    margin-top: -10px;
+    max-height: 60px;
   }
   .scrolled-offset {
     margin-top: 70px;
@@ -963,6 +962,32 @@ body {
   .testimonials .swiper-pagination .swiper-pagination-bullet-active {
     background-color: #106eea;
   }
+  .testimonials .view-all-testimonials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: -45px;
+  }
+  .testimonials .view-all-testimonials a {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #fff;
+    border: 2px solid #fff;
+    background: #106eea00;
+    margin-left: 5px;
+  }
+  .testimonials .view-all-testimonials a:hover {
+    color: #106eea;
+    background: #fff;
+  }
   @media (min-width: 992px) {
     .testimonials .testimonial-item p {
       width: 80%;
@@ -1514,10 +1539,14 @@ body {
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
     text-align: left;
   }
-  #footer .footer-newsletter form input[type=email] {
+  #footer .footer-newsletter form input[type=email],
+  #footer .footer-newsletter form input[type=text]  {
     border: 0;
     padding: 4px 8px;
-    width: calc(100% - 100px);
+    width: 50%;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 2px solid #f6f6f6;
   }
   #footer .footer-newsletter form input[type=submit] {
     position: absolute;
@@ -1531,7 +1560,6 @@ body {
     background: #106eea;
     color: #fff;
     transition: 0.3s;
-    border-radius: 0 4px 4px 0;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   }
   #footer .footer-newsletter form input[type=submit]:hover {
@@ -1628,6 +1656,10 @@ body {
     text-align: center;
     font-size: 13px;
     color: #444444;
+  }
+  #footer .newsletter {
+    display: flex;
+    width: calc(100% - 110px);
   }
   @media (max-width: 768px) {
     #footer .copyright, #footer .credits {

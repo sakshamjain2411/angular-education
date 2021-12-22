@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/service/api.service';
 export class HomePageComponent implements OnInit {
 
   websiteCoreData: any;
+  testimonialsData: any;
   websiteNew: any
   registeredInstitutes!: string;
   registeredIndividuals!: string;
@@ -20,14 +21,19 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getWebsiteCoreData()
-      .subscribe(response => {
-        this.websiteCoreData = response
-        this.registeredInstitutes = response.registeredInstitutes
-        this.registeredIndividuals = response.registeredIndividuals
-        this.registeredCoordinators = response.registeredCoordinators
-        this.websiteNew = response.news
-        console.log(this.websiteNew);
-      })
+    .subscribe(response => {
+      this.websiteCoreData = response
+      this.registeredInstitutes = response.registeredInstitutes
+      this.registeredIndividuals = response.registeredIndividuals
+      this.registeredCoordinators = response.registeredCoordinators
+      this.websiteNew = response.news
+      console.log(this.websiteNew);
+    })
+
+    this.api.getTesimonialDataWithAdminApproval()
+    .subscribe(res => {
+      this.testimonialsData = res
+    })
   }
 
   customOptions: OwlOptions = {
@@ -52,5 +58,13 @@ export class HomePageComponent implements OnInit {
         items: 1
       }
     }
+  }
+
+  getNumberArray(number:number) {
+    let numberArray = []
+    for(let i =1; i<=number; i++) {
+      numberArray.push(i)
+    }
+    return numberArray
   }
 }

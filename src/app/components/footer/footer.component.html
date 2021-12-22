@@ -6,10 +6,17 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <h4>Join Our Newsletter</h4>
-                    <p>Get the olympiads schedule right in your inbox.</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    <p>Get the Olympiad updates and much more right in your inbox.</p>
+                    <form [formGroup]="newsletterForm" (ngSubmit)="onNewsLetterFormSubmit()" *ngIf="!newsletterSubmited">
+                        <div class="newsletter">
+                            <input type="text" name="name" placeholder="Name" formControlName="name">
+                            <input type="email" name="email" placeholder="Email" formControlName="email">
+                        </div>
+                        <input type="submit" value="Subscribe" [disabled]="!newsletterForm.valid">
                     </form>
+                    <div *ngIf="newsletterSubmited" class="alert alert-success" role="alert">
+                        Thank You! Your response has been submitted.
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,8 +30,8 @@
                     <h3>Springfield Olympiads<span>.</span></h3>
                     <p>
                         Springfield Olympiads is an Educational Organization popularizing academic competition and assisting the development of competitive spirit among learners.<br>
-                        <strong>Phone:</strong> +91 62303 45161<br>
-                        <strong>Email:</strong> info@sfoly.com<br>
+                        <strong>Phone:</strong> <a href="tel:+916230345161"> +91-6230345161</a><br>
+                        <strong>Email:</strong> <a href="mailto:info@sfoly.com"> info@sfoly.com</a><br>
                     </p>
                 </div>
 
@@ -55,9 +62,9 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Social Networks</h4>
                     <div class="social-links mt-3">
-                        <a href="https://www.facebook.com/sfoly/" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="https://in.linkedin.com/company/sfoly" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                        <a href="https://www.instagram.com/sfolym/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="https://www.facebook.com/sfoly/" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="https://in.linkedin.com/company/sfoly" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        <a href="https://www.instagram.com/sfolym/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
                     </div>
                 </div>
 
@@ -70,7 +77,7 @@
             &copy; Copyright <strong><span>Springfield Olympiads</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Powered by <a href="https://sakshamjain.in/">DiveInDesign</a>
+            <img src="/assets/img/payment.svg" alt="">
         </div>
     </div>
 </footer><!-- End Footer -->

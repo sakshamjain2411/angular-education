@@ -586,7 +586,8 @@
       "rating": "4",
       "reviewerType": "Student",
       "reviewCategory": "GRADS",
-      "reviewDate": "2020-10-26"
+      "reviewDate": "2020-10-26",
+      "adminRating": 10
     },
     {
       "id": 1,
@@ -595,7 +596,8 @@
       "rating": "5",
       "reviewerType": "Student",
       "reviewCategory": "GRADS",
-      "reviewDate": "2020-10-26"
+      "reviewDate": "2020-10-26",
+      "adminRating": 10
     },
     {
       "id": 2,
@@ -604,7 +606,8 @@
       "rating": "3",
       "reviewerType": "Student",
       "reviewCategory": "GRADS",
-      "reviewDate": "2020-10-26"
+      "reviewDate": "2020-10-26",
+      "adminRating": 10
     },
     {
       "id": 7,
@@ -613,7 +616,8 @@
       "rating": "5",
       "reviewerType": "Student",
       "reviewCategory": "Grads",
-      "reviewDate": "2020-10-26"
+      "reviewDate": "2020-10-26",
+      "adminRating": 10
     },
     {
       "id": 8,
@@ -622,7 +626,8 @@
       "rating": "5",
       "reviewerType": "Student",
       "reviewCategory": "Grads",
-      "reviewDate": "2020-10-26"
+      "reviewDate": "2020-10-26",
+      "adminRating": 10
     },
     {
       "id": 9,
@@ -631,7 +636,25 @@
       "rating": "5",
       "reviewerType": "School Student",
       "reviewCategory": "SISO",
-      "reviewDate": "2021-11-7"
+      "reviewDate": "2021-11-7",
+      "adminRating": 9
+    }
+  ],
+  "newsletter": [
+    {
+      "id": 1,
+      "name": "Saksham Jain",
+      "email": "saksham.jain1998@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Saksham",
+      "email": "saksham.jain1998@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Na",
+      "email": "n@n.com"
     }
   ]
 }

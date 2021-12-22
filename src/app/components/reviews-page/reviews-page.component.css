@@ -40,6 +40,15 @@
     margin-top: -50px;
 }
 
+@media (max-width: 450px) {
+    .add-testimonial {
+        justify-content: center;
+    }
+    .add-testimonial .btn-primary {
+        margin-top: 20px;
+    }
+  }
+
 span.date-banner {
     display: flex;
     align-items: center;
