@@ -51,6 +51,13 @@ export class ApiService {
       }))
   }
 
+  postFogotPasswordData(forgotPasswordData:any) {
+    return this._http.post<any>("https://sfoly.com/recoverPassword", forgotPasswordData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   getInstituteData() {
     return this._http.get<any>("http://localhost:3000/instituteData")
       .pipe(map((res:any)=>{

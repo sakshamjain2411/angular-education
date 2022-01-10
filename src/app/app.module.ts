@@ -31,6 +31,8 @@ import { ThankYouPageComponent } from './components/thank-you-page/thank-you-pag
 import { StudentRegistrationDiscountPageComponent } from './components/student-registration-discount-page/student-registration-discount-page.component';
 import { CoordinatorRegistrationPageComponent } from './components/coordinator-registration-page/coordinator-registration-page.component';
 import { AddClientTestimonialPageComponent } from './components/reviews-page/add-client-testimonial-page/add-client-testimonial-page.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { AddClientTestimonialPageComponent } from './components/reviews-page/add
     StudentRegistrationDiscountPageComponent,
     CoordinatorRegistrationPageComponent,
     AddClientTestimonialPageComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

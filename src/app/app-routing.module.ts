@@ -7,10 +7,12 @@ import { RegisterForExamPageComponent } from './components/auth/register-for-exa
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { CoordinatorRegistrationPageComponent } from './components/coordinator-registration-page/coordinator-registration-page.component';
 import { FaqPageComponent } from './components/faq-page/faq-page.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { InstituteRegistrationPageComponent } from './components/institute-registration-page/institute-registration-page.component';
 import { InvalidPageComponent } from './components/invalid-page/invalid-page.component';
 import { OlympiadsPageComponent } from './components/olympiads-page/olympiads-page.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AddClientTestimonialPageComponent } from './components/reviews-page/add-client-testimonial-page/add-client-testimonial-page.component';
 import { ReviewsPageComponent } from './components/reviews-page/reviews-page.component';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
@@ -36,6 +38,8 @@ const routes: Routes = [
   {path: 'institute-dashboard', component: InstituteDashboardPageComponent},
   {path: 'register-for-exam', component: RegisterForExamPageComponent},
   {path: 'add-testimonial', component: AddClientTestimonialPageComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'reset-password/:passwordResetId', component: ResetPasswordComponent},
   {path: 'thank-you', component: ThankYouPageComponent},
   {path: '404', component: InvalidPageComponent},
   {path: '**', redirectTo: "404"}

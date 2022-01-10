@@ -254,6 +254,10 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.postStudentData()
   }
 
+  scrollToFormSection() {
+    document.querySelector("#student-form")?.scrollIntoView()
+  }
+
   postStudentData() {
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email

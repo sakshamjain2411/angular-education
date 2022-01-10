@@ -1306,6 +1306,9 @@ body {
     background: #106eea;
     color: #fff;
   }
+  .btn-buy {
+    cursor: pointer;
+  }
   
   /*--------------------------------------------------------------
   # Frequently Asked Questions
@@ -1695,4 +1698,12 @@ body {
   .form small {
       font-size: 12px;
   }
+
+
+/* Custom CSS */
+@media only screen and (max-width: 450px) {
+  .row-mobile-reverse {
+      flex-direction: column-reverse;
+  }
+}
 

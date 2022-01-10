@@ -14,6 +14,7 @@ export class OlympiadsPageComponent implements OnInit {
   olympiadPrice: any;
   olympiadDate: any;
   olympiadsData: any;
+  olympiadDescription: any;
 
   constructor(private activeRoute: ActivatedRoute, private route: Router, private api: ApiService) {
   }
@@ -31,6 +32,7 @@ export class OlympiadsPageComponent implements OnInit {
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[1].price
           this.olympiadDate = this.olympiadsData[1].date
+          this.olympiadDescription = this.olympiadsData[1].description
         }
         break;
       case "simo":
@@ -39,6 +41,7 @@ export class OlympiadsPageComponent implements OnInit {
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[2].price
           this.olympiadDate = this.olympiadsData[2].date
+          this.olympiadDescription = this.olympiadsData[2].description
         }
         break;
       case "sieo":
@@ -47,6 +50,7 @@ export class OlympiadsPageComponent implements OnInit {
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[3].price
           this.olympiadDate = this.olympiadsData[3].date
+          this.olympiadDescription = this.olympiadsData[3].description
         }
         break;
       case "sico":
@@ -55,22 +59,25 @@ export class OlympiadsPageComponent implements OnInit {
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[4].price
           this.olympiadDate = this.olympiadsData[4].date
+          this.olympiadDescription = this.olympiadsData[4].description
         }
         break;
       case "grads-olympiad":
-        this.olympiadName = "Springfield Grads Olympiad"
+        this.olympiadName = "Grads Olympiad"
         this.olympiadShortName = "SGO"
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[5].price
           this.olympiadDate = this.olympiadsData[5].date
+          this.olympiadDescription = this.olympiadsData[5].description
         }
         break;
       case "finance-olympiad":
-        this.olympiadName = "Springfield Finance Olympiad"
+        this.olympiadName = "Finance Olympiad"
         this.olympiadShortName = "SFO"
         if (this.olympiadsData) {
           this.olympiadPrice = this.olympiadsData[6].price
           this.olympiadDate = this.olympiadsData[6].date
+          this.olympiadDescription = this.olympiadsData[6].description
         }
         break;
 

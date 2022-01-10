@@ -94,37 +94,43 @@
       "id": 1,
       "name": "SISO",
       "price": "99",
-      "date": "September 5, 2021"
+      "date": "September 5, 2021",
+      "description": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science."
     },
     {
       "id": 2,
       "name": "SIMO",
       "price": "99",
-      "date": "01 Dec 2021"
+      "date": "01 Dec 2021",
+      "description": "The Springfield International Math Olympiad, a test of competence and knowledge in the subject of Mathematics."
     },
     {
       "id": 3,
       "name": "SIEO",
       "price": "99",
-      "date": "01 Dec 2021"
+      "date": "01 Dec 2021",
+      "description": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science."
     },
     {
       "id": 4,
       "name": "SICO",
       "price": "99",
-      "date": "01 Dec 2021"
+      "date": "01 Dec 2021",
+      "description": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science."
     },
     {
       "id": 5,
       "name": "GRADS-OLYMPIAD",
       "price": "99",
-      "date": "01 Dec 2021"
+      "date": "01 Dec 2021",
+      "description": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science."
     },
     {
       "id": 6,
       "name": "FINANCE-OLYMPIAD",
       "price": "99",
-      "date": "01 Dec 2021"
+      "date": "01 Dec 2021",
+      "description": "The Springfield International Science Olympiad, a test of competence and knowledge in the subject of Science."
     }
   ],
   "studentData": [
