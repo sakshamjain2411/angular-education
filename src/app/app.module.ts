@@ -33,6 +33,7 @@ import { CoordinatorRegistrationPageComponent } from './components/coordinator-r
 import { AddClientTestimonialPageComponent } from './components/reviews-page/add-client-testimonial-page/add-client-testimonial-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { CompletePaymentComponent } from './components/complete-payment/complete-payment.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     AddClientTestimonialPageComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    CompletePaymentComponent,
   ],
   imports: [
     BrowserModule,

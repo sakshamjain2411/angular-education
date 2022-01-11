@@ -133,4 +133,13 @@ export class ApiService {
       return response
     }))
   }
+
+  getStudentDataById(id:number) {
+    return this._http.get<any>("http://localhost:3000/studentData?id="+id)
+    .pipe(map(response => {
+      return response
+    }))
+  }
+
+
 }

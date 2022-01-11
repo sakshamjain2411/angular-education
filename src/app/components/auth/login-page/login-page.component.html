@@ -20,8 +20,11 @@
                 <input type="password" class="form-control" id="password" formControlName="password">
                 <small class="text-danger" *ngIf="!password?.valid && password?.touched">Please Enter Password</small>
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
+            </div>
+            <div class="col-6 forgot-password">
+                <a [routerLink]="['/forgot-password']">Forgot Password</a>
             </div>
         </form>
     </div>

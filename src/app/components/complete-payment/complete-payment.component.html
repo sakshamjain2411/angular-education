@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Complete Payment"></app-breadcrumbs>
+
+<section id="student-form" class="form">
+    <div class="container">
+        <form class="row g-3">
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" value="{{payeeName}}" readonly>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" value="{{payeeEmail}}" readonly>
+            </div>
+            <div class="col-12">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" value="{{payeeName}}" readonly>
+            </div>
+            <div class="col-12">
+                <label for="total" class="form-label">Total</label>
+                <input type="text" class="form-control" id="total" value="{{totalAmount}}" readonly>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" (click)="completePayment($event)">Pay</button>
+            </div>
+        </form>
+    </div>
+</section>
+<app-footer></app-footer>
