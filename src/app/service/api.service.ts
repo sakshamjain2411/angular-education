@@ -80,7 +80,7 @@ export class ApiService {
   }
 
   getWebsiteCoreData() {
-    return this._http.get<any>("http://localhost:3000/websiteCoreData")
+    return this._http.get<any>("https://sfoly.com/websiteCoreData")
       .pipe(map((response) => {
         return response
       }))

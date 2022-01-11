@@ -148,6 +148,12 @@ body {
   #topbar .social-links a:hover {
     color: white;
   }
+
+  @media screen and (max-width: 768px) {
+    #topbar {
+      display: none !important;
+    }
+  }
   
   /*--------------------------------------------------------------
   # Header
@@ -1308,6 +1314,12 @@ body {
   }
   .btn-buy {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .pricing {
+      display: none;
+    }
   }
   
   /*--------------------------------------------------------------

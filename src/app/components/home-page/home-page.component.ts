@@ -27,7 +27,6 @@ export class HomePageComponent implements OnInit {
       this.registeredIndividuals = response.registeredIndividuals
       this.registeredCoordinators = response.registeredCoordinators
       this.websiteNew = response.news
-      console.log(this.websiteNew);
     })
 
     this.api.getTesimonialDataWithAdminApproval()
