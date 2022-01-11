@@ -18,6 +18,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   submitStatus!: String
   submitMessage!: String
   isFormValid:boolean = false
+  countries:Array<any> = []
   activeOlympiads: Array<any> = []
 
   //Form Groups
@@ -85,7 +86,7 @@ export class StudentRegistrationPageComponent implements OnInit {
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       phone: ["", [Validators.required]],
       country: ["", Validators.required],
-      pincode: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      pincode: ["", [Validators.required, Validators.minLength(6), Validators.maxLength(8)]],
       state: ["", Validators.required],
       city: ["", Validators.required],
       studentType: ["", Validators.required],
@@ -106,14 +107,17 @@ export class StudentRegistrationPageComponent implements OnInit {
       if(res.country == "India") {
         if(this.isIndia == false) {
           this.isIndia = true
-          console.log(this.isIndia);
-          
         }
       }else {
         if(this.isIndia == true) {
           this.isIndia = false
         }
       }
+    })
+
+    this.api.getCountries()
+    .subscribe(res => {
+      this.countries = res
     })
     
 
@@ -258,10 +262,29 @@ export class StudentRegistrationPageComponent implements OnInit {
     document.querySelector("#student-form")?.scrollIntoView()
   }
 
+  getCityAndState() {
+    if(this.studentForm.value.country == "India") {
+      if(this.studentForm.value.pincode.length == 6) {
+        let pincode = this.studentForm.value.pincode
+        this.api.getStateFromPinCode(pincode)
+        .subscribe(res => {
+          this.studentForm.patchValue({
+            city: res[0].City,
+            state: res[0].State
+          })
+        })
+      }
+    }
+  }
+
   postStudentData() {
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
-    this.schoolDataObject.phone = this.studentForm.value.phone
+    if(this.isIndia == true) {
+      this.schoolDataObject.phone = this.studentForm.value.phoneIndia
+    }else {
+      this.schoolDataObject.phone = this.studentForm.value.phone
+    }
     this.schoolDataObject.country = this.studentForm.value.country
     this.schoolDataObject.pincode = this.studentForm.value.pincode
     this.schoolDataObject.state = this.studentForm.value.state

@@ -79,16 +79,26 @@
                 <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
             </div>
             <div class="col-12">
+                <label for="state" class="form-label">Country</label>
+                <select id="state" class="form-select" formControlName="country">
+                    <option *ngFor="let item of countries">{{item}}</option>
+                </select>
+                <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
+            </div>
+            <div class="col-12">
                 <label for="phone" class="form-label">Phone</label>
                 <input type="tel" class="form-control" id="phone" formControlName="phone">
                 <small class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
             </div>
-            <div class="col-12">
-                <label for="state" class="form-label">Country</label>
-                <select id="state" class="form-select" formControlName="country">
-                    <option selected>India</option>
-                </select>
-                <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
+            <div class="col-12" *ngIf="isIndia">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" formControlName="phoneIndia">
+                <small class="text-danger" *ngIf="!phoneIndia?.valid && phoneIndia?.touched">Please Enter Valid 10 Digit Phone Number</small>
+            </div>
+            <div class="col-md-4">
+                <label for="pincode" class="form-label">Pin Code</label>
+                <input type="text" class="form-control" id="pincode" formControlName="pincode" (change)="getCityAndState()">
+                <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
             </div>
             <div class="col-md-4">
                 <label for="city" class="form-label">City</label>
@@ -99,11 +109,6 @@
                 <label for="state" class="form-label">State</label>
                 <input type="text" class="form-control" id="state" formControlName="state">
                 <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
-            </div>
-            <div class="col-md-4">
-                <label for="pincode" class="form-label">Pin Code</label>
-                <input type="text" class="form-control" id="pincode" formControlName="pincode">
-                <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
             </div>
             <div class="col-12">
                 <label for="">You're a:</label>

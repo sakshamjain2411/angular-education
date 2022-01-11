@@ -12,11 +12,13 @@ import { StudentRegistrationModel } from '../student-registration-page/student-r
 })
 export class StudentRegistrationDiscountPageComponent implements OnInit {
 
-  successAlert:boolean = false
+  successAlert: boolean = false
+  isIndia:boolean = false
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
-  discountApplied:boolean = false
+  discountApplied: boolean = false
+  countries:Array<any> = []
   activeOlympiads: Array<any> = []
 
   //Form Groups
@@ -31,13 +33,13 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
   totalAmount: number = 0
 
-  typeSchoolStudent:boolean = false
-  typeOther:boolean = false
-  typeCollegeStudent:boolean = false
-  typeWorkingProsessional:boolean = false
-  typeAspirant:boolean = false
+  typeSchoolStudent: boolean = false
+  typeOther: boolean = false
+  typeCollegeStudent: boolean = false
+  typeWorkingProsessional: boolean = false
+  typeAspirant: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api:ApiService, private route:Router) { }
+  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private route: Router) { }
 
   get name() {
     return this.studentForm.get('studentName');
@@ -46,6 +48,9 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     return this.studentForm.get('email');
   }
   get phone() {
+    return this.studentForm.get('phone');
+  }
+  get phoneIndia() {
     return this.studentForm.get('phone');
   }
   get country() {
@@ -78,6 +83,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     this.studentForm = this.formBuilder.group({
       studentName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
+      phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       phone: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       country: ["India", Validators.required],
       pincode: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
@@ -98,31 +104,49 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
         this.discountApplied = false
       })
 
+    this.studentForm.valueChanges
+      .subscribe(res => {
+        if (res.country == "India") {
+          if (this.isIndia == false) {
+            this.isIndia = true
+          }
+        } else {
+          if (this.isIndia == true) {
+            this.isIndia = false
+          }
+        }
+      })
+
+    this.api.getCountries()
+      .subscribe(res => {
+        this.countries = res
+      })
+
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
     // this.calculateTotalAmount()
   }
 
-  getActiveOlympiad(type:any) {
-    if(type == "School") {
+  getActiveOlympiad(type: any) {
+    if (type == "School") {
       this.api.getWebsiteCoreData()
-      .subscribe(res => {
-        for(let key in res.activeOlympiadsForSchoolStudent) {
-          if(res.activeOlympiadsForSchoolStudent[key] == true) {
-            this.activeOlympiads.push(key)
-            this.activeOlympiadForm.addControl(key, new FormControl(''))
-          } 
-        }
-      })
-    }else if(type == "Others") {
+        .subscribe(res => {
+          for (let key in res.activeOlympiadsForSchoolStudent) {
+            if (res.activeOlympiadsForSchoolStudent[key] == true) {
+              this.activeOlympiads.push(key)
+              this.activeOlympiadForm.addControl(key, new FormControl(''))
+            }
+          }
+        })
+    } else if (type == "Others") {
       this.api.getWebsiteCoreData()
-      .subscribe(res => {
-        for(let key in res.activeOlympiadsForOthers) {
-          if(res.activeOlympiadsForOthers[key] == true) {
-            this.activeOlympiads.push(key)
-            this.activeOlympiadForm.addControl(key, new FormControl(''))
-          } 
-        }
-      })
+        .subscribe(res => {
+          for (let key in res.activeOlympiadsForOthers) {
+            if (res.activeOlympiadsForOthers[key] == true) {
+              this.activeOlympiads.push(key)
+              this.activeOlympiadForm.addControl(key, new FormControl(''))
+            }
+          }
+        })
     }
   }
 
@@ -151,11 +175,11 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     this.otherTypeForm.valueChanges
       .subscribe(res => {
-        if(res.otherType == "Student") {
+        if (res.otherType == "Student") {
           this.addTypeCollegeStudentField()
-        }else if(res.otherType == "Working Professional") {
+        } else if (res.otherType == "Working Professional") {
           this.addTypeWorkingProffessionalField()
-        }else if(res.otherType == "Aspirant") {
+        } else if (res.otherType == "Aspirant") {
           this.addTypeAspirantField()
         }
       })
@@ -165,7 +189,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   resetOlympiadFormControlGroup() {
     let counter = this.activeOlympiads.length
-    for(let i=0; i<counter; i++) {
+    for (let i = 0; i < counter; i++) {
       this.activeOlympiadForm.removeControl(this.activeOlympiads[0])
       this.activeOlympiads.shift();
     }
@@ -185,7 +209,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   }
 
   addTypeWorkingProffessionalField() {
-    this.typeWorkingProsessional= true
+    this.typeWorkingProsessional = true
     this.typeAspirant = false
     this.typeCollegeStudent = false
     this.workingTypeForm = this.formBuilder.group({
@@ -196,17 +220,17 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   addTypeAspirantField() {
     this.typeAspirant = true
-    this.typeWorkingProsessional= false
+    this.typeWorkingProsessional = false
     this.typeCollegeStudent = false
     this.aspirantTypeForm = this.formBuilder.group({
       perparingFor: ""
     })
   }
 
-  updateTotal(res:any) {
-    let counter =0
-    for(let item in res) {
-      if(res[item] == true) {
+  updateTotal(res: any) {
+    let counter = 0
+    for (let item in res) {
+      if (res[item] == true) {
         counter++
       }
     }
@@ -231,11 +255,11 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     }
   }
 
-  validateCouponCode(e:any) {
+  validateCouponCode(e: any) {
     e.preventDefault()
-    if(this.totalAmount>0) {
-      if(this.studentForm.value.couponCode == "FLAT10OFF"){
-        this.totalAmount = this.totalAmount - (this.totalAmount/100)*10
+    if (this.totalAmount > 0) {
+      if (this.studentForm.value.couponCode == "FLAT10OFF") {
+        this.totalAmount = this.totalAmount - (this.totalAmount / 100) * 10
         this.discountApplied = true
       }
     }
@@ -245,10 +269,29 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     this.postStudentData()
   }
 
+  getCityAndState() {
+    if(this.studentForm.value.country == "India") {
+      if(this.studentForm.value.pincode.length == 6) {
+        let pincode = this.studentForm.value.pincode
+        this.api.getStateFromPinCode(pincode)
+        .subscribe(res => {
+          this.studentForm.patchValue({
+            city: res[0].City,
+            state: res[0].State
+          })
+        })
+      }
+    }
+  }
+
   postStudentData() {
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
-    this.schoolDataObject.phone = this.studentForm.value.phone
+    if(this.isIndia == true) {
+      this.schoolDataObject.phone = this.studentForm.value.phoneIndia
+    }else {
+      this.schoolDataObject.phone = this.studentForm.value.phone
+    }
     this.schoolDataObject.country = this.studentForm.value.country
     this.schoolDataObject.pincode = this.studentForm.value.pincode
     this.schoolDataObject.state = this.studentForm.value.state
@@ -257,22 +300,22 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     this.schoolDataObject.referralCode = this.studentForm.value.referralCode
     this.schoolDataObject.totalAmount = this.totalAmount
     this.schoolDataObject.couponCode = this.studentForm.value.couponCode
-    if(this.typeSchoolStudent) {
+    if (this.typeSchoolStudent) {
       this.schoolDataObject.schoolStudent = this.schoolStudentForm.value
-      this.schoolDataObject.other = {"null":"null"}
+      this.schoolDataObject.other = { "null": "null" }
     }
-    else if(this.typeOther) {
-      this.schoolDataObject.schoolStudent = {"null":"null"}
-      if(this.typeCollegeStudent) {
+    else if (this.typeOther) {
+      this.schoolDataObject.schoolStudent = { "null": "null" }
+      if (this.typeCollegeStudent) {
         this.schoolDataObject.other = this.collegeStudentForm.value
-      } else if(this.typeWorkingProsessional) {
+      } else if (this.typeWorkingProsessional) {
         this.schoolDataObject.other = this.workingTypeForm.value
-      } else if(this.typeAspirant) {
+      } else if (this.typeAspirant) {
         this.schoolDataObject.other = this.aspirantTypeForm.value
       }
-      
+
     }
-    
+
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
         this.route.navigate(['/thank-you'])

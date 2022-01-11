@@ -81,8 +81,7 @@
             <div class="col-12">
                 <label for="state" class="form-label">Country</label>
                 <select id="state" class="form-select" formControlName="country">
-                    <option>India</option>
-                    <option>China</option>
+                    <option *ngFor="let item of countries">{{item}}</option>
                 </select>
                 <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
             </div>
@@ -98,7 +97,7 @@
             </div>
             <div class="col-md-4">
                 <label for="pincode" class="form-label">Pin Code</label>
-                <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                <input type="text" class="form-control" id="pincode" formControlName="pincode" (change)="getCityAndState()">
                 <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
             </div>
             <div class="col-md-4">

@@ -119,4 +119,18 @@ export class ApiService {
       return response
     }))
   }
+
+  getCountries() {
+    return this._http.get<any>("https://sfoly.com/countries")
+    .pipe(map(response => {
+      return response
+    }))
+  }
+
+  getStateFromPinCode(pincode:number) {
+    return this._http.get<any>("https://sfoly.com/getPincodeDetails?pincode="+pincode)
+    .pipe(map(response => {
+      return response
+    }))
+  }
 }
