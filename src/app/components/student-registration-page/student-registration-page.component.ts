@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, Form, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { WindowRefService } from 'src/app/service/window-ref.service';
 import { StudentRegistrationModel } from './student-registration.model';
 
 
@@ -12,13 +13,14 @@ import { StudentRegistrationModel } from './student-registration.model';
 })
 export class StudentRegistrationPageComponent implements OnInit {
 
-  successAlert:boolean = false
-  isIndia:boolean = false
+  successAlert: boolean = false
+  isIndia: boolean = false
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
-  isFormValid:boolean = false
-  countries:Array<any> = []
+  isFormValid: boolean = false
+  countries: Array<any> = []
+  razorPayPaymentOptions:any
   activeOlympiads: Array<any> = []
 
   //Form Groups
@@ -32,14 +34,15 @@ export class StudentRegistrationPageComponent implements OnInit {
 
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
   totalAmount: number = 0
+  payeePhone!:Number
 
-  typeSchoolStudent:boolean = false
-  typeOther:boolean = false
-  typeCollegeStudent:boolean = false
-  typeWorkingProsessional:boolean = false
-  typeAspirant:boolean = false
+  typeSchoolStudent: boolean = false
+  typeOther: boolean = false
+  typeCollegeStudent: boolean = false
+  typeWorkingProsessional: boolean = false
+  typeAspirant: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api:ApiService, private route:Router) { }
+  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private route: Router, private winRef: WindowRefService) { }
 
   get name() {
     return this.studentForm.get('studentName');
@@ -103,49 +106,52 @@ export class StudentRegistrationPageComponent implements OnInit {
       })
 
     this.studentForm.valueChanges
-    .subscribe(res => {
-      if(res.country == "India") {
-        if(this.isIndia == false) {
-          this.isIndia = true
+      .subscribe(res => {
+        if (res.country == "India") {
+          if (this.isIndia == false) {
+            this.isIndia = true
+            this.studentForm.patchValue({
+              phone: "000"
+            })
+          }
+        } else {
+          if (this.isIndia == true) {
+            this.isIndia = false
+          }
         }
-      }else {
-        if(this.isIndia == true) {
-          this.isIndia = false
-        }
-      }
-    })
+      })
 
     this.api.getCountries()
-    .subscribe(res => {
-      this.countries = res
-    })
-    
+      .subscribe(res => {
+        this.countries = res
+      })
+
 
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
     // this.calculateTotalAmount()
   }
 
-  getActiveOlympiad(type:any) {
-    if(type == "School") {
+  getActiveOlympiad(type: any) {
+    if (type == "School") {
       this.api.getWebsiteCoreData()
-      .subscribe(res => {
-        for(let key in res.activeOlympiadsForSchoolStudent) {
-          if(res.activeOlympiadsForSchoolStudent[key] == true) {
-            this.activeOlympiads.push(key)
-            this.activeOlympiadForm.addControl(key, new FormControl(''))
-          } 
-        }
-      })
-    }else if(type == "Others") {
+        .subscribe(res => {
+          for (let key in res.activeOlympiadsForSchoolStudent) {
+            if (res.activeOlympiadsForSchoolStudent[key] == true) {
+              this.activeOlympiads.push(key)
+              this.activeOlympiadForm.addControl(key, new FormControl(''))
+            }
+          }
+        })
+    } else if (type == "Others") {
       this.api.getWebsiteCoreData()
-      .subscribe(res => {
-        for(let key in res.activeOlympiadsForOthers) {
-          if(res.activeOlympiadsForOthers[key] == true) {
-            this.activeOlympiads.push(key)
-            this.activeOlympiadForm.addControl(key, new FormControl(''))
-          } 
-        }
-      })
+        .subscribe(res => {
+          for (let key in res.activeOlympiadsForOthers) {
+            if (res.activeOlympiadsForOthers[key] == true) {
+              this.activeOlympiads.push(key)
+              this.activeOlympiadForm.addControl(key, new FormControl(''))
+            }
+          }
+        })
     }
   }
 
@@ -174,11 +180,11 @@ export class StudentRegistrationPageComponent implements OnInit {
 
     this.otherTypeForm.valueChanges
       .subscribe(res => {
-        if(res.otherType == "Student") {
+        if (res.otherType == "Student") {
           this.addTypeCollegeStudentField()
-        }else if(res.otherType == "Working Professional") {
+        } else if (res.otherType == "Working Professional") {
           this.addTypeWorkingProffessionalField()
-        }else if(res.otherType == "Aspirant") {
+        } else if (res.otherType == "Aspirant") {
           this.addTypeAspirantField()
         }
       })
@@ -188,7 +194,7 @@ export class StudentRegistrationPageComponent implements OnInit {
 
   resetOlympiadFormControlGroup() {
     let counter = this.activeOlympiads.length
-    for(let i=0; i<counter; i++) {
+    for (let i = 0; i < counter; i++) {
       this.activeOlympiadForm.removeControl(this.activeOlympiads[0])
       this.activeOlympiads.shift();
     }
@@ -208,7 +214,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   }
 
   addTypeWorkingProffessionalField() {
-    this.typeWorkingProsessional= true
+    this.typeWorkingProsessional = true
     this.typeAspirant = false
     this.typeCollegeStudent = false
     this.workingTypeForm = this.formBuilder.group({
@@ -219,17 +225,17 @@ export class StudentRegistrationPageComponent implements OnInit {
 
   addTypeAspirantField() {
     this.typeAspirant = true
-    this.typeWorkingProsessional= false
+    this.typeWorkingProsessional = false
     this.typeCollegeStudent = false
     this.aspirantTypeForm = this.formBuilder.group({
       perparingFor: ""
     })
   }
 
-  updateTotal(res:any) {
-    let counter =0
-    for(let item in res) {
-      if(res[item] == true) {
+  updateTotal(res: any) {
+    let counter = 0
+    for (let item in res) {
+      if (res[item] == true) {
         counter++
       }
     }
@@ -263,16 +269,16 @@ export class StudentRegistrationPageComponent implements OnInit {
   }
 
   getCityAndState() {
-    if(this.studentForm.value.country == "India") {
-      if(this.studentForm.value.pincode.length == 6) {
+    if (this.studentForm.value.country == "India") {
+      if (this.studentForm.value.pincode.length == 6) {
         let pincode = this.studentForm.value.pincode
         this.api.getStateFromPinCode(pincode)
-        .subscribe(res => {
-          this.studentForm.patchValue({
-            city: res[0].City,
-            state: res[0].State
+          .subscribe(res => {
+            this.studentForm.patchValue({
+              city: res[0].City,
+              state: res[0].State
+            })
           })
-        })
       }
     }
   }
@@ -280,10 +286,10 @@ export class StudentRegistrationPageComponent implements OnInit {
   postStudentData() {
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
-    if(this.isIndia == true) {
-      this.schoolDataObject.phone = this.studentForm.value.phoneIndia
-    }else {
-      this.schoolDataObject.phone = this.studentForm.value.phone
+    if (this.isIndia == true) {
+      this.schoolDataObject.phone = this.payeePhone = this.studentForm.value.phoneIndia
+    } else {
+      this.schoolDataObject.phone = this.payeePhone = this.studentForm.value.phone
     }
     this.schoolDataObject.country = this.studentForm.value.country
     this.schoolDataObject.pincode = this.studentForm.value.pincode
@@ -292,28 +298,55 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.schoolDataObject.studentType = this.studentForm.value.studentType
     this.schoolDataObject.referralCode = this.studentForm.value.referralCode
     this.schoolDataObject.totalAmount = this.totalAmount
-    if(this.typeSchoolStudent) {
+    if (this.typeSchoolStudent) {
       this.schoolDataObject.schoolStudent = this.schoolStudentForm.value
-      this.schoolDataObject.other = {"null":"null"}
+      this.schoolDataObject.other = { "null": "null" }
     }
-    else if(this.typeOther) {
-      this.schoolDataObject.schoolStudent = {"null":"null"}
-      if(this.typeCollegeStudent) {
+    else if (this.typeOther) {
+      this.schoolDataObject.schoolStudent = { "null": "null" }
+      if (this.typeCollegeStudent) {
         this.schoolDataObject.other = this.collegeStudentForm.value
-      } else if(this.typeWorkingProsessional) {
+      } else if (this.typeWorkingProsessional) {
         this.schoolDataObject.other = this.workingTypeForm.value
-      } else if(this.typeAspirant) {
+      } else if (this.typeAspirant) {
         this.schoolDataObject.other = this.aspirantTypeForm.value
       }
-      
+
     }
+
     
     this.api.postStudentData(this.schoolDataObject)
-      .subscribe(res => {
-        this.route.navigate(['/thank-you'])
+    .subscribe(res => {
+        this.initPayment()
       })
   }
 
-  siteKey: any = "";
+  initPayment() {
+    this.razorPayPaymentOptions = {
+      "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
+      "amount": this.totalAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Springfield Olympiads",
+      "description": "Test Transaction",
+      "image": "/assets/img/logo.svg",
+      // "order_id": "order_IiMJe418WAhnuG", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response:any) {
+        this.route.navigate(['/thank-you'])
+      },
+      "prefill": {
+        "name": this.studentForm.value.studentName,
+        "email": this.studentForm.value.email,
+        "contact": this.payeePhone
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      }
+    };
+
+    let razorPayObject = new this.winRef.nativeWindow.Razorpay(this.razorPayPaymentOptions)
+    razorPayObject.open()
+  }
+
+  siteKey: any = ""; 
 
 }

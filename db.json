@@ -382,6 +382,46 @@
       "other": {
         "null": "null"
       }
+    },
+    {
+      "id": 12,
+      "couponCode": "",
+      "studentName": "s",
+      "email": "s@g.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "302020",
+      "state": "Rajasthan",
+      "city": "Jaipur",
+      "studentType": "Other",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "other": {
+        "perparingFor": "JEE"
+      }
+    },
+    {
+      "id": 13,
+      "couponCode": "",
+      "studentName": "s",
+      "email": "s@gm.com",
+      "phone": "8112273369",
+      "country": "India",
+      "pincode": "302020",
+      "state": "Rajasthan",
+      "city": "Jaipur",
+      "studentType": "Other",
+      "referralCode": null,
+      "totalAmount": 179,
+      "schoolStudent": {
+        "null": "null"
+      },
+      "other": {
+        "perparingFor": "E"
+      }
     }
   ],
   "instituteData": [
