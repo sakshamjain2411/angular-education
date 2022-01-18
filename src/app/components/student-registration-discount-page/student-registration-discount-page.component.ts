@@ -257,12 +257,23 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   validateCouponCode(e: any) {
     e.preventDefault()
-    if (this.totalAmount > 0) {
-      if (this.studentForm.value.couponCode == "FLAT10OFF") {
-        this.totalAmount = this.totalAmount - (this.totalAmount / 100) * 10
-        this.discountApplied = true
-      }
+    console.log(this.studentForm.value);
+    
+    let couponData = {
+      "couponCode": this.studentForm.value.couponCode,
+      "price": this.totalAmount
     }
+    this.api.postCouponCodeData(couponData)
+    .subscribe(res => {
+      console.log(res);
+      this.totalAmount = res
+    })
+    // if (this.totalAmount > 0) {
+    //   if (this.studentForm.value.couponCode == "FLAT10OFF") {
+    //     this.totalAmount = this.totalAmount - (this.totalAmount / 100) * 10
+    //     this.discountApplied = true
+    //   }
+    // }
   }
 
   onStudentFormSubmit() {

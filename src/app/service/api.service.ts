@@ -58,6 +58,13 @@ export class ApiService {
       }))
   }
 
+  postCouponCodeData(couponData:any) {
+    return this._http.post<any>("https://sfoly.com/discountAfterCoupon", couponData)
+    .pipe(map((res:any)=>{
+      return res
+    }))
+  }
+
   postFogotPasswordData(forgotPasswordData:any) {
     return this._http.post<any>("https://sfoly.com/recoverPassword", forgotPasswordData)
       .pipe(map((res:any)=>{
