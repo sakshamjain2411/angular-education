@@ -135,8 +135,17 @@ export class ApiService {
   }
 
   getStudentDataById(id:number) {
-    return this._http.get<any>("http://localhost:3000/studentData?id="+id)
+    return this._http.get<any>("https://sfoly.com/individualOrderDetails?orderId="+id)
     .pipe(map(response => {
+      return response
+    }))
+  }
+
+  getOTPHash(phone:Object) {
+    return this._http.post<any>("https://sfoly.com/sendOtp", phone)
+    .pipe(map(response => {
+      // console.log(response);
+      
       return response
     }))
   }

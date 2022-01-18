@@ -23,10 +23,10 @@ export class CompletePaymentComponent implements OnInit {
     this.orderId = this.activeRoute.snapshot.params["orderId"];
     this.api.getStudentDataById(this.orderId)
     .subscribe(res => {
-      this.payeeName = res[0].studentName
+      this.payeeName = res[0].name
       this.payeeEmail = res[0].email
       this.payeePhone = res[0].phone
-      this.totalAmount = res[0].totalAmount
+      this.totalAmount = res[0].amount/100
     })
 
   }

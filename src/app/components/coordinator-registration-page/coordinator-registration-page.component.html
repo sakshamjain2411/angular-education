@@ -6,6 +6,9 @@
             <h2>Form</h2>
             <h3>Coordinator Registration <span>Form</span></h3>
         </div>
+        <div *ngIf="invalidOTP" class="alert alert-danger" role="alert">
+            Invalid OTP.
+        </div>
         <form class="row g-3" [formGroup]="coordinatorForm" (ngSubmit)="onCoordinatorFormSubmit()">
             <div class="col-12">
                 <label for="name" class="form-label">Coordinator Name</label>
@@ -17,10 +20,21 @@
                 <input type="email" class="form-control" id="email" formControlName="email">
                 <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
             </div>
-            <div class="col-12">
+            <div class="col-md-6">
                 <label for="phone" class="form-label">Phone</label>
                 <input type="tel" class="form-control" id="phone" formControlName="phone">
                 <small class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
+            </div>
+            <div class="col-md-3 mt-auto" *ngIf="otpSent == false">
+                <button type="button" class="btn btn-primary" [disabled]="!phone?.valid" (click)="sendOTP()">Send OTP</button>
+            </div>
+            <div class="col-md-3 mt-auto" *ngIf="otpSent">
+                <button type="button" class="btn btn-primary" [disabled]="resendOTP" (click)="sendOTP()">Re-Send OTP</button>
+            </div>
+            <div class="col-md-3" *ngIf="otpSent">
+                <label for="phone" class="form-label">OTP</label>
+                <input type="tel" class="form-control" id="phone" formControlName="otp">
+                <small class="text-danger" *ngIf="!otp?.valid && otp?.touched">Please Enter Valid OTP</small>
             </div>
             <div class="col-12">
                 <label for="address" class="form-label">Address</label>
@@ -29,7 +43,7 @@
             </div>
             <div class="col-md-4">
                 <label for="pincode" class="form-label">Pin Code</label>
-                <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                <input type="text" class="form-control" id="pincode" formControlName="pincode" (change)="getCityAndState()">
                 <small class="text-danger" *ngIf="!pincode?.valid && pincode?.touched">Please Enter Valid Pincode</small>
             </div>
             <div class="col-md-4">
@@ -39,7 +53,7 @@
             </div>
             <div class="col-md-4">
                 <label for="state" class="form-label">State</label>
-                <input type="text" class="form-control" id="state" formControlName="state">
+                <input type="text" class="form-control" id="state" formControlName="state" readonly>
                 <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
             </div>
             <ngx-recaptcha2 #captchaElem
