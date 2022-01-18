@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   errorAlert:boolean = false
   siteKey: any;
-  constructor(private formBuilder: FormBuilder, private _http:HttpClient, private route: Router) { }
+  constructor(private formBuilder: FormBuilder, private _http:HttpClient, private route: Router, private api: ApiService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -38,24 +39,23 @@ export class LoginPageComponent implements OnInit {
 
   onLoginFormSubmit() {
     if(this.loginForm.status == "VALID") {
-      this._http.get<any>("http://localhost:3000/instituteData")
-        .subscribe(response=> {
-          const user = response.find((userData:any)=> {
-            return userData.email === this.loginForm.value.email && userData.password === this.loginForm.value.password
-          })
-          if(user) {
-            console.log(user);
-            localStorage.setItem("auth","true")
-            localStorage.setItem("instituteID",user.id)
-            localStorage.setItem("instituteEmail",user.email)
-            localStorage.setItem("authToken", Date.now().toString())
-            this.route.navigate(['institute-dashboard'])
-          }else this.errorAlert = true
-          
-        },error=> {
-          alert("Something Went Wrong");
-          console.log(error);
-        })
+      let auth = {
+        "login-username" : this.loginForm.value.email,
+        "login-password" : this.loginForm.value.password
+      }
+      this.api.postAuthData(auth)
+      .subscribe(res => {
+        console.log(res);
+        localStorage.setItem("auth","true")
+        localStorage.setItem("instituteID", this.loginForm.value.email)
+        localStorage.setItem("instituteEmail", this.loginForm.value.email)
+        localStorage.setItem("authToken", Date.now().toString())
+        this.route.navigate(['institute-dashboard'])
+      },
+      err => {
+        this.errorAlert = true
+        console.log(err);
+      })
     }
   }
 

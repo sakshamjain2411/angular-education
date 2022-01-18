@@ -51,6 +51,13 @@ export class ApiService {
       }))
   }
 
+  postAuthData(authData:any) {
+    return this._http.post<any>("https://sfoly.com/login-institute", authData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   postFogotPasswordData(forgotPasswordData:any) {
     return this._http.post<any>("https://sfoly.com/recoverPassword", forgotPasswordData)
       .pipe(map((res:any)=>{
@@ -66,7 +73,7 @@ export class ApiService {
   }
 
   getInstituteDataById(id:any) {
-    return this._http.get<any>("http://localhost:3000/instituteData/"+id)
+    return this._http.get<any>("https://sfoly.com/getRegisteredExams?name="+id)
       .pipe(map((response:any) => {
         return response
       }))
@@ -144,8 +151,6 @@ export class ApiService {
   getOTPHash(phone:Object) {
     return this._http.post<any>("https://sfoly.com/sendOtp", phone)
     .pipe(map(response => {
-      // console.log(response);
-      
       return response
     }))
   }
