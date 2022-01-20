@@ -34,6 +34,7 @@ import { AddClientTestimonialPageComponent } from './components/reviews-page/add
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { CompletePaymentComponent } from './components/complete-payment/complete-payment.component';
+import { ProcessingDataPageComponent } from './components/auth/processing-data-page/processing-data-page.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CompletePaymentComponent } from './components/complete-payment/complete
     ForgotPasswordComponent,
     ResetPasswordComponent,
     CompletePaymentComponent,
+    ProcessingDataPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { InstituteDashboardPageComponent } from './components/auth/institute-dashboard-page/institute-dashboard-page.component';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
+import { ProcessingDataPageComponent } from './components/auth/processing-data-page/processing-data-page.component';
 import { RegisterForExamPageComponent } from './components/auth/register-for-exam-page/register-for-exam-page.component';
 import { CompletePaymentComponent } from './components/complete-payment/complete-payment.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'reset-password/:passwordResetId', component: ResetPasswordComponent},
   {path: 'complete-payment/:orderId', component: CompletePaymentComponent},
   {path: 'thank-you', component: ThankYouPageComponent},
+  {path: 'processing-data', component: ProcessingDataPageComponent},
   {path: '404', component: InvalidPageComponent},
   {path: '**', redirectTo: "404"}
 ];
