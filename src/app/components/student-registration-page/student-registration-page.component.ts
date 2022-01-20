@@ -20,6 +20,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   submitMessage!: String
   isFormValid: boolean = false
   countries: Array<any> = []
+  olympiadPriceData: Array<any> = []
   razorPayPaymentOptions:any
   activeOlympiads: Array<any> = []
 
@@ -81,6 +82,11 @@ export class StudentRegistrationPageComponent implements OnInit {
   ngOnInit(): void {
     //URL Parameter
     this.routeParam = this.activeRoute.snapshot.params["referral"];
+
+    this.api.getOlympiadPriceData()
+    .subscribe(res => {
+      this.olympiadPriceData = res   
+    })
 
     //Base Student Form
     this.studentForm = this.formBuilder.group({
@@ -244,16 +250,16 @@ export class StudentRegistrationPageComponent implements OnInit {
         this.totalAmount = 0
         break;
       case 1:
-        this.totalAmount = 99
+        this.totalAmount = this.olympiadPriceData[0].discountedPrice
         break;
       case 2:
-        this.totalAmount = 179
+        this.totalAmount = this.olympiadPriceData[1].discountedPrice
         break;
       case 3:
-        this.totalAmount = 249
+        this.totalAmount = this.olympiadPriceData[2].discountedPrice
         break;
       case 4:
-        this.totalAmount = 329
+        this.totalAmount = this.olympiadPriceData[3].discountedPrice
         break;
       default:
         break;
@@ -331,7 +337,9 @@ export class StudentRegistrationPageComponent implements OnInit {
       "image": "/assets/img/logo.svg",
       // "order_id": "order_IiMJe418WAhnuG", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response:any) {
-        this.route.navigate(['/thank-you'])
+        setTimeout(() => {
+          window.location.href="http://localhost:4200/thank-you";
+        }, 2000);
       },
       "prefill": {
         "name": this.studentForm.value.studentName,

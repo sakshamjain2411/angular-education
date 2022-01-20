@@ -8,12 +8,12 @@
             <h3>Check our <span>Pricing</span></h3>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="olympiadPriceData[0]">
 
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="box">
                     <h3>Any One</h3>
-                    <h4><sup>₹</sup>99<span class="striked-text">₹150</span></h4>
+                    <h4><sup>₹</sup>{{olympiadPriceData[0].discountedPrice}}<span class="striked-text">₹{{olympiadPriceData[0].actualPrice}}</span></h4>
                     <p class="capitalize">Participate in any one<br> of the four Olympiads<br> of your choice.</p>
                     <div class="btn-wrap">
                         <a class="btn-buy" (click)="scrollToFormSection()">Register Now</a>
@@ -24,7 +24,7 @@
             <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
                 <div class="box featured">
                     <h3>Any Two</h3>
-                    <h4><sup>₹</sup>179<span class="striked-text">₹300</span></h4>
+                    <h4><sup>₹</sup>{{olympiadPriceData[1].discountedPrice}}<span class="striked-text">₹{{olympiadPriceData[1].actualPrice}}</span></h4>
                     <p class="capitalize">Participate in any two<br> of the four Olympiads<br> of your choice.</p>
                     <div class="btn-wrap">
                         <a class="btn-buy" (click)="scrollToFormSection()">Register Now</a>
@@ -35,7 +35,7 @@
             <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
                 <div class="box">
                     <h3>Any Three</h3>
-                    <h4><sup>₹</sup>249<span class="striked-text">₹450</span></h4>
+                    <h4><sup>₹</sup>{{olympiadPriceData[2].discountedPrice}}<span class="striked-text">₹{{olympiadPriceData[2].actualPrice}}</span></h4>
                     <p class="capitalize">Participate in any three<br> of the four Olympiads<br> of your choice.</p>
                     <div class="btn-wrap">
                         <a class="btn-buy" (click)="scrollToFormSection()">Register Now</a>
@@ -47,7 +47,7 @@
                 <div class="box">
                     <span class="advanced">Advanced</span>
                     <h3>All</h3>
-                    <h4><sup>₹</sup>329<span class="striked-text">₹600</span></h4>
+                    <h4><sup>₹</sup>{{olympiadPriceData[3].discountedPrice}}<span class="striked-text">₹{{olympiadPriceData[3].actualPrice}}</span></h4>
                     <p class="capitalize">Participate in all four<br> of the four Olympiads<br> at great price.</p>
                     <div class="btn-wrap">
                         <a class="btn-buy" (click)="scrollToFormSection()">Register Now</a>
@@ -107,7 +107,7 @@
             </div>
             <div class="col-md-4">
                 <label for="state" class="form-label">State</label>
-                <input type="text" class="form-control" id="state" formControlName="state">
+                <input type="text" class="form-control" id="state" formControlName="state" readonly>
                 <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
             </div>
             <div class="col-12">

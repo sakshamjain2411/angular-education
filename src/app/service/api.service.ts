@@ -45,7 +45,7 @@ export class ApiService {
   }
 
   postNewsLetterData(newsletterData:any) {
-    return this._http.post<any>("http://localhost:3000/newsletter", newsletterData)
+    return this._http.post<any>("https://sfoly.com/subscribe", newsletterData)
       .pipe(map((res:any)=>{
         return res
       }))
@@ -108,27 +108,27 @@ export class ApiService {
   }
 
   getOlympiadScheduleData() {
-    return this._http.get<any>("http://localhost:3000/olympiadSchedule")
+    return this._http.get<any>("https://sfoly.com/getSchedule")
       .pipe(map(response => {
         return response
       }))
   }
 
-  getTestimonialsData(sort:string = "date", order:string = "desc", category:string = "", page:number = 1, limit:number = 3) {
+  getTestimonialsData(sort:string = "dateOfCreation", order:string = "desc", category:string = "", page:number = 0, limit:number = 9) {
     if(category != "") {
-      return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&reviewCategory="+category+"&_page="+page+"&_limit="+limit+"&_order="+order)
+      return this._http.get<any>("https://sfoly.com/getReviews?sortBy="+sort+"&sortOrder="+order+"&offset="+page*limit+"&limit="+limit+"&olympiadName="+category)
       .pipe(map(response => {
         return response
       }))
     }
-    return this._http.get<any>("http://localhost:3000/testimonials?_sort="+sort+"&_order="+order+"&_page="+page+"&_limit="+limit)
+    return this._http.get<any>("https://sfoly.com/getReviews?sortBy="+sort+"&sortOrder="+order+"&offset="+page*limit+"&limit="+limit+"&olympiadName=")
       .pipe(map(response => {
         return response
       }))
   }
 
   getTesimonialDataWithAdminApproval() {
-    return this._http.get<any>("http://localhost:3000/testimonials?adminRating=10")
+    return this._http.get<any>("https://sfoly.com/getReviews?homePage=true")
     .pipe(map(response => {
       return response
     }))
@@ -162,5 +162,11 @@ export class ApiService {
     }))
   }
 
+  getOlympiadPriceData() {
+    return this._http.get<any>("https://sfoly.com/prices")
+    .pipe(map(response => {
+      return response
+    }))
+  }
 
 }

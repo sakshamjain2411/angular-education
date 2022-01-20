@@ -14,7 +14,7 @@ export class ReviewsPageComponent implements OnInit {
   testimonialsData:any
   filterForm!: FormGroup
   pagination:number = 1
-  limit:number = 3
+  limit:number = 9
   filterFormData:object = []
   constructor(private api:ApiService, private formBuilder:FormBuilder, private route:Router) { }
 
@@ -52,12 +52,14 @@ export class ReviewsPageComponent implements OnInit {
     this.filterForm.value.page = this.pagination
     this.getTestimonialsData(this.filterForm.value.sortBy, this.filterForm.value.order, this.filterForm.value.category, this.filterForm.value.page, this.filterForm.value.limit)
     // this.getTestimonialsData(this.filterFormData, this.filterFormData['order'],this.filterFormData['category'],this.pagination)
+    scrollTo(0,0)
   }
 
   onPrevClick() {
     this.pagination--
     this.filterForm.value.page = this.pagination
     this.getTestimonialsData(this.filterForm.value.sortBy, this.filterForm.value.order, this.filterForm.value.category, this.filterForm.value.page, this.filterForm.value.limit)
+    scrollTo(0,0)
   }
 
   addReview() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, Form, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { WindowRefService } from 'src/app/service/window-ref.service';
 import { StudentRegistrationModel } from '../student-registration-page/student-registration.model';
 
 
@@ -19,6 +20,8 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   submitMessage!: String
   discountApplied: boolean = false
   countries:Array<any> = []
+  olympiadPriceData:Array<any> = []
+  razorPayPaymentOptions:any
   activeOlympiads: Array<any> = []
 
   //Form Groups
@@ -32,6 +35,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
   totalAmount: number = 0
+  payeePhone!:Number
 
   typeSchoolStudent: boolean = false
   typeOther: boolean = false
@@ -39,7 +43,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   typeWorkingProsessional: boolean = false
   typeAspirant: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private route: Router) { }
+  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private route: Router, private winRef:WindowRefService) { }
 
   get name() {
     return this.studentForm.get('studentName');
@@ -79,12 +83,17 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     //URL Parameter
     this.routeParam = this.activeRoute.snapshot.params["referral"];
 
+    this.api.getOlympiadPriceData()
+    .subscribe(res => {
+      this.olympiadPriceData = res   
+    })
+
     //Base Student Form
     this.studentForm = this.formBuilder.group({
       studentName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
-      phone: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
+      phone: ["", [Validators.required]],
       country: ["India", Validators.required],
       pincode: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
       state: ["", Validators.required],
@@ -109,6 +118,9 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
         if (res.country == "India") {
           if (this.isIndia == false) {
             this.isIndia = true
+            this.studentForm.patchValue({
+              phone: "000"
+            })
           }
         } else {
           if (this.isIndia == true) {
@@ -268,12 +280,6 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
       console.log(res);
       this.totalAmount = res
     })
-    // if (this.totalAmount > 0) {
-    //   if (this.studentForm.value.couponCode == "FLAT10OFF") {
-    //     this.totalAmount = this.totalAmount - (this.totalAmount / 100) * 10
-    //     this.discountApplied = true
-    //   }
-    // }
   }
 
   onStudentFormSubmit() {
@@ -295,13 +301,17 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     }
   }
 
+  scrollToFormSection() {
+    document.querySelector("#student-form")?.scrollIntoView()
+  }
+
   postStudentData() {
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
     if(this.isIndia == true) {
-      this.schoolDataObject.phone = this.studentForm.value.phoneIndia
+      this.schoolDataObject.phone = this.payeePhone = this.studentForm.value.phoneIndia
     }else {
-      this.schoolDataObject.phone = this.studentForm.value.phone
+      this.schoolDataObject.phone = this.payeePhone = this.studentForm.value.phone
     }
     this.schoolDataObject.country = this.studentForm.value.country
     this.schoolDataObject.pincode = this.studentForm.value.pincode
@@ -329,8 +339,36 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
-        this.route.navigate(['/thank-you'])
+        this.initPayment()
       })
+  }
+
+  initPayment() {
+    this.razorPayPaymentOptions = {
+      "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
+      "amount": this.totalAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Springfield Olympiads",
+      "description": "Test Transaction",
+      "image": "/assets/img/logo.svg",
+      // "order_id": "order_IiMJe418WAhnuG", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response:any) {
+        setTimeout(() => {
+          window.location.href="http://localhost:4200/thank-you";
+        }, 2000);
+      },
+      "prefill": {
+        "name": this.studentForm.value.studentName,
+        "email": this.studentForm.value.email,
+        "contact": this.payeePhone
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      }
+    };
+
+    let razorPayObject = new this.winRef.nativeWindow.Razorpay(this.razorPayPaymentOptions)
+    razorPayObject.open()
   }
 
   siteKey: any = "";
