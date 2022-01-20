@@ -101,7 +101,7 @@ export class ApiService {
   }
 
   getOlympiadData() {
-    return this._http.get<any>("http://localhost:3000/olympiadData")
+    return this._http.get<any>("https://sfoly.com/olympiadDetails")
       .pipe(map(response => {
         return response
       }))
