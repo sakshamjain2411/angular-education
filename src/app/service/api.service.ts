@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private _http:HttpClient) { }
 
   postInstituteData(instituteData:any) {
-    return this._http.post<any>("http://localhost:3000/instituteData", instituteData)
+    return this._http.post<any>("https://sfoly.com/registerInstitute", instituteData)
       .pipe(map((res:any)=>{
         return res
       }))
@@ -24,7 +24,7 @@ export class ApiService {
   }
 
   postCoordinatorData(coordinatorData:any) {
-    return this._http.post<any>("http://localhost:3000/coordinatorData", coordinatorData)
+    return this._http.post<any>("https://sfoly.com/registerCoordinator", coordinatorData)
       .pipe(map((res:any)=>{
         return res
       }))

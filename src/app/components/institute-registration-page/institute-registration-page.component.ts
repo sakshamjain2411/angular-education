@@ -27,7 +27,7 @@ export class InstituteRegistrationPageComponent implements OnInit {
       state: ["", Validators.required],
       city: ["", Validators.required],
       coordinatorName: ["", Validators.required],
-      password: ["", [Validators.required, Validators.pattern('[a-zA-Z]*')]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
       recaptcha: ['', Validators.required]
     })
 
@@ -60,6 +60,19 @@ export class InstituteRegistrationPageComponent implements OnInit {
   }
   get password() {
     return this.instituteFrom.get('password');
+  }
+
+  getCityAndState() {
+    if (this.instituteFrom.value.pincode.length == 6) {
+      let pincode = this.instituteFrom.value.pincode
+      this.api.getStateFromPinCode(pincode)
+        .subscribe(res => {
+          this.instituteFrom.patchValue({
+            city: res[0].City,
+            state: res[0].State
+          })
+        })
+    }
   }
 
   onInstituteFormSubmit() {

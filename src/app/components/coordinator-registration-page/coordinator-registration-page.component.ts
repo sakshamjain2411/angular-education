@@ -126,14 +126,15 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
   }
 
   postCoordinatorData() {
-    this.coordinatorDataObject.coordinatorName = this.coordinatorForm.value.coordinatorName
+    this.coordinatorDataObject.coordinatorName = this.coordinatorForm.value.name
     this.coordinatorDataObject.address = this.coordinatorForm.value.address
     this.coordinatorDataObject.city = this.coordinatorForm.value.city
     this.coordinatorDataObject.email = this.coordinatorForm.value.email
     this.coordinatorDataObject.phone = this.coordinatorForm.value.phone
     this.coordinatorDataObject.pincode = this.coordinatorForm.value.pincode
     this.coordinatorDataObject.state = this.coordinatorForm.value.state
-
+    console.log(this.coordinatorDataObject);
+    
     this.api.postCoordinatorData(this.coordinatorDataObject)
       .subscribe(() => {
         this.route.navigate(['/thank-you'])
