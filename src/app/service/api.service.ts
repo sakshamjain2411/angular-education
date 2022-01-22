@@ -80,14 +80,14 @@ export class ApiService {
   }
 
   getInstituteDataById(id:any) {
-    return this._http.get<any>("https://sfoly.com/getRegisteredExams?name="+id)
+    return this._http.get<any>("https://sfoly.com/registeredExams?email="+id)
       .pipe(map((response:any) => {
         return response
       }))
   }
 
   getExamDataByInstituteID(id:any) {
-    return this._http.get<any>("http://localhost:3000/institueExamsData?instituteId="+id)
+    return this._http.get<any>("https://sfoly.com/registeredExams?email="+id)
       .pipe(map((response:any) => {
         return response
       }))
@@ -164,6 +164,13 @@ export class ApiService {
 
   getOlympiadPriceData() {
     return this._http.get<any>("https://sfoly.com/prices")
+    .pipe(map(response => {
+      return response
+    }))
+  }
+
+  getIndividualExamData(ID:any) {
+    return this._http.get<any>("https://sfoly.com/fetchRegisteredStudents?examId="+ID)
     .pipe(map(response => {
       return response
     }))

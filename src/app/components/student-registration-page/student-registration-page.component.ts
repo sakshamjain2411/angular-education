@@ -104,6 +104,11 @@ export class StudentRegistrationPageComponent implements OnInit {
     })
 
     this.activeOlympiadForm = this.formBuilder.group({
+      // siso: [""],
+      // simo: [""],
+      // sico: [""],
+      // sieo: [""],
+
     })
 
     this.activeOlympiadForm.valueChanges
@@ -290,6 +295,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   }
 
   postStudentData() {
+    debugger
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
     if (this.isIndia == true) {
@@ -317,8 +323,13 @@ export class StudentRegistrationPageComponent implements OnInit {
       } else if (this.typeAspirant) {
         this.schoolDataObject.other = this.aspirantTypeForm.value
       }
-
     }
+    this.schoolDataObject.siso = this.activeOlympiadForm.value.siso
+    this.schoolDataObject.simo = this.activeOlympiadForm.value.simo
+    this.schoolDataObject.sico = this.activeOlympiadForm.value.sico
+    this.schoolDataObject.sieo = this.activeOlympiadForm.value.sieo
+    this.schoolDataObject.grad = this.activeOlympiadForm.value.grad
+    this.schoolDataObject.finance = this.activeOlympiadForm.value.finance
 
     
     this.api.postStudentData(this.schoolDataObject)

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { IndividualDetailsPageComponent } from './components/auth/individual-details-page/individual-details-page.component';
 import { InstituteDashboardPageComponent } from './components/auth/institute-dashboard-page/institute-dashboard-page.component';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { ProcessingDataPageComponent } from './components/auth/processing-data-page/processing-data-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'reset-password/:passwordResetId', component: ResetPasswordComponent},
   {path: 'complete-payment/:orderId', component: CompletePaymentComponent},
+  {path: 'individual-details/:examId', component: IndividualDetailsPageComponent},
   {path: 'thank-you', component: ThankYouPageComponent},
   {path: 'processing-data', component: ProcessingDataPageComponent},
   {path: '404', component: InvalidPageComponent},

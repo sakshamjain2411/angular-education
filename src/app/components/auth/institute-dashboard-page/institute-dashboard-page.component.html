@@ -10,29 +10,32 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">View Details</th>
-                    <th scope="col">Registration Date</th>
+                    <!-- <th scope="col">View Details</th> -->
                     <th scope="col">Order ID</th>
+                    <th scope="col">Registration Date</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Payment Status</th>
                     <th scope="col">Payment Mode</th>
-                    <th scope="col">Payment Link</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of instituteExamDatatObject">
-                    <th scope="row">{{item.id}}</th>
-                    <td><a href="">View Details</a></td>
+                <tr *ngFor="let item of instituteExamDatatObject; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <!-- <td><a (click)="viewIndividualDetail()">View Details</a></td> -->
+                    <td>{{item.orderId.toUpperCase()}}</td>
                     <td>{{item.registrationDate}}</td>
-                    <td>{{item.orderId}}</td>
-                    <td>{{item.amount}}₹</td>
-                    <td>{{item.paymentStatus}}</td>
-                    <td>{{item.paymentMode}}</td>
-                    <td>{{item.id}}</td>
+                    <td>{{item.amount/100}}₹</td>
+                    <td>{{item.paymentStatus.toUpperCase()}}</td>
+                    <td>{{item.paymentMode.toUpperCase()}}</td>
+                    <td>
+                        <a [routerLink]="['/individual-details/'+item.srNo]" class="btn btn-primary me-2">View</a>
+                        <button class="btn btn-primary" [disabled]="item.paymentStatus == 'paid'" (click)="initPayment(item.amount, item.orderId)">Pay</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </section>
 
-<app-footer></app-footer>
+<app-footer pageTitle="institute-dashboard"></app-footer>

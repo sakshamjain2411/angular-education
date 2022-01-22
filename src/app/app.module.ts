@@ -35,6 +35,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { CompletePaymentComponent } from './components/complete-payment/complete-payment.component';
 import { ProcessingDataPageComponent } from './components/auth/processing-data-page/processing-data-page.component';
+import { IndividualDetailsPageComponent } from './components/auth/individual-details-page/individual-details-page.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ProcessingDataPageComponent } from './components/auth/processing-data-p
     ResetPasswordComponent,
     CompletePaymentComponent,
     ProcessingDataPageComponent,
+    IndividualDetailsPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,4 +13,10 @@ export class StudentRegistrationModel {
     other!: object;
     totalAmount!: number;
     couponCode: string = "";
+    siso!: boolean;
+    simo!: boolean;
+    sico!: boolean;
+    sieo!: boolean;
+    grad!: boolean;
+    finance!: boolean;
 }

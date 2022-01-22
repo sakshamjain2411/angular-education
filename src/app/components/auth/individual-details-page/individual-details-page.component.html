@@ -1,0 +1,41 @@
+<app-header></app-header>
+<app-breadcrumbs pageTitle="Individual Details"></app-breadcrumbs>
+<section class="dashboard">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <!-- <th scope="col">View Details</th> -->
+                    <th scope="col">Roll No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Status</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Olympiads</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of individualDetailsDataObject; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.rollNo}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.class}}</td>
+                    <td>
+                        <span class="me-2" *ngIf="item.SISO == 1">SISO</span>
+                        <span class="me-2" *ngIf="item.SIMO == 1">SIMO</span>
+                        <span class="me-2" *ngIf="item.SICO == 1">SICO</span>
+                        <span class="me-2" *ngIf="item.SIEO == 1">SIEO</span>
+                        <span class="me-2" *ngIf="item.GRADS == 1">GRADS</span>
+                        <span class="me-2" *ngIf="item.FINANCE == 1">FINANCE</span>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<app-footer pageTitle="individual-details"></app-footer>

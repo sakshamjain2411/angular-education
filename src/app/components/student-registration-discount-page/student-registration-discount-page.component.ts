@@ -334,8 +334,13 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
       } else if (this.typeAspirant) {
         this.schoolDataObject.other = this.aspirantTypeForm.value
       }
-
     }
+    this.schoolDataObject.siso = this.activeOlympiadForm.value.siso
+    this.schoolDataObject.simo = this.activeOlympiadForm.value.simo
+    this.schoolDataObject.sico = this.activeOlympiadForm.value.sico
+    this.schoolDataObject.sieo = this.activeOlympiadForm.value.sieo
+    this.schoolDataObject.grad = this.activeOlympiadForm.value.grad
+    this.schoolDataObject.finance = this.activeOlympiadForm.value.finance
 
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
