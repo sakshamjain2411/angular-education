@@ -72,22 +72,9 @@ export class ApiService {
       }))
   }
 
-  getInstituteData() {
-    return this._http.get<any>("http://localhost:3000/instituteData")
-      .pipe(map((res:any)=>{
-        return res
-      }))
-  }
 
-  getInstituteDataById(id:any) {
-    return this._http.get<any>("https://sfoly.com/registeredExams?email="+id)
-      .pipe(map((response:any) => {
-        return response
-      }))
-  }
-
-  getExamDataByInstituteID(id:any) {
-    return this._http.get<any>("https://sfoly.com/registeredExams?email="+id)
+  getInstituteDataByEmail(email:any) {
+    return this._http.get<any>("https://sfoly.com/registeredExams?email="+email)
       .pipe(map((response:any) => {
         return response
       }))

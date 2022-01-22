@@ -34,11 +34,7 @@ export class InstituteDashboardPageComponent implements OnInit {
       this.tokenTimeout()
 
       //API Call
-      this.api.getInstituteDataById(this.instituteID)
-        .subscribe(respose => {
-          this.instituteDataObject = respose
-        })
-      this.api.getExamDataByInstituteID(this.instituteID)
+      this.api.getInstituteDataByEmail(this.instituteEmail)
         .subscribe(response => {
           this.instituteExamDatatObject = response
         })
