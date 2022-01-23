@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   postStudentData(studentData:any) {
-    return this._http.post<any>("http://localhost:3000/studentData", studentData)
+    return this._http.post<any>("https://sfoly.com/registerNewIndividual", studentData)
       .pipe(map((res:any)=>{
         return res
       }))
@@ -25,13 +25,6 @@ export class ApiService {
 
   postCoordinatorData(coordinatorData:any) {
     return this._http.post<any>("https://sfoly.com/registerCoordinator", coordinatorData)
-      .pipe(map((res:any)=>{
-        return res
-      }))
-  }
-
-  postInstituteExamData(instituteExamData:any) {
-    return this._http.post<any>("http://localhost:3000/institueExamsData", instituteExamData)
       .pipe(map((res:any)=>{
         return res
       }))
@@ -158,6 +151,13 @@ export class ApiService {
 
   getIndividualExamData(ID:any) {
     return this._http.get<any>("https://sfoly.com/fetchRegisteredStudents?examId="+ID)
+    .pipe(map(response => {
+      return response
+    }))
+  }
+
+  getFaqData() {
+    return this._http.get<any>("https://sfoly.com/getFAQs")
     .pipe(map(response => {
       return response
     }))

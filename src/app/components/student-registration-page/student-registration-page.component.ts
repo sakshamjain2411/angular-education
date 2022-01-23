@@ -239,7 +239,7 @@ export class StudentRegistrationPageComponent implements OnInit {
     this.typeWorkingProsessional = false
     this.typeCollegeStudent = false
     this.aspirantTypeForm = this.formBuilder.group({
-      perparingFor: ""
+      preparingFor: ""
     })
   }
 
@@ -334,11 +334,13 @@ export class StudentRegistrationPageComponent implements OnInit {
     
     this.api.postStudentData(this.schoolDataObject)
     .subscribe(res => {
-        this.initPayment()
+        console.log(res);
+        
+        this.initPayment(res.orderId)
       })
   }
 
-  initPayment() {
+  initPayment(orderID:any) {
     this.razorPayPaymentOptions = {
       "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
       "amount": this.totalAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
