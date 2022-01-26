@@ -31,7 +31,7 @@ export class ApiService {
   }
 
   postTestimonialData(testimonialData:any) {
-    return this._http.post<any>("http://localhost:3000/testimonials", testimonialData)
+    return this._http.post<any>("https://sfoly.com/submitReview", testimonialData)
       .pipe(map((res:any)=>{
         return res
       }))

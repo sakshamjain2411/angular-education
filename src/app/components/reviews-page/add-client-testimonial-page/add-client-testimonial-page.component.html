@@ -31,22 +31,50 @@
             <div class="col-12">
                 <label for="reviewerType">Type</label>
                 <select id="reviewerType" class="form-select" formControlName="reviewerType">
-                    <option>School Student</option>
-                    <option>College Student</option>
-                    <option>Working Professional</option>
-                    <option>Aspirant</option>
+                    <option>Teacher</option>
+                    <option>Student</option>
+                    <option>Principal</option>
+                    <option>Parent</option>
                 </select>
             </div>
             <div class="col-12">
                 <label for="reviewCategory">Category</label>
-                <select id="reviewCategory" class="form-select" formControlName="reviewCategory">
-                    <option>SISO</option>
-                    <option>SIMO</option>
-                    <option>SIEO</option>
-                    <option>SICO</option>
-                    <option>GRADS</option>
-                    <option>FINANCE</option>
-                </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SISO" id="flexCheckDefault" formControlName="siso">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      SISO
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SIMO" id="flexCheckChecked" formControlName="simo">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      SIMO
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SICO" id="flexCheckChecked" formControlName="sico">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      SICO
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="SIEO" id="flexCheckChecked" formControlName="sieo">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      SIEO
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="GRADS" id="flexCheckChecked" formControlName="grads">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      GRADS
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="FINANCE" id="flexCheckChecked" formControlName="finance">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      FINANCE
+                    </label>
+                  </div>
             </div>
             <ngx-recaptcha2 #captchaElem
               [siteKey]="siteKey"

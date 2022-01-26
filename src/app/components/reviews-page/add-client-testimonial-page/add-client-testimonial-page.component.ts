@@ -15,6 +15,8 @@ export class AddClientTestimonialPageComponent implements OnInit {
   today!:string
   date = new Date()
   successAlert:boolean = false
+  reviewerTypeStudent:boolean = false
+  reviewerTypeOther:boolean = false
   testimonailForm!:FormGroup
   testimonialDataObject:ClientTestimonialModel = new ClientTestimonialModel()
   constructor(private formBuilder:FormBuilder, private api:ApiService, private route:Router) { }
@@ -25,8 +27,24 @@ export class AddClientTestimonialPageComponent implements OnInit {
       review: ["", Validators.required],
       rating: [5, Validators.required],
       reviewerType: ["", Validators.required],
-      reviewCategory: ["", Validators.required],
+      siso: [""],
+      simo: [""],
+      sieo: [""],
+      sico: [""],
+      grads: [""],
+      finance: [""],
       recaptcha: ["", Validators.required]
+    })
+
+    this.testimonailForm.valueChanges
+    .subscribe(res => {
+      if(res.reviewerType == 'School Student') {
+        this.reviewerTypeStudent = true
+        this.reviewerTypeOther = false
+      } else if (res.reviewerType != "") {
+        this.reviewerTypeStudent = false
+        this.reviewerTypeOther = true
+      }
     })
 
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
@@ -35,11 +53,32 @@ export class AddClientTestimonialPageComponent implements OnInit {
   }
 
   onTestimonialFormSubmit() {
-    console.log("Called");
-    
     if(this.testimonailForm.valid) {
       this.postClientTestimonial()
     }
+  }
+
+  getReviewCategory():string {
+    let reviewCategory = ""
+    if(this.testimonailForm.value.siso == true) {
+      reviewCategory = reviewCategory+"'SISO,'";
+    }
+    if(this.testimonailForm.value.simo == true) {
+      reviewCategory = reviewCategory+"'SIMO,'";
+    }
+    if(this.testimonailForm.value.sieo == true) {
+      reviewCategory = reviewCategory+"'SIEO,'";
+    }
+    if(this.testimonailForm.value.sico == true) {
+      reviewCategory = reviewCategory+"'SICO,'";
+    }
+    if(this.testimonailForm.value.grads == true) {
+      reviewCategory = reviewCategory+"'GRADS,'";
+    }
+    if(this.testimonailForm.value.finance == true) {
+      reviewCategory = reviewCategory+"'FINANCE,'";
+    }
+    return reviewCategory.trim();
   }
 
   postClientTestimonial() {
@@ -47,10 +86,18 @@ export class AddClientTestimonialPageComponent implements OnInit {
     this.testimonialDataObject.review = this.testimonailForm.value.review
     this.testimonialDataObject.rating = this.testimonailForm.value.rating
     this.testimonialDataObject.reviewerType = this.testimonailForm.value.reviewerType
-    this.testimonialDataObject.reviewCategory = this.testimonailForm.value.reviewCategory
+    this.testimonialDataObject.reviewCategory = this.getReviewCategory()
     this.testimonialDataObject.reviewDate = this.today
 
-    this.api.postTestimonialData(this.testimonialDataObject)
+    let testimonialObject = {
+      "name": this.testimonailForm.value.clientName,
+      "type": this.testimonailForm.value.reviewerType,
+      "review": this.testimonailForm.value.review,
+      "rating": this.testimonailForm.value.rating,
+      "forExams":[this.getReviewCategory()]
+    }
+
+    this.api.postTestimonialData(testimonialObject)
     .subscribe(res => {
       this.successAlert = true
       this.testimonailForm.reset()
