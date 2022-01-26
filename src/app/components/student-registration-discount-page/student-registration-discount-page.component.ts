@@ -344,11 +344,11 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
-        this.initPayment()
+        this.initPayment(res.orderId)
       })
   }
 
-  initPayment() {
+  initPayment(orderID:any) {
     this.razorPayPaymentOptions = {
       "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
       "amount": this.totalAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise

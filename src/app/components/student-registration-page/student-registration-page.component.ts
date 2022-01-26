@@ -36,6 +36,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
   totalAmount: number = 0
   payeePhone!:Number
+  orderId:any
 
   typeSchoolStudent: boolean = false
   typeOther: boolean = false
@@ -295,7 +296,6 @@ export class StudentRegistrationPageComponent implements OnInit {
   }
 
   postStudentData() {
-    debugger
     this.schoolDataObject.studentName = this.studentForm.value.studentName
     this.schoolDataObject.email = this.studentForm.value.email
     if (this.isIndia == true) {
@@ -334,8 +334,6 @@ export class StudentRegistrationPageComponent implements OnInit {
     
     this.api.postStudentData(this.schoolDataObject)
     .subscribe(res => {
-        console.log(res);
-        
         this.initPayment(res.orderId)
       })
   }
@@ -348,7 +346,7 @@ export class StudentRegistrationPageComponent implements OnInit {
       "name": "Springfield Olympiads",
       "description": "Test Transaction",
       "image": "/assets/img/logo.svg",
-      // "order_id": "order_IiMJe418WAhnuG", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      // "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response:any) {
         setTimeout(() => {
           window.location.href="http://localhost:4200/thank-you";
