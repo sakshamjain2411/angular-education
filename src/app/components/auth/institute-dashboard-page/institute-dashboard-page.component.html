@@ -30,7 +30,7 @@
                     <td>{{item.paymentMode.toUpperCase()}}</td>
                     <td>
                         <a [routerLink]="['/individual-details/'+item.srNo]" class="btn btn-primary me-2">View</a>
-                        <button class="btn btn-primary" [disabled]="item.paymentStatus == 'paid'" (click)="initPayment(item.amount, item.orderId)">Pay</button>
+                        <button class="btn btn-primary" [disabled]="item.paymentStatus == 'paid'" (click)="initPayment(item.amount, item.orderId, instituteEmail, onPaymentSuccess)">Pay</button>
                     </td>
                 </tr>
             </tbody>

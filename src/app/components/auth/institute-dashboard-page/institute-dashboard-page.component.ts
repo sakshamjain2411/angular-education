@@ -66,7 +66,28 @@ export class InstituteDashboardPageComponent implements OnInit {
     }, 7200000);
   }
 
-  initPayment(amount:any, orderID:any,) {
+  onPaymentSuccess(res:any, email:any) {
+    let paymentSuccessDataObject = {
+      "paymentId": res.razorpay_payment_id,
+      "orderId": res.razorpay_order_id,
+      "paymentSignature": res.razorpay_signature,
+      "mail": email
+    }
+
+    fetch("https://sfoly.com/paymentSuccess/", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'}, 
+      body: JSON.stringify(paymentSuccessDataObject)
+    }).then(res => {
+      if(res.status == 200) {
+        window.location.href="http://localhost:4200/thank-you";
+      }else if(res.status == 400) {
+        console.log(res)
+      }
+    });
+  }
+
+  initPayment(amount:any, orderID:any, email:any, onSuccess:any) {
     this.razorPayPaymentOptions = {
       "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
       "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -75,12 +96,11 @@ export class InstituteDashboardPageComponent implements OnInit {
       "description": "Test Transaction",
       "image": "/assets/img/logo.svg",
       // "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "handler": function (response:any) {
-        setTimeout(() => {
-          window.location.href="http://localhost:4200/thank-you";
-        }, 2000);
+      "handler": function (res:any) {
+        onSuccess(res,email);
       },
       "prefill": {
+        "email": email
       },
       "notes": {
         "address": "Razorpay Corporate Office"
