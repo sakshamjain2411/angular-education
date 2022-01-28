@@ -2,7 +2,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h1>Welcome to <span>Springfield Olympiads</span></h1>
-        <h2>Feeling Prepared? Register For Science Olympiad</h2>
+        <h2>{{subHeading}}</h2>
         <div class="d-flex">
             <a [routerLink]="['/student-registration']" class="btn-get-started" *ngIf="registerButtonStatus">Register</a>
             <a [routerLink]="['/schedule']" class="btn-schedule" *ngIf="scheduleButtonStatus">Schedule</a>

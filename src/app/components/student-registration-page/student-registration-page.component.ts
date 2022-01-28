@@ -14,7 +14,7 @@ import { StudentRegistrationModel } from './student-registration.model';
 export class StudentRegistrationPageComponent implements OnInit {
 
   successAlert: boolean = false
-  isIndia: boolean = false
+  isIndia: boolean = true
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
@@ -95,7 +95,7 @@ export class StudentRegistrationPageComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       phone: ["", [Validators.required]],
-      country: ["", Validators.required],
+      country: ["India", Validators.required],
       pincode: ["", [Validators.required, Validators.minLength(6), Validators.maxLength(8)]],
       state: ["", Validators.required],
       city: ["", Validators.required],

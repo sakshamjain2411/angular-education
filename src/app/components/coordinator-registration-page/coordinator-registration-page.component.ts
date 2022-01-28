@@ -33,6 +33,8 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
       "pincode": ['', [Validators.required, Validators.minLength(6),Validators.maxLength(6)] ],
       "state": ['', Validators.required],
       "city": ['', Validators.required],
+      "dob": ['', Validators.required],
+      "occupation": ['', Validators.required],
       "recaptcha" : ['', Validators.required]
     })
 
@@ -53,6 +55,12 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
   }
   get email() {
     return this.coordinatorForm.get('email')
+  }
+  get dob() {
+    return this.coordinatorForm.get('dob')
+  }
+  get occupation() {
+    return this.coordinatorForm.get('occupation')
   }
   get pincode() {
     return this.coordinatorForm.get('pincode')
@@ -80,7 +88,7 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
   enableResendOTP() {
     setTimeout(() => {
       this.resendOTP = true;
-    }, 30000);
+    }, 120000);
   }
 
   validateOTP() {
@@ -130,6 +138,8 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
     this.coordinatorDataObject.address = this.coordinatorForm.value.address
     this.coordinatorDataObject.city = this.coordinatorForm.value.city
     this.coordinatorDataObject.email = this.coordinatorForm.value.email
+    this.coordinatorDataObject.dob = this.coordinatorForm.value.dob
+    this.coordinatorDataObject.occupation = this.coordinatorForm.value.occupation
     this.coordinatorDataObject.phone = this.coordinatorForm.value.phone
     this.coordinatorDataObject.pincode = this.coordinatorForm.value.pincode
     this.coordinatorDataObject.state = this.coordinatorForm.value.state

@@ -868,6 +868,7 @@ body {
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 24px;
+    text-align: left;
   }
   .services .icon-box h4 a {
     color: #222222;

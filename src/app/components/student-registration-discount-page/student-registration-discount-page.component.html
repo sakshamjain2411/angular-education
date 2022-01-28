@@ -105,9 +105,14 @@
                 <input type="text" class="form-control" id="city" formControlName="city">
                 <small class="text-danger" *ngIf="!city?.valid && city?.touched">Please Enter City</small>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" *ngIf="isIndia">
                 <label for="state" class="form-label">State</label>
                 <input type="text" class="form-control" id="state" formControlName="state" readonly>
+                <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
+            </div>
+            <div class="col-md-4" *ngIf="!isIndia">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" formControlName="state">
                 <small class="text-danger" *ngIf="!state?.valid && state?.touched">Please Enter State</small>
             </div>
             <div class="col-12">
@@ -131,15 +136,15 @@
                     <input type="text" class="form-control" id="referralCode" formControlName="schoolName">
                 </div>
                 <div class="col-12">
-                    <label for="referralCode" class="form-label">School Address</label>
+                    <label for="referralCode" class="form-label">School Address (Optional)</label>
                     <input type="text" class="form-control" id="referralCode" formControlName="schoolAddress">
                 </div>
                 <div class="col-12">
-                    <label for="referralCode" class="form-label">School Pincode</label>
+                    <label for="referralCode" class="form-label">School Pincode (Optional)</label>
                     <input type="text" class="form-control" id="referralCode" formControlName="schoolPincode">
                 </div>
                 <div class="col-12">
-                    <label for="referralCode" class="form-label">School Phone No.</label>
+                    <label for="referralCode" class="form-label">School Phone No. (Optional)</label>
                     <input type="text" class="form-control" id="referralCode" formControlName="schoolPhone">
                 </div>
                 <div class="col-12">
@@ -172,15 +177,15 @@
                             <input type="text" class="form-control" id="referralCode" formControlName="collegeName">
                         </div>
                         <div class="col-12">
-                            <label for="referralCode" class="form-label">College Address</label>
+                            <label for="referralCode" class="form-label">College Address (Optional)</label>
                             <input type="text" class="form-control" id="referralCode" formControlName="collegeAddress">
                         </div>
                         <div class="col-12">
-                            <label for="referralCode" class="form-label">College Pincode</label>
+                            <label for="referralCode" class="form-label">College Pincode (Optional)</label>
                             <input type="text" class="form-control" id="referralCode" formControlName="collegePincode">
                         </div>
                         <div class="col-12">
-                            <label for="referralCode" class="form-label">College Phone No.</label>
+                            <label for="referralCode" class="form-label">College Phone No. (Optional)</label>
                             <input type="text" class="form-control" id="referralCode" formControlName="collegePhone">
                         </div>
                         <div class="col-12">
@@ -202,7 +207,7 @@
                             <input type="text" class="form-control" id="name" formControlName="organisationName">
                         </div>
                         <div class="col-12">
-                            <label for="pincode" class="form-label">Organisation Address</label>
+                            <label for="pincode" class="form-label">Organisation Address (Optional)</label>
                             <input type="number" class="form-control" id="pincode" formControlName="organisationPincode">
                         </div>
                     </div>

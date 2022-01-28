@@ -1,0 +1,8 @@
+@media only screen and (max-width: 400px) {
+    .newsletter input[type='text'] {
+        display: none;
+    }
+    #footer .footer-newsletter form input[type=email] {
+        width: 100%;
+    }
+}

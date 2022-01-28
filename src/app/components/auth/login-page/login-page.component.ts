@@ -13,13 +13,15 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
   errorAlert:boolean = false
+  errorMessage:any
   siteKey: any;
   constructor(private formBuilder: FormBuilder, private _http:HttpClient, private route: Router, private api: ApiService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
+      recaptcha : ['', Validators.required]
     })
     this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
   }
@@ -54,7 +56,7 @@ export class LoginPageComponent implements OnInit {
       },
       err => {
         this.errorAlert = true
-        console.log(err);
+        this.errorMessage = err.error.errors[0].msg
       })
     }
   }

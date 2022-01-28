@@ -44,42 +44,42 @@ export class OlympiadsPageComponent implements OnInit {
         this.olympiadName = "Springfield International Science Olympiad"
         this.olympiadShortName = "SISO"
         if (this.olympiadsData) {
-          this.processOlympiadData(1)
+          this.processOlympiadData(0)
         }
         break;
       case "simo":
         this.olympiadName = "Springfield International Maths Olympiad"
         this.olympiadShortName = "SIMO"
         if (this.olympiadsData) {
-          this.processOlympiadData(2)
+          this.processOlympiadData(1)
         }
         break;
       case "sieo":
         this.olympiadName = "Springfield International English Olympiad"
         this.olympiadShortName = "SIEO"
         if (this.olympiadsData) {
-          this.processOlympiadData(3)
+          this.processOlympiadData(2)
         }
         break;
       case "sico":
         this.olympiadName = "Springfield International Cyber Olympiad"
         this.olympiadShortName = "SICO"
         if (this.olympiadsData) {
-          this.processOlympiadData(4)
+          this.processOlympiadData(3)
         }
         break;
       case "grads-olympiad":
         this.olympiadName = "Grads Olympiad"
         this.olympiadShortName = "SGO"
         if (this.olympiadsData) {
-          this.processOlympiadData(5)
+          this.processOlympiadData(4)
         }
         break;
       case "finance-olympiad":
         this.olympiadName = "Finance Olympiad"
         this.olympiadShortName = "SFO"
         if (this.olympiadsData) {
-          this.processOlympiadData(6)
+          this.processOlympiadData(5)
         }
         break;
 
@@ -113,6 +113,7 @@ export class OlympiadsPageComponent implements OnInit {
     this.api.getOlympiadData()
     .subscribe(response => {
       this.olympiadsData = response
+      console.log(response);
     })
   }
 }

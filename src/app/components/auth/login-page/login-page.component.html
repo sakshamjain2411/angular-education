@@ -7,7 +7,7 @@
             <h3>Institute <span>Login</span></h3>
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="errorAlert">
-            Invalid Username or Password.
+            {{errorMessage}}
         </div>
         <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
             <div class="col-12">
@@ -20,6 +20,10 @@
                 <input type="password" class="form-control" id="password" formControlName="password">
                 <small class="text-danger" *ngIf="!password?.valid && password?.touched">Please Enter Password</small>
             </div>
+            <ngx-recaptcha2 #captchaElem
+              [siteKey]="siteKey"
+              formControlName="recaptcha">
+            </ngx-recaptcha2>
             <div class="col-6">
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
             </div>

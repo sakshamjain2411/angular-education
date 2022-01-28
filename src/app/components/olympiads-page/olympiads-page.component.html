@@ -2,7 +2,7 @@
 <app-breadcrumbs pageTitle={{olympiadShortName}}></app-breadcrumbs>
 <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h1>{{olympiadName}} <span>({{olympiadShortName}})</span></h1>
+        <h1>{{olympiadName}} <span *ngIf="olympiadName != 'Grads Olympiad' && olympiadName != 'Finance Olympiad' ">({{olympiadShortName}})</span></h1>
     </div>
 </section>
 

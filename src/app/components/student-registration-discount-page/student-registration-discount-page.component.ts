@@ -14,7 +14,7 @@ import { StudentRegistrationModel } from '../student-registration-page/student-r
 export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   successAlert: boolean = false
-  isIndia:boolean = false
+  isIndia:boolean = true
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String

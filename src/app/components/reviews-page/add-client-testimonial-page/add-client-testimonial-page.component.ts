@@ -15,8 +15,8 @@ export class AddClientTestimonialPageComponent implements OnInit {
   today!:string
   date = new Date()
   successAlert:boolean = false
-  reviewerTypeStudent:boolean = false
-  reviewerTypeOther:boolean = false
+  reviewerTypeStudent:boolean = true
+  reviewerTypeOther:boolean = true
   testimonailForm!:FormGroup
   testimonialDataObject:ClientTestimonialModel = new ClientTestimonialModel()
   constructor(private formBuilder:FormBuilder, private api:ApiService, private route:Router) { }
@@ -38,11 +38,15 @@ export class AddClientTestimonialPageComponent implements OnInit {
 
     this.testimonailForm.valueChanges
     .subscribe(res => {
-      if(res.reviewerType == 'School Student') {
+      if(res.siso || res.simo || res.sieo || res.sico) {
         this.reviewerTypeStudent = true
         this.reviewerTypeOther = false
-      } else if (res.reviewerType != "") {
+      } else if (res.grads || res.finance) {
         this.reviewerTypeStudent = false
+        this.reviewerTypeOther = true
+      }
+      else {
+        this.reviewerTypeStudent = true
         this.reviewerTypeOther = true
       }
     })

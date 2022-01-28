@@ -13,12 +13,22 @@
             <div class="col-12">
                 <label for="name" class="form-label">Coordinator Name</label>
                 <input type="text" class="form-control" id="name" formControlName="name">
-                <small class="text-danger" *ngIf="!name?.valid && name?.touched">Please Enter Institute's Name</small>
+                <small class="text-danger" *ngIf="!name?.valid && name?.touched">Please Enter Name</small>
             </div>
             <div class="col-12">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" formControlName="email">
                 <small class="text-danger" *ngIf="!email?.valid && email?.touched">Please Enter Valid Email Address</small>
+            </div>
+            <div class="col-12">
+                <label for="dob" class="form-label">DOB</label>
+                <input type="date" class="form-control" id="dob" formControlName="dob">
+                <small class="text-danger" *ngIf="!dob?.valid && dob?.touched">Please Enter Valid Date Of Birth</small>
+            </div>
+            <div class="col-12">
+                <label for="occupation" class="form-label">Occupation</label>
+                <input type="text" class="form-control" id="occupation" formControlName="occupation">
+                <small class="text-danger" *ngIf="!occupation?.valid && occupation?.touched">Please Enter Valid Occupation</small>
             </div>
             <div class="col-md-6">
                 <label for="phone" class="form-label">Phone</label>
@@ -27,6 +37,7 @@
             </div>
             <div class="col-md-3 mt-auto" *ngIf="otpSent == false">
                 <button type="button" class="btn btn-primary" [disabled]="!phone?.valid" (click)="sendOTP()">Send OTP</button>
+                <small style="color: white !important;" class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
             </div>
             <div class="col-md-3 mt-auto" *ngIf="otpSent">
                 <button type="button" class="btn btn-primary" [disabled]="resendOTP" (click)="sendOTP()">Re-Send OTP</button>
@@ -39,7 +50,7 @@
             <div class="col-12">
                 <label for="address" class="form-label">Address</label>
                 <textarea name="address" id="address" cols="30" rows="5" class="form-control" formControlName="address"></textarea>
-                <small class="text-danger" *ngIf="!address?.valid && address?.touched">Please Enter Institute Address</small>
+                <small class="text-danger" *ngIf="!address?.valid && address?.touched">Please Enter Address</small>
             </div>
             <div class="col-md-4">
                 <label for="pincode" class="form-label">Pin Code</label>
@@ -61,7 +72,7 @@
               formControlName="recaptcha">
             </ngx-recaptcha2>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary" [disabled]="!coordinatorForm.valid">Sign in</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!coordinatorForm.valid">Register</button>
             </div>
         </form>
     </div>

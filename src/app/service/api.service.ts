@@ -65,6 +65,13 @@ export class ApiService {
       }))
   }
 
+  postContactFormData(contactFormData:any) {
+    return this._http.post<any>("https://sfoly.com/saveContact", contactFormData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
 
   getInstituteDataByEmail(email:any) {
     return this._http.get<any>("https://sfoly.com/registeredExams?email="+email)

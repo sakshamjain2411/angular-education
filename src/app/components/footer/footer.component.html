@@ -9,7 +9,7 @@
                     <p>Get the Olympiad updates and much more right in your inbox.</p>
                     <form [formGroup]="newsletterForm" (ngSubmit)="onNewsLetterFormSubmit()" *ngIf="!newsletterSubmited">
                         <div class="newsletter">
-                            <input type="text" name="name" placeholder="Name" formControlName="name">
+                            <input type="text" name="name" placeholder="Name (Optional)" formControlName="name">
                             <input type="email" name="email" placeholder="Email" formControlName="email">
                         </div>
                         <input type="submit" value="Subscribe" [disabled]="!newsletterForm.valid">
