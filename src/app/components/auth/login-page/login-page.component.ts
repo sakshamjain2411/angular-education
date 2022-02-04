@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-page',
@@ -23,7 +24,8 @@ export class LoginPageComponent implements OnInit {
       password: ["", Validators.required],
       recaptcha : ['', Validators.required]
     })
-    this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
+
+    this.siteKey = environment.reCaptchaSiteKey;
   }
 
   ngAfterViewInit() {

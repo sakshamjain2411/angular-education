@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { InstituteRegistrationModel } from './institute-registration.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-institute-registration-page',
@@ -31,7 +32,7 @@ export class InstituteRegistrationPageComponent implements OnInit {
       recaptcha: ['', Validators.required]
     })
 
-    this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT";
+    this.siteKey = environment.reCaptchaSiteKey;
   }
 
   get instituteName() {

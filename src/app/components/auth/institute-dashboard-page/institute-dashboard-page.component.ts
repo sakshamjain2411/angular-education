@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { WindowRefService } from 'src/app/service/window-ref.service';
 import { InstituteExamRegistrationModel } from '../../institute-registration-page/institute-exam-registration.model';
 import { InstituteRegistrationModel } from '../../institute-registration-page/institute-registration.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-institute-dashboard-page',
@@ -88,24 +89,46 @@ export class InstituteDashboardPageComponent implements OnInit {
   }
 
   initPayment(amount:any, orderID:any, email:any, onSuccess:any) {
-    this.razorPayPaymentOptions = {
-      "key": "rzp_test_OVNJXawSkiGW2l", // Enter the Key ID generated from the Dashboard
-      "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      "currency": "INR",
-      "name": "Springfield Olympiads",
-      "description": "Test Transaction",
-      "image": "/assets/img/logo.svg",
-      // "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "handler": function (res:any) {
-        onSuccess(res,email);
-      },
-      "prefill": {
-        "email": email
-      },
-      "notes": {
-        "address": "Razorpay Corporate Office"
-      }
-    };
+    if(environment.production == true) {
+      this.razorPayPaymentOptions = {
+        "key": environment.razorPaySecretKey, // Enter the Key ID generated from the Dashboard
+        "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Springfield Olympiads",
+        "description": "Test Transaction",
+        "image": "/assets/img/logo.svg",
+        "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (res:any) {
+          onSuccess(res,email);
+        },
+        "prefill": {
+          "email": email
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        }
+      };
+    }
+    else {
+      this.razorPayPaymentOptions = {
+        "key": environment.razorPaySecretKey, // Enter the Key ID generated from the Dashboard
+        "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Springfield Olympiads",
+        "description": "Test Transaction",
+        "image": "/assets/img/logo.svg",
+        // "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (res:any) {
+          onSuccess(res,email);
+        },
+        "prefill": {
+          "email": email
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        }
+      };
+    }
 
     let razorPayObject = new this.winRef.nativeWindow.Razorpay(this.razorPayPaymentOptions)
     razorPayObject.open()

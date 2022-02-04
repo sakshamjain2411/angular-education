@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { CoordinatorRegistrationModel } from './coordinator-resistration.model';
+import { environment } from 'src/environments/environment';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -38,7 +39,10 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
       "recaptcha" : ['', Validators.required]
     })
 
-    this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
+    this.siteKey = environment.reCaptchaSiteKey;
+
+    console.log(environment);
+    
   }
 
   get name() {
