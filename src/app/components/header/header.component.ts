@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit {
   }
 
   closeMobileNav() {
-    this.navBarToggle = !this.navBarToggle
+    if(innerWidth < 600) {
+      this.navBarToggle = false;
+    }
   }
 
   drownDownToggleOnClick(event:any) {

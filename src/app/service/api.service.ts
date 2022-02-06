@@ -65,6 +65,13 @@ export class ApiService {
       }))
   }
 
+  postResetPasswordData(resetPasswordData:any) {
+    return this._http.post<any>("https://olympiad.pw/resetPassword", resetPasswordData)
+      .pipe(map((res:any)=>{
+        return res
+      }))
+  }
+
   postContactFormData(contactFormData:any) {
     return this._http.post<any>("https://olympiad.pw/saveContact", contactFormData)
       .pipe(map((res:any)=>{

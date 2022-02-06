@@ -12,6 +12,7 @@ export class ResetPasswordComponent implements OnInit {
 
   successAlert:boolean = false
   errorAlert:boolean = false
+  errorMessage:any
   passwordResetId:any
   resetPasswordForm!:FormGroup
   resetPasswordDataObject!:Object
@@ -41,10 +42,14 @@ export class ResetPasswordComponent implements OnInit {
         "confirmPassword" : this.resetPasswordForm.value.confirmPassword
       }
       console.log(this.resetPasswordDataObject);
-      this.successAlert = true
-      this.errorAlert = false
-    }else {
-      this.errorAlert = true;
+      this.api.postResetPasswordData(this.resetPasswordDataObject)
+      .subscribe(res => {
+        this.successAlert = true
+        this.errorAlert = false
+      }, err => {
+        this.errorAlert = true;
+        this.errorMessage =err.error
+      })
     }
   }
 

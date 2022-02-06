@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 export class InstituteRegistrationPageComponent implements OnInit {
 
   successAlert:boolean = false
+  errorAlert:boolean = false
+  errorMessage: any
   instituteFrom!: FormGroup
   routeParam:any
   instituteDataObject: InstituteRegistrationModel = new InstituteRegistrationModel()
@@ -20,14 +22,14 @@ export class InstituteRegistrationPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.instituteFrom = this.formBuilder.group({
-      instituteName: ["", Validators.required],
+      instituteName: ["", [Validators.required, Validators.minLength(5)]],
       email: ["", [Validators.required, Validators.email]],
       phone: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
-      address: ["", Validators.required],
+      address: ["", [Validators.required, Validators.minLength(10)]],
       pincode: ["", [Validators.required, Validators.minLength(4),Validators.maxLength(8)]],
       state: ["", Validators.required],
       city: ["", Validators.required],
-      coordinatorName: ["", Validators.required],
+      coordinatorName: ["", [Validators.required, Validators.minLength(3)]],
       password: ["", [Validators.required, Validators.minLength(8)]],
       recaptcha: ['', Validators.required]
     })
@@ -97,6 +99,9 @@ export class InstituteRegistrationPageComponent implements OnInit {
     this.api.postInstituteData(this.instituteDataObject)
       .subscribe(res => {
         this.route.navigate(['/thank-you'])
+      }, err => {
+        this.errorAlert = true
+        this.errorMessage = err.error
       })
   }
 

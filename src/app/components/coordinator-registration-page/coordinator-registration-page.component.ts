@@ -31,7 +31,7 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
       "phone": ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       "otp": ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(6), Validators.minLength(4)]],
       "email": ['', [Validators.required, Validators.email]],
-      "address": ['', Validators.required],
+      "address": ['', [Validators.required, Validators.minLength(10)]],
       "pincode": ['', [Validators.required, Validators.minLength(6),Validators.maxLength(6)] ],
       "state": ['', Validators.required],
       "city": ['', Validators.required],

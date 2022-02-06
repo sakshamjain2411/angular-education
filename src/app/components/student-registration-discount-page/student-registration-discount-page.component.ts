@@ -27,6 +27,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
   olympiadPriceData:Array<any> = []
   razorPayPaymentOptions:any
   activeOlympiads: Array<any> = []
+  errorMessage:any = false
 
   //Form Groups
   studentForm!: FormGroup
@@ -95,7 +96,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     //Base Student Form
     this.studentForm = this.formBuilder.group({
-      studentName: ["", Validators.required],
+      studentName: ["", [Validators.required, Validators.minLength(3)]],
       email: ["", [Validators.required, Validators.email]],
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       phone: ["000", [Validators.required]],
@@ -269,8 +270,6 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
       this.totalAfterDiscount = res
       this.invalidCouponErrorMessage = false
     }, err => {
-      console.log(err);
-      
       this.isDisscountApplied = false
       this.totalAfterDiscount = 0
       this.invalidCouponErrorMessage = err.error
@@ -357,10 +356,13 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
+        this.errorMessage = false
         if(this.isDisscountApplied) {
           this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess, this.totalAfterDiscount)
         }
         this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess, this.totalAmount)
+      }, err => {
+        this.errorMessage = err.error
       })
   }
 

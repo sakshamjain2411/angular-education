@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { ClientTestimonialModel } from './add-client-testimonial.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-client-testimonial-page',
@@ -51,7 +52,7 @@ export class AddClientTestimonialPageComponent implements OnInit {
       }
     })
 
-    this.siteKey = "6LdPt2QdAAAAAKzEQ8FFDOwIqnUzdFXsQHATjbHT"
+    this.siteKey = environment.reCaptchaSiteKey
     this.today =  this.date.getFullYear()+"-"+this.date.getMonth()+"-"+this.date.getDate()
     
   }

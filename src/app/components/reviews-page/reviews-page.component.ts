@@ -28,7 +28,7 @@ export class ReviewsPageComponent implements OnInit {
       sortBy: [],
       order: [""],
       category: [""],
-      page: [1],
+      page: [0],
       limit:[this.limit]
     })
 

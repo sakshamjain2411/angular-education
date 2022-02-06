@@ -24,6 +24,7 @@ export class StudentRegistrationPageComponent implements OnInit {
   olympiadPriceData: Array<any> = []
   razorPayPaymentOptions:any
   activeOlympiads: Array<any> = []
+  errorMessage:any = false
 
   //Form Groups
   studentForm!: FormGroup
@@ -92,7 +93,7 @@ export class StudentRegistrationPageComponent implements OnInit {
 
     //Base Student Form
     this.studentForm = this.formBuilder.group({
-      studentName: ["", Validators.required],
+      studentName: ["", [Validators.required, Validators.minLength(3)]],
       email: ["", [Validators.required, Validators.email]],
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       phone: ["000", [Validators.required]],
@@ -331,7 +332,10 @@ export class StudentRegistrationPageComponent implements OnInit {
     
     this.api.postStudentData(this.schoolDataObject)
     .subscribe(res => {
+      this.errorMessage = false
         this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess)
+      }, err => {
+        this.errorMessage = err.error
       })
   }
 

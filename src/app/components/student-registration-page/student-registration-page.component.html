@@ -64,8 +64,8 @@
             <h2>Form</h2>
             <h3>Student Registration <span>Form</span></h3>
         </div>
-        <div *ngIf="successAlert" class="alert alert-success" role="alert">
-            The Form Has Been Submitted Successfully
+        <div *ngIf="errorMessage" class="alert alert-success" role="alert">
+            {{errorMessage}}
         </div>
         <form class="row g-3" [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">
             <div class="col-12">
@@ -233,11 +233,11 @@
                 <label for="referralCode" class="form-label">Total</label>
                 <input type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
             </div>
-            <div class="col-12" *ngIf="routeParam">
+            <!-- <div class="col-12" *ngIf="routeParam">
                 <label for="referralCode" class="form-label">Referral Code</label>
                 <input type="text" class="form-control" id="referralCode" formControlName="referralCode">
                 <small class="text-danger" *ngIf="!referralCode?.valid && referralCode?.touched">Please Enter Valid Referral Code</small>
-            </div>
+            </div> -->
             <ngx-recaptcha2 #captchaElem
               [siteKey]="siteKey"
               formControlName="recaptcha">
