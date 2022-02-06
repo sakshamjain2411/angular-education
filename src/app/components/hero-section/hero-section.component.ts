@@ -8,18 +8,13 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class HeroSectionComponent implements OnInit {
 
-  registerButtonStatus: any
-  scheduleButtonStatus: any
   subHeading: any
   constructor(private api:ApiService) { }
 
+  @Input()registerButtonStatus: any
+  @Input()scheduleButtonStatus: any
+
   ngOnInit(): void {
-    this.api.getWebsiteCoreData()
-      .subscribe(response => {
-        this.subHeading = response.headline
-        this.registerButtonStatus = response.registerButtonStatus
-        this.scheduleButtonStatus = response.scheduleButtonStatus
-      })
   }
 
 }

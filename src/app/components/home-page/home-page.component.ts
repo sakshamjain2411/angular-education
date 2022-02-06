@@ -11,10 +11,12 @@ export class HomePageComponent implements OnInit {
 
   websiteCoreData: any;
   testimonialsData: any;
-  websiteNew: any
+  websiteNews: any
   registeredInstitutes!: string;
   registeredIndividuals!: string;
   registeredCoordinators!: string;
+  registerButtonStatus: any
+  scheduleButtonStatus: any
   pageTitle: String = "Home"
   constructor(private api:ApiService) {
   }
@@ -26,7 +28,9 @@ export class HomePageComponent implements OnInit {
       this.registeredInstitutes = response.registeredInstitutes
       this.registeredIndividuals = response.registeredIndividuals
       this.registeredCoordinators = response.registeredCoordinators
-      this.websiteNew = response.news
+      this.registerButtonStatus = response.registerButtonStatus
+      this.scheduleButtonStatus = response.scheduleButtonStatus
+      this.websiteNews = response.news
     })
 
     this.api.getTesimonialDataWithAdminApproval()
