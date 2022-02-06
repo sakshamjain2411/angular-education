@@ -113,7 +113,6 @@ export class OlympiadsPageComponent implements OnInit {
     this.api.getOlympiadData()
     .subscribe(response => {
       this.olympiadsData = response
-      console.log(response);
     })
   }
 }

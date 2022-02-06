@@ -26,11 +26,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  drownDownToggleOnClick(event:any) {
-    if(event.srcElement.tagName == "A") {
+  dropDownToggleOnClick(event:any) {
+    if(event.srcElement.className == "dropdownToggle") {
       event.srcElement.nextElementSibling.classList.toggle('dropdown-active')
     }
-    else {
+    else if(event.srcElement.tagName == "I") {
       event.srcElement.parentElement.nextElementSibling.classList.toggle('dropdown-active')
     }
   }
