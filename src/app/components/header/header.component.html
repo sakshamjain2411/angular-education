@@ -27,12 +27,12 @@
           <li><a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a></li>
           <li class="dropdown" (click)="drownDownToggleOnClick($event)"><a><span>Olympiads</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a [routerLink]="['/olympiad/siso']">SISO</a></li>
-              <li><a [routerLink]="['/olympiad/simo']">SIMO</a></li>
-              <li><a routerLink="/olympiad/sieo">SIEO</a></li>
-              <li><a routerLink="/olympiad/sico">SICO</a></li>
-              <li><a routerLink="/olympiad/grads-olympiad">Grads Olympiad</a></li>
-              <li><a [routerLink]="['/olympiad/finance-olympiad']">Finance Olympiad</a></li>
+              <li><a [routerLink]="['/olympiad/siso']" (click)="closeMobileNav()">SISO</a></li>
+              <li><a [routerLink]="['/olympiad/simo']" (click)="closeMobileNav()">SIMO</a></li>
+              <li><a routerLink="/olympiad/sieo" (click)="closeMobileNav()">SIEO</a></li>
+              <li><a routerLink="/olympiad/sico" (click)="closeMobileNav()">SICO</a></li>
+              <li><a routerLink="/olympiad/grads-olympiad" (click)="closeMobileNav()">Grads Olympiad</a></li>
+              <li><a [routerLink]="['/olympiad/finance-olympiad']" (click)="closeMobileNav()">Finance Olympiad</a></li>
             </ul>
           </li>
           <li><a [routerLink]="['/faqs']" routerLinkActive="active" >FAQ's</a></li>

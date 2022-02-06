@@ -38,9 +38,12 @@
             <div class="col-md-3 mt-auto" *ngIf="otpSent == false">
                 <button type="button" class="btn btn-primary" [disabled]="!phone?.valid" (click)="sendOTP()">Send OTP</button>
                 <small style="color: white !important;" class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
+                <small style="color: white !important;" class="text-danger" *ngIf="!otp?.valid && otp?.touched">Please Enter Valid OTP</small>
             </div>
             <div class="col-md-3 mt-auto" *ngIf="otpSent">
                 <button type="button" class="btn btn-primary" [disabled]="resendOTP" (click)="sendOTP()">Re-Send OTP</button>
+                <small style="color: white !important;" class="text-danger" *ngIf="!phone?.valid && phone?.touched">Please Enter Valid Phone Number</small>
+                <small style="color: white !important;" class="text-danger" *ngIf="!otp?.valid && otp?.touched">Please Enter Valid OTP</small>
             </div>
             <div class="col-md-3" *ngIf="otpSent">
                 <label for="phone" class="form-label">OTP</label>

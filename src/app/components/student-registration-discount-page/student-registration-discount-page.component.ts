@@ -16,6 +16,9 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   successAlert: boolean = false
   isIndia:boolean = true
+  isDisscountApplied:boolean = false
+  isCouponInvalid:boolean = false
+  invalidCouponErrorMessage:any
   routeParam: String = ""
   submitStatus!: String
   submitMessage!: String
@@ -36,6 +39,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   schoolDataObject: StudentRegistrationModel = new StudentRegistrationModel
   totalAmount: number = 0
+  totalAfterDiscount: number = 0
   payeePhone!:Number
 
   typeSchoolStudent: boolean = false
@@ -94,7 +98,7 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
       studentName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       phoneIndia: ["", [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
-      phone: ["", [Validators.required]],
+      phone: ["000", [Validators.required]],
       country: ["India", Validators.required],
       pincode: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
       state: ["", Validators.required],
@@ -112,22 +116,6 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
       .subscribe(res => {
         this.updateTotal(res);
         this.discountApplied = false
-      })
-
-    this.studentForm.valueChanges
-      .subscribe(res => {
-        if (res.country == "India") {
-          if (this.isIndia == false) {
-            this.isIndia = true
-            this.studentForm.patchValue({
-              phone: "000"
-            })
-          }
-        } else {
-          if (this.isIndia == true) {
-            this.isIndia = false
-          }
-        }
       })
 
     this.api.getCountries()
@@ -270,7 +258,6 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   validateCouponCode(e: any) {
     e.preventDefault()
-    console.log(this.studentForm.value);
     
     let couponData = {
       "couponCode": this.studentForm.value.couponCode,
@@ -278,8 +265,15 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     }
     this.api.postCouponCodeData(couponData)
     .subscribe(res => {
-      console.log(res);
-      this.totalAmount = res
+      this.isDisscountApplied = true
+      this.totalAfterDiscount = res
+      this.invalidCouponErrorMessage = false
+    }, err => {
+      console.log(err);
+      
+      this.isDisscountApplied = false
+      this.totalAfterDiscount = 0
+      this.invalidCouponErrorMessage = err.error
     })
   }
 
@@ -304,6 +298,24 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
   scrollToFormSection() {
     document.querySelector("#student-form")?.scrollIntoView()
+  }
+
+  onCountryChange() {
+    if(this.studentForm.value.country == "India") {
+      if(this.isIndia == false) {
+        this.isIndia = true;
+        this.studentForm.patchValue({
+          phone: "000"
+        })
+      }
+    } else {
+      if(this.isIndia == true) {
+        this.isIndia = false
+        this.studentForm.patchValue({
+          phone: ""
+        })
+      }
+    }
   }
 
   postStudentData() {
@@ -345,7 +357,10 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
 
     this.api.postStudentData(this.schoolDataObject)
       .subscribe(res => {
-        this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess)
+        if(this.isDisscountApplied) {
+          this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess, this.totalAfterDiscount)
+        }
+        this.initPayment(res.orderId, this.studentForm.value.email, this.onPaymentSuccess, this.totalAmount)
       })
   }
 
@@ -369,11 +384,11 @@ export class StudentRegistrationDiscountPageComponent implements OnInit {
     });
   }
 
-  initPayment(orderID:any, email:any, onSuccess:any) {
+  initPayment(orderID:any, email:any, onSuccess:any, amount:any) {
     if(environment.production == true) {
       this.razorPayPaymentOptions = {
         "key": environment.razorPaySecretKey, // Enter the Key ID generated from the Dashboard
-        "amount": this.totalAmount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Springfield Olympiads",
         "description": "Test Transaction",

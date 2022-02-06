@@ -80,7 +80,7 @@
             </div>
             <div class="col-12">
                 <label for="state" class="form-label">Country</label>
-                <select id="state" class="form-select" formControlName="country">
+                <select id="state" class="form-select" formControlName="country" onchange="onCountryChange()">
                     <option *ngFor="let item of countries">{{item}}</option>
                 </select>
                 <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>

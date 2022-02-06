@@ -16,18 +16,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
-    // this.navBarToggle = document.querySelector(".mobile-nav-toggle")
-    // this.navMobile = document.querySelector("#navbar")
-    // on('click', '.mobile-nav-toggle', function (e) {
-      //   select('#navbar').classList.toggle('navbar-mobile')
-      //   this.classList.toggle('bi-list')
-      //   this.classList.toggle('bi-x')
-      //   console.log(this)
-      // })
+  navToggleOnClick() {
+    this.navBarToggle = !this.navBarToggle
   }
 
-  navToggleOnClick() {
+  closeMobileNav() {
     this.navBarToggle = !this.navBarToggle
   }
 

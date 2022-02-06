@@ -1714,6 +1714,13 @@ body {
 
 
 /* Custom CSS */
+.form-inner-row {
+  margin-top: 10px;
+}
+.scrollable {
+  overflow-x: scroll;
+}
+
 @media only screen and (max-width: 450px) {
   .row-mobile-reverse {
       flex-direction: column-reverse;

@@ -21,12 +21,13 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
   invalidOTPCount:number = 0
   otpSent:boolean = false
   resendOTP:boolean = false
+  errorMessage:any
   siteKey: any
   constructor(private formBuilder:FormBuilder, private api:ApiService, private route:Router) { }
 
   ngOnInit(): void {
     this.coordinatorForm = this.formBuilder.group({
-      "name": ['', Validators.required],
+      "name": ['', [Validators.required, Validators.minLength(3)]],
       "phone": ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(10), Validators.minLength(10)]],
       "otp": ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(6), Validators.minLength(4)]],
       "email": ['', [Validators.required, Validators.email]],
@@ -152,6 +153,8 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
     this.api.postCoordinatorData(this.coordinatorDataObject)
       .subscribe(() => {
         this.route.navigate(['/thank-you'])
+      },err => {
+        this.errorMessage = err.error
       })
   }
 

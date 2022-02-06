@@ -80,7 +80,7 @@
             </div>
             <div class="col-12">
                 <label for="state" class="form-label">Country</label>
-                <select id="state" class="form-select" formControlName="country">
+                <select id="state" class="form-select" formControlName="country" onchange="onCountryChange()">
                     <option *ngFor="let item of countries">{{item}}</option>
                 </select>
                 <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
@@ -231,15 +231,19 @@
             </div>
             <div class="col-12" *ngIf="typeSchoolStudent||typeOther">
                 <label for="referralCode" class="form-label">Total</label>
-                <input type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
+                <input *ngIf="!isDisscountApplied" type="text" class="form-control" id="referralCode" value="{{totalAmount}}" readonly>
+                <input *ngIf="isDisscountApplied" type="text" class="form-control" id="referralCode" value="{{totalAfterDiscount}}" readonly>
             </div>
-            <div class="col-9" *ngIf="totalAmount>0">
-                <label for="couponCode" class="form-label">Coupon Code</label>
-                <input type="text" class="form-control" id="couponCode" formControlName="couponCode">
-                <small class="text-danger" *ngIf="!referralCode?.valid && referralCode?.touched">Invalid Coupon Code</small>
-            </div>
-            <div class="col-3 col-apply-coupon" *ngIf="totalAmount>0" (click)="validateCouponCode($event)">
-                <button class="btn btn-primary" [disabled]="discountApplied">Apply</button>
+            <div class="row form-inner-row">
+                <div class="col-9" *ngIf="totalAmount>0">
+                    <label for="couponCode" class="form-label">Coupon Code</label>
+                    <input type="text" class="form-control" id="couponCode" formControlName="couponCode">
+                </div>
+                <div class="col-3 col-apply-coupon" *ngIf="totalAmount>0" (click)="validateCouponCode($event)">
+                    <button class="btn btn-primary" [disabled]="discountApplied">Apply</button>
+                </div>
+                <!-- <small class="text-danger" *ngIf="!referralCode?.valid && referralCode?.touched">Invalid Coupon Code</small> -->
+                <small class="text-danger" *ngIf="invalidCouponErrorMessage">{{invalidCouponErrorMessage}}</small>
             </div>
             <div class="col-12" *ngIf="routeParam">
                 <label for="referralCode" class="form-label">Referral Code</label>
