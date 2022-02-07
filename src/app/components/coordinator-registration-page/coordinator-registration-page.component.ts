@@ -41,9 +41,6 @@ export class CoordinatorRegistrationPageComponent implements OnInit {
     })
 
     this.siteKey = environment.reCaptchaSiteKey;
-
-    console.log(environment);
-    
   }
 
   get name() {

@@ -8,11 +8,11 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class HeroSectionComponent implements OnInit {
 
-  subHeading: any
   constructor(private api:ApiService) { }
 
   @Input()registerButtonStatus: any
   @Input()scheduleButtonStatus: any
+  @Input()subHeading: any
 
   ngOnInit(): void {
   }

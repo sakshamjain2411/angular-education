@@ -17,6 +17,7 @@ export class HomePageComponent implements OnInit {
   registeredCoordinators!: string;
   registerButtonStatus: any
   scheduleButtonStatus: any
+  subHeading: any
   pageTitle: String = "Home"
   constructor(private api:ApiService) {
   }
@@ -30,6 +31,7 @@ export class HomePageComponent implements OnInit {
       this.registeredCoordinators = response.registeredCoordinators
       this.registerButtonStatus = response.registerButtonStatus
       this.scheduleButtonStatus = response.scheduleButtonStatus
+      this.subHeading = response.headline
       this.websiteNews = response.news
     })
 

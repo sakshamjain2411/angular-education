@@ -36,7 +36,7 @@
             </ul>
           </li>
           <li><a [routerLink]="['/faqs']" routerLinkActive="active" >FAQ's</a></li>
-          <li class="dropdown"><a (click)="dropDownToggleOnClick($event)"><span>Register</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown" (click)="dropDownToggleOnClick($event)"><a class="dropdownToggle"><span>Register</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a [routerLink]="['/student-registration']">Student Registration</a></li>
               <li><a [routerLink]="['/institute-registration']">Institute Registration</a></li>

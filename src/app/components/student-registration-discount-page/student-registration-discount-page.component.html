@@ -64,7 +64,7 @@
             <h2>Form</h2>
             <h3>Student Registration <span>Form</span></h3>
         </div>
-        <div *ngIf="errorMessage" class="alert alert-success" role="alert">
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
             {{errorMessage}}
         </div>
         <form class="row g-3" [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">
@@ -80,7 +80,7 @@
             </div>
             <div class="col-12">
                 <label for="state" class="form-label">Country</label>
-                <select id="state" class="form-select" formControlName="country" onchange="onCountryChange()">
+                <select id="state" class="form-select" formControlName="country" (change)="onCountryChange()">
                     <option *ngFor="let item of countries">{{item}}</option>
                 </select>
                 <small class="text-danger" *ngIf="!country?.valid && country?.touched">Please Select Country</small>
